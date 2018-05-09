@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D274C05A05F85F42E5535C2 /* Pods_Fateconde.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4981DF6F4E4277B14C5628FE /* Pods_Fateconde.framework */; };
 		90D4600020A3352400E682F7 /* PointOfInterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D45FFF20A3352400E682F7 /* PointOfInterest.framework */; };
 		90D4600120A3352400E682F7 /* PointOfInterest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90D45FFF20A3352400E682F7 /* PointOfInterest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		90D4600A20A3455500E682F7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4600920A3455500E682F7 /* Data.swift */; };
 		90D4600D20A3603400E682F7 /* Locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4600C20A3603400E682F7 /* Locations.plist */; };
+		90D4600F20A397EB00E682F7 /* MapboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4600E20A397EB00E682F7 /* MapboxViewController.swift */; };
 		E564338120A28D0500CC461C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564338020A28D0500CC461C /* AppDelegate.swift */; };
 		E564338320A28D0500CC461C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564338220A28D0500CC461C /* ViewController.swift */; };
 		E564338620A28D0500CC461C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E564338420A28D0500CC461C /* Main.storyboard */; };
@@ -54,9 +56,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4981DF6F4E4277B14C5628FE /* Pods_Fateconde.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fateconde.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E05E0A25EE375857C2C2863 /* Pods-Fateconde.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fateconde.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Fateconde/Pods-Fateconde.debug.xcconfig"; sourceTree = "<group>"; };
 		90D45FFF20A3352400E682F7 /* PointOfInterest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PointOfInterest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D4600920A3455500E682F7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		90D4600C20A3603400E682F7 /* Locations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Locations.plist; sourceTree = "<group>"; };
+		90D4600E20A397EB00E682F7 /* MapboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxViewController.swift; sourceTree = "<group>"; };
+		94FA45A3888568BD6AB66E58 /* Pods-Fateconde.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fateconde.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Fateconde/Pods-Fateconde.release.xcconfig"; sourceTree = "<group>"; };
 		E564337D20A28D0500CC461C /* Fateconde.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fateconde.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E564338020A28D0500CC461C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E564338220A28D0500CC461C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90D4600020A3352400E682F7 /* PointOfInterest.framework in Frameworks */,
+				7D274C05A05F85F42E5535C2 /* Pods_Fateconde.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +115,23 @@
 			path = LocationsData;
 			sourceTree = "<group>";
 		};
+		B25FA46339528BE45A059158 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4981DF6F4E4277B14C5628FE /* Pods_Fateconde.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3BC00B70E19F3E78DEF4542 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E05E0A25EE375857C2C2863 /* Pods-Fateconde.debug.xcconfig */,
+				94FA45A3888568BD6AB66E58 /* Pods-Fateconde.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E564337420A28D0500CC461C = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +140,8 @@
 				E564339420A28D0900CC461C /* FatecondeTests */,
 				E564339F20A28D0900CC461C /* FatecondeUITests */,
 				E564337E20A28D0500CC461C /* Products */,
+				E3BC00B70E19F3E78DEF4542 /* Pods */,
+				B25FA46339528BE45A059158 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +168,7 @@
 				E56433DF20A2940000CC461C /* BottomSheetViewController.swift */,
 				E56433E120A2A70500CC461C /* EmbeddedViewController.swift */,
 				90D4600920A3455500E682F7 /* Data.swift */,
+				90D4600E20A397EB00E682F7 /* MapboxViewController.swift */,
 			);
 			path = Fateconde;
 			sourceTree = "<group>";
@@ -171,10 +198,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E56433A520A28D0900CC461C /* Build configuration list for PBXNativeTarget "Fateconde" */;
 			buildPhases = (
+				C8AA894E131358E1571C4AA4 /* [CP] Check Pods Manifest.lock */,
 				E564337920A28D0500CC461C /* Sources */,
 				E564337A20A28D0500CC461C /* Frameworks */,
 				E564337B20A28D0500CC461C /* Resources */,
 				90D4600220A3352400E682F7 /* Embed Frameworks */,
+				0C4273670CC59CAC4D09AD93 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -292,6 +321,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C4273670CC59CAC4D09AD93 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Fateconde/Pods-Fateconde-frameworks.sh",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Fateconde/Pods-Fateconde-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8AA894E131358E1571C4AA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fateconde-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E564337920A28D0500CC461C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -302,6 +372,7 @@
 				E564338320A28D0500CC461C /* ViewController.swift in Sources */,
 				E56433E020A2940000CC461C /* BottomSheetViewController.swift in Sources */,
 				E564338120A28D0500CC461C /* AppDelegate.swift in Sources */,
+				90D4600F20A397EB00E682F7 /* MapboxViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +543,7 @@
 		};
 		E56433A620A28D0900CC461C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E05E0A25EE375857C2C2863 /* Pods-Fateconde.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -490,6 +562,7 @@
 		};
 		E56433A720A28D0900CC461C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94FA45A3888568BD6AB66E58 /* Pods-Fateconde.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

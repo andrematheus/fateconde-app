@@ -18,9 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="niE-Sj-WXs">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdG-nR-Qav">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </mapView>
+                                <connections>
+                                    <segue destination="5xF-lB-O80" kind="embed" id="QPA-zk-LaD"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whk-Ae-STm">
                                 <rect key="frame" x="0.0" y="328" width="320" height="240"/>
                                 <constraints>
@@ -33,13 +36,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="niE-Sj-WXs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Od-aC-4yp"/>
-                            <constraint firstItem="niE-Sj-WXs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8H4-Jq-7qg"/>
-                            <constraint firstItem="niE-Sj-WXs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DOO-pI-pOd"/>
-                            <constraint firstItem="niE-Sj-WXs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KXS-D7-4Yc"/>
-                            <constraint firstItem="whk-Ae-STm" firstAttribute="bottom" secondItem="niE-Sj-WXs" secondAttribute="bottom" id="Tcf-dX-tRl"/>
-                            <constraint firstItem="whk-Ae-STm" firstAttribute="trailing" secondItem="niE-Sj-WXs" secondAttribute="trailing" id="dF2-Pb-6ss"/>
-                            <constraint firstItem="whk-Ae-STm" firstAttribute="leading" secondItem="niE-Sj-WXs" secondAttribute="leading" id="pKb-6Q-DuL"/>
+                            <constraint firstItem="whk-Ae-STm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8HF-lM-TsL"/>
+                            <constraint firstItem="VdG-nR-Qav" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="N7D-gV-qb1"/>
+                            <constraint firstItem="VdG-nR-Qav" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UG3-c6-Sd9"/>
+                            <constraint firstItem="whk-Ae-STm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e9R-37-yz4"/>
+                            <constraint firstItem="whk-Ae-STm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kUK-Nk-z7R"/>
+                            <constraint firstItem="VdG-nR-Qav" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pEM-8C-E8A"/>
+                            <constraint firstItem="VdG-nR-Qav" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xA9-xW-bvs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -50,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="124.58770614692655"/>
+            <point key="canvasLocation" x="135" y="123.59154929577466"/>
         </scene>
         <!--Embedded View Controller-->
         <scene sceneID="dOk-Dh-mmg">
@@ -138,6 +141,41 @@
                 <customObject id="mQb-LC-H8h" customClass="BottomSheetViewController" customModule="Fateconde" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1357.5" y="478.52112676056339"/>
+        </scene>
+        <!--Delegate-->
+        <scene sceneID="qUz-cR-5J8">
+            <objects>
+                <viewController id="5xF-lB-O80" customClass="MapboxViewController" customModule="Fateconde" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DXP-E4-lWW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Vd-UL-MAj" customClass="MGLMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/mapbox/streets-v10"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="5xF-lB-O80" id="tlo-8l-aM8"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Vd-UL-MAj" firstAttribute="top" secondItem="DXP-E4-lWW" secondAttribute="top" id="LUf-n8-f5m"/>
+                            <constraint firstItem="6Vd-UL-MAj" firstAttribute="leading" secondItem="DXP-E4-lWW" secondAttribute="leading" id="POz-F3-kSQ"/>
+                            <constraint firstAttribute="trailing" secondItem="6Vd-UL-MAj" secondAttribute="trailing" id="obs-W7-J6G"/>
+                            <constraint firstAttribute="bottom" secondItem="6Vd-UL-MAj" secondAttribute="bottom" id="uFe-AW-Kl6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="6Vd-UL-MAj" id="DKA-Uf-AZb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aa8-0K-z7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1125" y="-76.056338028169009"/>
         </scene>
     </scenes>
 </document>
