@@ -14,6 +14,8 @@
 		E564338B20A28D0900CC461C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E564338920A28D0900CC461C /* LaunchScreen.storyboard */; };
 		E564339620A28D0900CC461C /* FatecondeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564339520A28D0900CC461C /* FatecondeTests.swift */; };
 		E56433A120A28D0900CC461C /* FatecondeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56433A020A28D0900CC461C /* FatecondeUITests.swift */; };
+		E56433E020A2940000CC461C /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56433DF20A2940000CC461C /* BottomSheetViewController.swift */; };
+		E56433E220A2A70500CC461C /* EmbeddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56433E120A2A70500CC461C /* EmbeddedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		E564339C20A28D0900CC461C /* FatecondeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FatecondeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56433A020A28D0900CC461C /* FatecondeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatecondeUITests.swift; sourceTree = "<group>"; };
 		E56433A220A28D0900CC461C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E56433DF20A2940000CC461C /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		E56433E120A2A70500CC461C /* EmbeddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				E564338720A28D0900CC461C /* Assets.xcassets */,
 				E564338920A28D0900CC461C /* LaunchScreen.storyboard */,
 				E564338C20A28D0900CC461C /* Info.plist */,
+				E56433DF20A2940000CC461C /* BottomSheetViewController.swift */,
+				E56433E120A2A70500CC461C /* EmbeddedViewController.swift */,
 			);
 			path = Fateconde;
 			sourceTree = "<group>";
@@ -256,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56433E220A2A70500CC461C /* EmbeddedViewController.swift in Sources */,
 				E564338320A28D0500CC461C /* ViewController.swift in Sources */,
+				E56433E020A2940000CC461C /* BottomSheetViewController.swift in Sources */,
 				E564338120A28D0500CC461C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
