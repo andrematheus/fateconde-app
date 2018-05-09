@@ -1,0 +1,6 @@
+﻿id.code;id.buildingLevel;id.buildingCode;name;type
+sa1;0;sa;Biblioteca;Service
+sa2;0;sa;Secretaria;Service
+sa3;0;sa;Sala de Estudos;Service
+bb1;0;bb;iCenter;Service
+;;;;

@@ -33,7 +33,7 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         let building = appData.pointsOfInterest.allBuildings()[indexPath.section]
         let location = appData.pointsOfInterest.listingForBuildings(buildings: building)[indexPath.row]
         cell.textLabel?.text = location.name
-        cell.detailTextLabel?.text = location.id.buildingCode
+        cell.detailTextLabel?.text = building.name
 
         return cell
     }
