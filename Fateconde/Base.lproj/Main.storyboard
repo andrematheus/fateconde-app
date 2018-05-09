@@ -67,9 +67,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="d7O-wu-TZ8">
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7O-wu-TZ8">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <scopeButtonTitles>
+                                                <string>All</string>
+                                                <string>Classroom</string>
+                                                <string>Service</string>
+                                                <string>3rd party</string>
+                                            </scopeButtonTitles>
                                             <connections>
                                                 <outlet property="delegate" destination="mQb-LC-H8h" id="SXA-jD-Ysy"/>
                                             </connections>
