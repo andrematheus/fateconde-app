@@ -19,6 +19,55 @@
                 <key>name</key>
                 <string>Location 1</string>
             </dict>
+            <dict>
+                <key>type</key>
+                <string>ClassRoom</string>
+                <key>id</key>
+                <dict>
+                    <key>code</key>
+                    <string>l2</string>
+                    <key>buildingLevel</key>
+                    <integer>1</integer>
+                    <key>buildingCode</key>
+                    <string>b1</string>
+                </dict>
+                <key>name</key>
+                <string>Location 2</string>
+            </dict>
+            <dict>
+                <key>type</key>
+                <string>ClassRoom</string>
+                <key>id</key>
+                <dict>
+                    <key>code</key>
+                    <string>l3</string>
+                    <key>buildingLevel</key>
+                    <integer>1</integer>
+                    <key>buildingCode</key>
+                    <string>b2</string>
+                </dict>
+                <key>name</key>
+                <string>Location 3</string>
+            </dict>
+        </array>
+        <key>buildings</key>
+        <array>
+            <dict>
+                <key>code</key>
+                <string>b1</string>
+                <key>name</key>
+                <string>Building 1</string>
+                <key>numberOfLevels</key>
+                <integer>7</integer>
+            </dict>
+            <dict>
+                <key>code</key>
+                <string>b2</string>
+                <key>name</key>
+                <string>Building 2</string>
+                <key>numberOfLevels</key>
+                <integer>2</integer>
+            </dict>
         </array>
     </dict>
 </plist>

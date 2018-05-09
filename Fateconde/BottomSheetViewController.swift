@@ -19,19 +19,19 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     let appData: AppData = AppData.sharedInstance
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // TODO return 1 section per building
-        return 1
+        return appData.pointsOfInterest.allBuildings().count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO return number of points of interest in corresponding building
-        return appData.pointsOfInterest.listing().count
+        let building = appData.pointsOfInterest.allBuildings()[section]
+        return appData.pointsOfInterest.listingForBuildings(buildings: building).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pointOfInterestCell", for: indexPath)
 
-        let location = appData.pointsOfInterest.listing()[indexPath.row]
+        let building = appData.pointsOfInterest.allBuildings()[indexPath.section]
+        let location = appData.pointsOfInterest.listingForBuildings(buildings: building)[indexPath.row]
         cell.textLabel?.text = location.name
         cell.detailTextLabel?.text = location.id.buildingCode
 
