@@ -7,26 +7,15 @@
 //
 
 import UIKit
+import PointOfInterest
 
 protocol BottomSheetDelegate: class {
-    func grow()
-    func shrink()
+    func growBottomSheet()
+    func shrinkBottomSheet()
 }
 
 class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
-    
     weak var delegate: BottomSheetDelegate? = nil
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // TODO return 1 section per building
@@ -48,11 +37,11 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        delegate?.grow()
+        delegate?.growBottomSheet()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        delegate?.shrink()
+        delegate?.shrinkBottomSheet()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

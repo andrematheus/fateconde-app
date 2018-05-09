@@ -9,19 +9,7 @@
 import UIKit
 
 class EmbeddedViewController: UIViewController {
-
     @IBOutlet var bottomSheetViewController: BottomSheetViewController!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func forwardDelegate(delegate: BottomSheetDelegate) {
         self.bottomSheetViewController.delegate = delegate
