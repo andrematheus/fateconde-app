@@ -106,10 +106,10 @@
                                     <outlet property="delegate" destination="mQb-LC-H8h" id="2Ko-af-SI7"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwV-91-Ak3">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwV-91-Ak3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E15-Ip-D5q">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E15-Ip-D5q">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5k-Y5-KqW">
@@ -126,7 +126,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="U5k-Y5-KqW" firstAttribute="centerX" secondItem="E15-Ip-D5q" secondAttribute="centerX" id="7oK-qS-3zM"/>
                                             <constraint firstItem="U5k-Y5-KqW" firstAttribute="centerY" secondItem="E15-Ip-D5q" secondAttribute="centerY" id="8x0-T5-mXs"/>
@@ -141,7 +141,7 @@
                                         </connections>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="bRJ-ie-1Ah" firstAttribute="leading" secondItem="gwV-91-Ak3" secondAttribute="leading" id="A6q-Gy-0vE"/>
                                     <constraint firstAttribute="trailing" secondItem="bRJ-ie-1Ah" secondAttribute="trailing" id="F3i-CA-LlH"/>

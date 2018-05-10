@@ -12,7 +12,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomSheet: UIView!
     var mapController: MapboxViewController?
-    let bottomSheetSmall: CGFloat = 100
+    let bottomSheetSmall: CGFloat = 66
     let bottomSheetMedium: CGFloat = 240
     var bottomSheetLarge: CGFloat {
         get {

@@ -19,6 +19,10 @@ class EmbeddedViewController: UIViewController {
         view.layer.shadowOpacity = 0.15;
         view.layer.masksToBounds = false;
         
+        //view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan))
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(panGesture)
@@ -32,11 +36,11 @@ class EmbeddedViewController: UIViewController {
         let velocity = sender.velocity(in: view)
         
         if sender.state == .began {
-            print("Gesture began")
+            
         } else if sender.state == .changed {
-            print("Gesture is changing")
+            
         } else if sender.state == .ended {
-            print("Gesture ended")
+            
             if velocity.y < 0 {
                 self.delegate?.growBottomSheet()
             } else {
