@@ -76,11 +76,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="gwV-91-Ak3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E15-Ip-D5q">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5k-Y5-KqW">
+                                                    <rect key="frame" x="145" y="7" width="30" height="6"/>
+                                                    <color key="backgroundColor" red="0.80641504857076529" green="0.80512290832974598" blue="0.82769337981502589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="MZc-Of-bpf"/>
+                                                        <constraint firstAttribute="height" constant="6" id="cJv-06-pTN"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="U5k-Y5-KqW" firstAttribute="centerY" secondItem="E15-Ip-D5q" secondAttribute="centerY" id="IHy-8q-XKY"/>
+                                                <constraint firstAttribute="height" constant="20" id="u2m-Af-rsw"/>
+                                                <constraint firstItem="U5k-Y5-KqW" firstAttribute="centerX" secondItem="E15-Ip-D5q" secondAttribute="centerX" id="xoO-Rd-whl"/>
+                                            </constraints>
+                                        </view>
                                         <searchBar contentMode="redraw" searchBarStyle="minimal" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7O-wu-TZ8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                            <rect key="frame" x="0.0" y="20" width="320" height="56"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <scopeButtonTitles>
                                                 <string>All</string>
@@ -95,15 +119,20 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="d7O-wu-TZ8" firstAttribute="top" secondItem="gwV-91-Ak3" secondAttribute="top" id="4le-3z-7oh"/>
+                                        <constraint firstItem="d7O-wu-TZ8" firstAttribute="leading" secondItem="gwV-91-Ak3" secondAttribute="leading" id="4bC-Rn-mmi"/>
+                                        <constraint firstAttribute="trailing" secondItem="E15-Ip-D5q" secondAttribute="trailing" id="8NK-vg-uEU"/>
+                                        <constraint firstItem="E15-Ip-D5q" firstAttribute="leading" secondItem="gwV-91-Ak3" secondAttribute="leading" id="9UK-aT-D2E"/>
                                         <constraint firstItem="d7O-wu-TZ8" firstAttribute="leading" secondItem="gwV-91-Ak3" secondAttribute="leading" id="TJQ-5o-Gh8"/>
+                                        <constraint firstAttribute="trailing" secondItem="d7O-wu-TZ8" secondAttribute="trailing" id="Ujp-ai-R3R"/>
+                                        <constraint firstItem="d7O-wu-TZ8" firstAttribute="top" secondItem="E15-Ip-D5q" secondAttribute="bottom" id="Zua-LN-BFc"/>
                                         <constraint firstAttribute="trailing" secondItem="d7O-wu-TZ8" secondAttribute="trailing" id="dns-EL-BWT"/>
-                                        <constraint firstAttribute="bottom" secondItem="d7O-wu-TZ8" secondAttribute="bottom" id="fTh-2A-5pH"/>
+                                        <constraint firstAttribute="bottom" secondItem="d7O-wu-TZ8" secondAttribute="bottom" id="fcd-RE-PA0"/>
+                                        <constraint firstItem="E15-Ip-D5q" firstAttribute="top" secondItem="gwV-91-Ak3" secondAttribute="top" id="gSk-e2-0uE"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="pointOfInterestCell" textLabel="HKQ-la-Zdy" detailTextLabel="7TE-2S-EOF" style="IBUITableViewCellStyleValue1" id="Y30-Ep-WdL">
-                                        <rect key="frame" x="0.0" y="84" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="104" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y30-Ep-WdL" id="Y47-M1-NIi">
                                             <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
