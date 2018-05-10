@@ -12,6 +12,13 @@ class ViewController: UIViewController, BottomSheetDelegate {
     @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomSheet: UIView!
     var mapController: MapboxViewController?
+    let bottomSheetSmall: CGFloat = 100
+    let bottomSheetMedium: CGFloat = 240
+    var bottomSheetLarge: CGFloat {
+        get {
+            return self.view.frame.height - 50
+        }
+    }
     
     @IBAction func toggleDebug(_ sender: Any) {
         mapController?.toggleDebug()
@@ -20,6 +27,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         if let locationController = destination as? EmbeddedViewController {
+            locationController.delegate = self
             locationController.forwardDelegate(delegate: self)
         } else if let mapController = destination as? MapboxViewController {
             self.mapController = mapController
@@ -27,31 +35,26 @@ class ViewController: UIViewController, BottomSheetDelegate {
     }
     
     func growBottomSheet() {
-        if self.bottomSheetHeight.constant == 240 {
-            self.animateBottomSheetHeight(newHeight: 400)
-        } else if self.bottomSheetHeight.constant == 400 {
-            self.animateBottomSheetHeight(newHeight: 600)
-        } else if self.bottomSheetHeight.constant == 100 {
-            self.animateBottomSheetHeight(newHeight: 240)
+        if self.bottomSheetHeight.constant == bottomSheetMedium {
+            self.animateBottomSheetHeight(newHeight: bottomSheetLarge)
+        } else if self.bottomSheetHeight.constant == bottomSheetSmall {
+            self.animateBottomSheetHeight(newHeight: bottomSheetMedium)
         }
     }
     
     func shrinkBottomSheet() {
-        if self.bottomSheetHeight.constant == 400 {
-            self.animateBottomSheetHeight(newHeight: 240)
-        } else if self.bottomSheetHeight.constant == 240 {
-            self.animateBottomSheetHeight(newHeight: 100)
-        } else if self.bottomSheetHeight.constant == 600 {
-            self.animateBottomSheetHeight(newHeight: 400)
+        if self.bottomSheetHeight.constant == bottomSheetLarge {
+            self.animateBottomSheetHeight(newHeight: bottomSheetMedium)
+        } else if self.bottomSheetHeight.constant == bottomSheetMedium {
+            self.animateBottomSheetHeight(newHeight: bottomSheetSmall)
         }
     }
     
-    private func animateBottomSheetHeight(newHeight: Int) {
+    private func animateBottomSheetHeight(newHeight: CGFloat) {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.bottomSheetHeight.constant = CGFloat(newHeight)
+            self.bottomSheetHeight.constant = newHeight
             self.view.layoutIfNeeded()
-            self.mapController?.updateInsets(bottom: newHeight)
         })
     }
 }

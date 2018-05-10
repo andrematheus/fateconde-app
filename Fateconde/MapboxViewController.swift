@@ -17,6 +17,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         latitude: -23.529763733923176,
         longitude: -46.63198445446335
     )
+    let direction = 285.326971003092
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,22 +28,17 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         
         mapView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        updateInsets(bottom: 240)
-        
+        lookAtFatec()
         mapView?.delegate = self
         view.addSubview(mapView!)
     }
     
     func updateInsets(bottom: Int) {
-        let insets = UIEdgeInsets(top: 0, left: 0, bottom: CGFloat(bottom), right: 0)
-        mapView!.setContentInset(insets, animated: false)
-        mapView!.setNeedsUpdateConstraints()
-        lookAtFatec()
+        
     }
 
     func lookAtFatec() {
-        mapView!.setCenter(fatecLocation, zoomLevel: 16.8107541650724, animated: false)
-        mapView!.setDirection(285.326971003092, animated: false)
+        mapView!.camera = MGLMapCamera(lookingAtCenter: fatecLocation, fromDistance: 600, pitch: 0, heading: direction)
     }
     
     override func didReceiveMemoryWarning() {
