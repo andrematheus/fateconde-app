@@ -36,7 +36,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     
     private func animateBottomSheetHeight(newHeight: Int) {
         self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.bottomSheetHeight.constant = CGFloat(newHeight)
             self.view.layoutIfNeeded()
         })
