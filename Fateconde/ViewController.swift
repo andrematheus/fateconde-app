@@ -14,10 +14,31 @@ class ViewController: UIViewController, BottomSheetDelegate {
     var mapController: MapboxViewController?
     let bottomSheetSmall: CGFloat = 66
     let bottomSheetMedium: CGFloat = 240
+    
+    @IBOutlet weak var showFatecButton: UIButton!
+    
+    @IBOutlet weak var showSurroundingsButton: UIButton!
+    
     var bottomSheetLarge: CGFloat {
         get {
             return self.view.frame.height - 50
         }
+    }
+   
+    override func viewDidLoad() {
+        
+    }
+    @IBAction func showFatec(_ sender: Any) {
+        self.mapController?.lookAtFatec()
+        self.showFatecButton.isSelected = true
+        self.showSurroundingsButton.isSelected = false
+    }
+    
+    
+    @IBAction func showSurroundings(_ sender: Any) {
+        self.mapController?.lookAtSurroundings()
+        self.showFatecButton.isSelected = false
+        self.showSurroundingsButton.isSelected = true
     }
     
     @IBAction func toggleDebug(_ sender: Any) {

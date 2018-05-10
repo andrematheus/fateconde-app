@@ -14,10 +14,14 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var debug = true
     
     let fatecLocation = CLLocationCoordinate2D.init(
-        latitude: -23.529763733923176,
-        longitude: -46.63198445446335
+        latitude: -23.529397679087438,
+        longitude: -46.632665554213531
     )
     let direction = 285.326971003092
+    let zoomLevel = 16.75
+    let surroundingsZoomLevel = 15.0
+    
+    var bottomInset: CGFloat = 240
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +31,28 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         mapView = MGLMapView(frame: view.bounds, styleURL: styleURL)
         
         mapView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        lookAtFatec()
+        mapView?.allowsTilting = false
+        mapView?.allowsZooming = false
+        mapView?.allowsRotating = false
+        //mapView?.allowsScrolling = false
+        mapView?.showsUserLocation = true
+        mapView?.setUserTrackingMode(.followWithCourse, animated: false)
+        mapView?.compassView.isHidden = true
+        
         mapView?.delegate = self
         view.addSubview(mapView!)
     }
     
-    func updateInsets(bottom: Int) {
-        
+    func updateInsets(bottom: CGFloat) {
+    
     }
 
     func lookAtFatec() {
-        mapView!.camera = MGLMapCamera(lookingAtCenter: fatecLocation, fromDistance: 600, pitch: 0, heading: direction)
+        mapView?.setCenter(fatecLocation, zoomLevel: zoomLevel, direction: self.direction, animated: true)
+    }
+    
+    func lookAtSurroundings() {
+        mapView?.setCenter(fatecLocation, zoomLevel: surroundingsZoomLevel, direction: self.direction, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +61,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-
+        lookAtFatec()
     }
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {

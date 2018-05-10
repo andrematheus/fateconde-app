@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdG-nR-Qav">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                                 <connections>
                                     <segue destination="5xF-lB-O80" kind="embed" id="QPA-zk-LaD"/>
                                 </connections>
@@ -40,24 +40,66 @@
                                     <action selector="toggleDebug:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42s-Id-zuY"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaA-Xo-Veg">
+                                <rect key="frame" x="264" y="32" width="44" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jq-30-44g">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ADz-RQ-6E3"/>
+                                            <constraint firstAttribute="width" constant="44" id="PGg-40-IIT"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="showFatec:" destination="BYZ-38-t0r" eventType="touchUpInside" id="06y-Ox-csn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apv-iz-fie">
+                                        <rect key="frame" x="0.0" y="44" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="gqz-ok-9lc"/>
+                                            <constraint firstAttribute="height" constant="44" id="zVR-KY-jd4"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="showSurroundings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VDq-FU-MW7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="1xa-xK-iUO"/>
+                                    <constraint firstItem="9Jq-30-44g" firstAttribute="leading" secondItem="TaA-Xo-Veg" secondAttribute="leading" id="3Dc-YS-3qL"/>
+                                    <constraint firstItem="apv-iz-fie" firstAttribute="top" secondItem="9Jq-30-44g" secondAttribute="bottom" id="Bmt-tn-sg5"/>
+                                    <constraint firstAttribute="bottom" secondItem="apv-iz-fie" secondAttribute="bottom" id="Fkz-e6-Bec"/>
+                                    <constraint firstItem="9Jq-30-44g" firstAttribute="top" secondItem="TaA-Xo-Veg" secondAttribute="top" id="MXZ-RD-HaC"/>
+                                    <constraint firstAttribute="width" constant="44" id="Y6u-vS-uTx"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Jq-30-44g" secondAttribute="trailing" id="aAQ-UN-4H2"/>
+                                    <constraint firstItem="apv-iz-fie" firstAttribute="leading" secondItem="TaA-Xo-Veg" secondAttribute="leading" id="mZt-6a-4xk"/>
+                                    <constraint firstItem="apv-iz-fie" firstAttribute="top" secondItem="9Jq-30-44g" secondAttribute="bottom" id="umJ-Rt-DUv"/>
+                                    <constraint firstAttribute="trailing" secondItem="apv-iz-fie" secondAttribute="trailing" id="utM-Sm-a6r"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Qk9-Pf-66b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0ye-Nx-7hT"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8HF-lM-TsL"/>
+                            <constraint firstItem="whk-Ae-STm" firstAttribute="top" secondItem="VdG-nR-Qav" secondAttribute="bottom" id="AIz-kR-zqD"/>
+                            <constraint firstItem="TaA-Xo-Veg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="B39-RB-arx"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="N7D-gV-qb1"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UG3-c6-Sd9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TaA-Xo-Veg" secondAttribute="trailing" constant="12" id="a3y-ix-jGA"/>
                             <constraint firstItem="Qk9-Pf-66b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bJB-O6-dSb"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e9R-37-yz4"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kUK-Nk-z7R"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pEM-8C-E8A"/>
-                            <constraint firstItem="VdG-nR-Qav" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xA9-xW-bvs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="bottomSheet" destination="whk-Ae-STm" id="cuc-Lf-cU0"/>
                         <outlet property="bottomSheetHeight" destination="KII-Iy-0Vf" id="Hxl-he-w3e"/>
+                        <outlet property="showFatecButton" destination="9Jq-30-44g" id="Wbs-Jk-hzs"/>
+                        <outlet property="showSurroundingsButton" destination="apv-iz-fie" id="VaB-U0-OGr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -181,7 +223,7 @@
             <objects>
                 <viewController id="5xF-lB-O80" customClass="MapboxViewController" customModule="Fateconde" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DXP-E4-lWW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LxF-Ub-Mfh"/>

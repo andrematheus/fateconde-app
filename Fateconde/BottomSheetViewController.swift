@@ -39,6 +39,8 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+    
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         delegate?.growBottomSheet()
     }

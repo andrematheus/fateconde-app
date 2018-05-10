@@ -40,7 +40,6 @@ class EmbeddedViewController: UIViewController {
         } else if sender.state == .changed {
             
         } else if sender.state == .ended {
-            
             if velocity.y < 0 {
                 self.delegate?.growBottomSheet()
             } else {
