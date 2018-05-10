@@ -12,13 +12,18 @@ import Mapbox
 class MapboxViewController: UIViewController, MGLMapViewDelegate {
 
     @IBOutlet weak var mapView: MGLMapView!
+    var debug = true
     
-    let fatecLocation = CLLocationCoordinate2D.init(latitude: -23.529307, longitude: -46.632961)
+    let fatecLocation = CLLocationCoordinate2D.init(
+        latitude: -23.529721293549812,
+        longitude: -46.632170188996383
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.styleURL = URL(string: "mapbox://styles/amatheus/cj9rqxjni1cem2ss03r7y2k73")
-        mapView.setCenter(fatecLocation, zoomLevel: 17, animated: false)
+        mapView.setCenter(fatecLocation, zoomLevel: 16.9379328310557, animated: false)
+        mapView.setDirection(287.519907198647, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +35,17 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
+    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+        if debug {
+            print(mapView.centerCoordinate)
+            print(mapView.direction)
+            print(mapView.zoomLevel)
+        }
+    }
+    
+    func toggleDebug() {
+        self.debug = !self.debug
+    }
 
     /*
     // MARK: - Navigation

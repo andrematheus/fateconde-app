@@ -33,12 +33,21 @@
                                     <segue destination="xec-x1-YDN" kind="embed" id="xk7-hF-eM7"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-Pf-66b">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <state key="normal" title="Debug"/>
+                                <connections>
+                                    <action selector="toggleDebug:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42s-Id-zuY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Qk9-Pf-66b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0ye-Nx-7hT"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8HF-lM-TsL"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="N7D-gV-qb1"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UG3-c6-Sd9"/>
+                            <constraint firstItem="Qk9-Pf-66b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bJB-O6-dSb"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e9R-37-yz4"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kUK-Nk-z7R"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pEM-8C-E8A"/>
@@ -93,25 +102,25 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pointOfInterestCell" textLabel="48b-Iv-LcA" detailTextLabel="Lio-nr-kJ3" style="IBUITableViewCellStyleValue1" id="Y30-Ep-WdL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="pointOfInterestCell" textLabel="HKQ-la-Zdy" detailTextLabel="7TE-2S-EOF" style="IBUITableViewCellStyleValue1" id="Y30-Ep-WdL">
                                         <rect key="frame" x="0.0" y="84" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y30-Ep-WdL" id="Y47-M1-NIi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="48b-Iv-LcA">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HKQ-la-Zdy">
                                                     <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lio-nr-kJ3">
-                                                    <rect key="frame" x="261" y="12" width="44" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="7TE-2S-EOF">
+                                                    <rect key="frame" x="240" y="17" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -150,7 +159,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Vd-UL-MAj" customClass="MGLMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Vd-UL-MAj" customClass="MGLMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -168,6 +177,7 @@
                             <constraint firstAttribute="trailing" secondItem="6Vd-UL-MAj" secondAttribute="trailing" id="obs-W7-J6G"/>
                             <constraint firstAttribute="bottom" secondItem="6Vd-UL-MAj" secondAttribute="bottom" id="uFe-AW-Kl6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="LxF-Ub-Mfh"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="6Vd-UL-MAj" id="DKA-Uf-AZb"/>

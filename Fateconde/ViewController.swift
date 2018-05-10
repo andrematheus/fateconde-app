@@ -11,11 +11,18 @@ import UIKit
 class ViewController: UIViewController, BottomSheetDelegate {
     @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomSheet: UIView!
+    var mapController: MapboxViewController?
+    
+    @IBAction func toggleDebug(_ sender: Any) {
+        mapController?.toggleDebug()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         if let locationController = destination as? EmbeddedViewController {
             locationController.forwardDelegate(delegate: self)
+        } else if let mapController = destination as? MapboxViewController {
+            self.mapController = mapController
         }
     }
     
