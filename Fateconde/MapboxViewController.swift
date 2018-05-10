@@ -10,8 +10,7 @@ import UIKit
 import Mapbox
 
 class MapboxViewController: UIViewController, MGLMapViewDelegate {
-
-    @IBOutlet weak var mapView: MGLMapView!
+    var mapView: MGLMapView?
     var debug = true
     
     let fatecLocation = CLLocationCoordinate2D.init(
@@ -24,18 +23,28 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         // Replace the string in the URL below with your custom style URL from Mapbox Studio.
         // Read more about style URLs here: https://www.mapbox.com/help/define-style-url/
         let styleURL = URL(string: "mapbox://styles/amatheus/cjh00qge7000y2ro186etomom")
-        let mapView = MGLMapView(frame: view.bounds,
-                                 styleURL: styleURL)
+        mapView = MGLMapView(frame: view.bounds, styleURL: styleURL)
         
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        updateInsets(bottom: 240)
         
-        mapView.setCenter(fatecLocation, zoomLevel: 16.8107541650724, animated: false)
-        mapView.setDirection(285.326971003092, animated: false)
-        
-        mapView.delegate = self
-        view.addSubview(mapView)
+        mapView?.delegate = self
+        view.addSubview(mapView!)
+    }
+    
+    func updateInsets(bottom: Int) {
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: CGFloat(bottom), right: 0)
+        mapView!.setContentInset(insets, animated: false)
+        mapView!.setNeedsUpdateConstraints()
+        lookAtFatec()
     }
 
+    func lookAtFatec() {
+        mapView!.setCenter(fatecLocation, zoomLevel: 16.8107541650724, animated: false)
+        mapView!.setDirection(285.326971003092, animated: false)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

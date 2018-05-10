@@ -27,11 +27,23 @@ class ViewController: UIViewController, BottomSheetDelegate {
     }
     
     func growBottomSheet() {
-        self.animateBottomSheetHeight(newHeight: 400)
+        if self.bottomSheetHeight.constant == 240 {
+            self.animateBottomSheetHeight(newHeight: 400)
+        } else if self.bottomSheetHeight.constant == 400 {
+            self.animateBottomSheetHeight(newHeight: 600)
+        } else if self.bottomSheetHeight.constant == 100 {
+            self.animateBottomSheetHeight(newHeight: 240)
+        }
     }
     
     func shrinkBottomSheet() {
-        self.animateBottomSheetHeight(newHeight: 240)
+        if self.bottomSheetHeight.constant == 400 {
+            self.animateBottomSheetHeight(newHeight: 240)
+        } else if self.bottomSheetHeight.constant == 240 {
+            self.animateBottomSheetHeight(newHeight: 100)
+        } else if self.bottomSheetHeight.constant == 600 {
+            self.animateBottomSheetHeight(newHeight: 400)
+        }
     }
     
     private func animateBottomSheetHeight(newHeight: Int) {
@@ -39,6 +51,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.bottomSheetHeight.constant = CGFloat(newHeight)
             self.view.layoutIfNeeded()
+            self.mapController?.updateInsets(bottom: newHeight)
         })
     }
 }
