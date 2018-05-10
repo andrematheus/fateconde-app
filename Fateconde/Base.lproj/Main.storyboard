@@ -151,37 +151,16 @@
             </objects>
             <point key="canvasLocation" x="1357.5" y="478.52112676056339"/>
         </scene>
-        <!--Delegate-->
+        <!--Mapbox View Controller-->
         <scene sceneID="qUz-cR-5J8">
             <objects>
                 <viewController id="5xF-lB-O80" customClass="MapboxViewController" customModule="Fateconde" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DXP-E4-lWW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Vd-UL-MAj" customClass="MGLMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/mapbox/streets-v10"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="5xF-lB-O80" id="tlo-8l-aM8"/>
-                                </connections>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6Vd-UL-MAj" firstAttribute="top" secondItem="DXP-E4-lWW" secondAttribute="top" id="LUf-n8-f5m"/>
-                            <constraint firstItem="6Vd-UL-MAj" firstAttribute="leading" secondItem="DXP-E4-lWW" secondAttribute="leading" id="POz-F3-kSQ"/>
-                            <constraint firstAttribute="trailing" secondItem="6Vd-UL-MAj" secondAttribute="trailing" id="obs-W7-J6G"/>
-                            <constraint firstAttribute="bottom" secondItem="6Vd-UL-MAj" secondAttribute="bottom" id="uFe-AW-Kl6"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LxF-Ub-Mfh"/>
                     </view>
-                    <connections>
-                        <outlet property="mapView" destination="6Vd-UL-MAj" id="DKA-Uf-AZb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aa8-0K-z7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
