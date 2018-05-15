@@ -18,19 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdG-nR-Qav">
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="mapView" translatesAutoresizingMaskIntoConstraints="NO" id="VdG-nR-Qav">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                                 <connections>
                                     <segue destination="5xF-lB-O80" kind="embed" id="QPA-zk-LaD"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whk-Ae-STm">
-                                <rect key="frame" x="0.0" y="328" width="320" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="KII-Iy-0Vf"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="xec-x1-YDN" kind="embed" id="xk7-hF-eM7"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-Pf-66b">
@@ -40,7 +31,7 @@
                                     <action selector="toggleDebug:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42s-Id-zuY"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaA-Xo-Veg">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaA-Xo-Veg">
                                 <rect key="frame" x="264" y="32" width="44" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jq-30-44g">
@@ -77,7 +68,21 @@
                                     <constraint firstItem="apv-iz-fie" firstAttribute="top" secondItem="9Jq-30-44g" secondAttribute="bottom" id="umJ-Rt-DUv"/>
                                     <constraint firstAttribute="trailing" secondItem="apv-iz-fie" secondAttribute="trailing" id="utM-Sm-a6r"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whk-Ae-STm">
+                                <rect key="frame" x="0.0" y="328" width="320" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="KII-Iy-0Vf"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="xec-x1-YDN" kind="embed" id="xk7-hF-eM7"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
