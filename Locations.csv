@@ -1,6 +1,19 @@
 ﻿id.code;id.buildingLevel;id.buildingCode;name;type
-sa1;0;sa;Biblioteca;Service
-sa2;0;sa;Secretaria;Service
-sa3;0;sa;Sala de Estudos;Service
+# Santiago;;;;
+sa0s1;0;sa;Biblioteca;Service
+sa0s2;0;sa;Secretaria;Service
+sa0s3;0;sa;Sala de Estudos;Service
+
+sa0a1;0;sa;Entrada;Access
+sa0a2;0;sa;Escada;Access
+sa0a3;0;sa;Elevador;Access
+sa0a4;0;sa;Escada;Access
+sa0a5;0;sa;Elevador;Access
+
+sa0i1;0;sa;;Invisible
+sa0i2;0;sa;;Invisible
+sa0i3;0;sa;;Invisible
+sa0i4;0;sa;;Invisible
+
+# Bloco B;;;;
 bb1;0;bb;iCenter;Service
-;;;;
