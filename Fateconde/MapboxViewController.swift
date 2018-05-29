@@ -13,6 +13,8 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView?
     var debug = true
     
+    let data = AppData.sharedInstance
+    
     let fatecLocation = CLLocationCoordinate2D.init(
         latitude: -23.529397679087438,
         longitude: -46.632665554213531
@@ -27,7 +29,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         super.viewDidLoad()
         // Replace the string in the URL below with your custom style URL from Mapbox Studio.
         // Read more about style URLs here: https://www.mapbox.com/help/define-style-url/
-        let styleURL = URL(string: "mapbox://styles/amatheus/cjh00qge7000y2ro186etomom")
+        let styleURL = URL(string: "mapbox://styles/amatheus/cjhpbomza40yw2snryw5dsvub")
         mapView = MGLMapView(frame: view.bounds, styleURL: styleURL)
         
         mapView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]

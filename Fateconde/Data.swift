@@ -14,14 +14,14 @@ final class AppData {
     let pointsOfInterest: PointsOfInterest
     
     init() {
-        guard let path = Bundle.main.path(forResource: "Locations", ofType: "plist") else {
+        guard let path = Bundle.main.path(forResource: "Fatec", ofType: "json") else {
             preconditionFailure("Failed to find Locations file.")
         }
-        guard let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, Any> else {
-            preconditionFailure("Failed to load Locations file.")
+        guard let data = FileManager.default.contents(atPath: path) else {
+            preconditionFailure("Failed to load Locations data.")
         }
-        guard let pois = try? dict.toPointsOfInterest() else {
-            preconditionFailure("Failed to parse Locations file.")
+        guard let pois = try? data.toPointsOfInterest() else {
+            preconditionFailure("Failed to convert Locations data.")
         }
         self.pointsOfInterest = pois
     }
