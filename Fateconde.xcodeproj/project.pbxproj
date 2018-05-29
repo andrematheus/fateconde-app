@@ -21,6 +21,7 @@
 		E56433A120A28D0900CC461C /* FatecondeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56433A020A28D0900CC461C /* FatecondeUITests.swift */; };
 		E56433E020A2940000CC461C /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56433DF20A2940000CC461C /* BottomSheetViewController.swift */; };
 		E56433E220A2A70500CC461C /* EmbeddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56433E120A2A70500CC461C /* EmbeddedViewController.swift */; };
+		E5C6B55420BCF30B0037BB47 /* PointOfInterestFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */; };
 		E5FE2B4620BB56E600F3945A /* Fatec.json in Resources */ = {isa = PBXBuildFile; fileRef = E5FE2B4520BB56E500F3945A /* Fatec.json */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		E56433A220A28D0900CC461C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E56433DF20A2940000CC461C /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		E56433E120A2A70500CC461C /* EmbeddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedViewController.swift; sourceTree = "<group>"; };
+		E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestFeatures.swift; sourceTree = "<group>"; };
 		E5FE2B4520BB56E500F3945A /* Fatec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fatec.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,7 +160,7 @@
 		E564337F20A28D0500CC461C /* Fateconde */ = {
 			isa = PBXGroup;
 			children = (
-				90D4600B20A3601B00E682F7 /* LocationsData */,
+				E5C6B55120BCF2B40037BB47 /* Mapping */,
 				E564338020A28D0500CC461C /* AppDelegate.swift */,
 				E564338220A28D0500CC461C /* ViewController.swift */,
 				E564338420A28D0500CC461C /* Main.storyboard */,
@@ -167,8 +169,6 @@
 				E564338C20A28D0900CC461C /* Info.plist */,
 				E56433DF20A2940000CC461C /* BottomSheetViewController.swift */,
 				E56433E120A2A70500CC461C /* EmbeddedViewController.swift */,
-				90D4600920A3455500E682F7 /* Data.swift */,
-				90D4600E20A397EB00E682F7 /* MapboxViewController.swift */,
 			);
 			path = Fateconde;
 			sourceTree = "<group>";
@@ -189,6 +189,17 @@
 				E56433A220A28D0900CC461C /* Info.plist */,
 			);
 			path = FatecondeUITests;
+			sourceTree = "<group>";
+		};
+		E5C6B55120BCF2B40037BB47 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				90D4600B20A3601B00E682F7 /* LocationsData */,
+				90D4600920A3455500E682F7 /* Data.swift */,
+				90D4600E20A397EB00E682F7 /* MapboxViewController.swift */,
+				E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */,
+			);
+			path = Mapping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 				E564338320A28D0500CC461C /* ViewController.swift in Sources */,
 				E56433E020A2940000CC461C /* BottomSheetViewController.swift in Sources */,
 				E564338120A28D0500CC461C /* AppDelegate.swift in Sources */,
+				E5C6B55420BCF30B0037BB47 /* PointOfInterestFeatures.swift in Sources */,
 				90D4600F20A397EB00E682F7 /* MapboxViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

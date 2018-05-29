@@ -64,6 +64,33 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
         lookAtFatec()
+        drawFeatures(style)
+    }
+    
+    func drawFeatures(_ style: MGLStyle) {
+        for building in data.buildingOutlines {
+            let source = MGLShapeSource(identifier: "fatec-building-outline-\(building.building.code)", features: building.features, options: nil)
+            style.addSource(source)
+            
+            let fillLayer = MGLFillStyleLayer(identifier: "fatec-building-fill-\(building.building.code)-layer", source: source)
+            fillLayer.fillColor = NSExpression(forConstantValue: building.fillLayerAttributes.fillColor)
+            style.addLayer(fillLayer)
+            
+            let strokeLayer = MGLLineStyleLayer(identifier: "fatec-building-outline-\(building.building.code)-layer", source: source)
+            strokeLayer.lineColor = NSExpression(forConstantValue: building.lineLayerAttributes.lineColor)
+            strokeLayer.lineWidth = NSExpression(forConstantValue: building.lineLayerAttributes.lineWidth)
+            style.addLayer(strokeLayer)
+        }
+        for building in data.buildingPoints {
+            let source = MGLShapeSource(identifier: "fatec-building-name-\(building.building.code)", features: building.features, options: nil)
+            style.addSource(source)
+            
+            let symbolLayer = MGLSymbolStyleLayer(identifier: "fatec-building-name-\(building.building.code)-layer", source: source)
+            symbolLayer.text = NSExpression(forConstantValue: building.building.point.properties["name"])
+            symbolLayer.textAllowsOverlap = NSExpression(forConstantValue: true)
+            symbolLayer.textFontSize = NSExpression(forConstantValue: 12)
+            style.addLayer(symbolLayer)
+        }
     }
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {

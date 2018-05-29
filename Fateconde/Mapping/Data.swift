@@ -12,6 +12,8 @@ import PointOfInterest
 final class AppData {
     static let sharedInstance = AppData()
     let pointsOfInterest: PointsOfInterest
+    let buildingOutlines: [BuildingPolygons]
+    let buildingPoints: [BuildingPoints]
     
     init() {
         guard let path = Bundle.main.path(forResource: "Fatec", ofType: "json") else {
@@ -24,5 +26,14 @@ final class AppData {
             preconditionFailure("Failed to convert Locations data.")
         }
         self.pointsOfInterest = pois
+        
+        var bps: [BuildingPolygons] = []
+        var bpts: [BuildingPoints] = []
+        for building in self.pointsOfInterest.allBuildings() {
+            bps.append(BuildingPolygons(building: building))
+            bpts.append(BuildingPoints(building: building))
+        }
+        buildingOutlines = bps
+        buildingPoints = bpts
     }
 }
