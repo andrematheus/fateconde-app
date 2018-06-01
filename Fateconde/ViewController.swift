@@ -18,12 +18,19 @@ class ViewController: UIViewController, BottomSheetDelegate {
     let bottomSheetMedium: CGFloat = 240
     
     @IBOutlet weak var showFatecButton: UIButton!
-    
     @IBOutlet weak var showSurroundingsButton: UIButton!
+    
+    @IBOutlet weak var locationLabel: PillLabel!
+    
+    var currentLocation: String = "FATEC" {
+        didSet {
+            locationLabel?.text = currentLocation
+        }
+    }
     
     var bottomSheetLarge: CGFloat {
         get {
-            return self.view.frame.height - 50
+            return self.view.frame.height - 80
         }
     }
    
