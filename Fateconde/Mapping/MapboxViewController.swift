@@ -71,7 +71,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         for b in data.buildingOutlines {
             if b.building.code == building.code {
                 let santiago = b.features
-                mapView?.showAnnotations(santiago, animated: true)
+                mapView?.showAnnotations(santiago, edgePadding: .init(top: -50.0, left: -50.0, bottom: -50.0, right: -50.0), animated: true)
             }
         }
     }
@@ -109,6 +109,23 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
             symbolLayer.textAllowsOverlap = NSExpression(forConstantValue: true)
             symbolLayer.textFontSize = NSExpression(forConstantValue: 12)
             style.addLayer(symbolLayer)
+        }
+        for building in data.pointsOfInterest.allBuildings() {
+            if let planImage = building.planImage {
+                let coords = building.outline.geometry.coordinates.coordinates()
+                let quad = MGLCoordinateQuad(
+                    topLeft: coords[0],
+                    bottomLeft: coords[3],
+                    bottomRight: coords[2],
+                    topRight: coords[1]
+                )
+                let source = MGLImageSource(identifier: "plan-image-\(building.code)", coordinateQuad: quad, image: planImage)
+                style.addSource(source)
+                let layer = MGLRasterStyleLayer(identifier: "plan-image-\(building.code)-layer", source: source)
+                layer.rasterOpacity = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
+                                                   [16.75: 0, 17: 1])
+                style.addLayer(layer)
+            }
         }
     }
     
