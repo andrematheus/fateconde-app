@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D274C05A05F85F42E5535C2 /* Pods_Fateconde.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4981DF6F4E4277B14C5628FE /* Pods_Fateconde.framework */; };
+		9065964720C19217009CB4FA /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9065964620C19217009CB4FA /* DebugTableViewController.swift */; };
 		90D4600020A3352400E682F7 /* PointOfInterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D45FFF20A3352400E682F7 /* PointOfInterest.framework */; };
 		90D4600120A3352400E682F7 /* PointOfInterest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90D45FFF20A3352400E682F7 /* PointOfInterest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		90D4600A20A3455500E682F7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D4600920A3455500E682F7 /* Data.swift */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		4981DF6F4E4277B14C5628FE /* Pods_Fateconde.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fateconde.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E05E0A25EE375857C2C2863 /* Pods-Fateconde.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fateconde.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Fateconde/Pods-Fateconde.debug.xcconfig"; sourceTree = "<group>"; };
+		9065964620C19217009CB4FA /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
 		90D45FFF20A3352400E682F7 /* PointOfInterest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PointOfInterest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D4600920A3455500E682F7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		90D4600E20A397EB00E682F7 /* MapboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				E564338C20A28D0900CC461C /* Info.plist */,
 				E56433DF20A2940000CC461C /* BottomSheetViewController.swift */,
 				E56433E120A2A70500CC461C /* EmbeddedViewController.swift */,
+				9065964620C19217009CB4FA /* DebugTableViewController.swift */,
 			);
 			path = Fateconde;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				E564338120A28D0500CC461C /* AppDelegate.swift in Sources */,
 				E5C6B55420BCF30B0037BB47 /* PointOfInterestFeatures.swift in Sources */,
 				90D4600F20A397EB00E682F7 /* MapboxViewController.swift in Sources */,
+				9065964720C19217009CB4FA /* DebugTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

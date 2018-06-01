@@ -8,6 +8,7 @@
 
 import UIKit
 import Mapbox
+import PointOfInterest
 
 class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView?
@@ -55,6 +56,24 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     
     func lookAtSurroundings() {
         mapView?.setCenter(fatecLocation, zoomLevel: surroundingsZoomLevel, direction: self.direction, animated: true)
+    }
+    
+    func zoomToSantiago() {
+        for building in data.buildingOutlines {
+            if building.building.code == "sa" {
+                let santiago = building.features
+                mapView?.showAnnotations(santiago, animated: true)
+            }
+        }
+    }
+    
+    func zoomToBuilding(building: Building) {
+        for b in data.buildingOutlines {
+            if b.building.code == building.code {
+                let santiago = b.features
+                mapView?.showAnnotations(santiago, animated: true)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import PointOfInterest
 
 class ViewController: UIViewController, BottomSheetDelegate {
+
     @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomSheet: UIView!
     var mapController: MapboxViewController?
@@ -28,6 +30,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     override func viewDidLoad() {
         
     }
+    
     @IBAction func showFatec(_ sender: Any) {
         self.mapController?.lookAtFatec()
         self.showFatecButton.isSelected = true
@@ -39,6 +42,14 @@ class ViewController: UIViewController, BottomSheetDelegate {
         self.mapController?.lookAtSurroundings()
         self.showFatecButton.isSelected = false
         self.showSurroundingsButton.isSelected = true
+    }
+
+    func zoomToSantiago() {
+        mapController?.zoomToSantiago()
+    }
+    
+    func zoomBuilding(building: Building) {
+        mapController?.zoomToBuilding(building: building)
     }
     
     @IBAction func toggleDebug(_ sender: Any) {
@@ -52,6 +63,8 @@ class ViewController: UIViewController, BottomSheetDelegate {
             locationController.forwardDelegate(delegate: self)
         } else if let mapController = destination as? MapboxViewController {
             self.mapController = mapController
+        } else if let debugController = destination as? DebugTableViewController {
+            debugController.mainViewController = self
         }
     }
     
