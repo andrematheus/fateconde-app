@@ -71,7 +71,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         for b in data.buildingOutlines {
             if b.building.code == building.code {
                 let santiago = b.features
-                mapView?.showAnnotations(santiago, edgePadding: .init(top: -50.0, left: -50.0, bottom: -50.0, right: -50.0), animated: true)
+                mapView?.showAnnotations(santiago, edgePadding: .zero, animated: true)
             }
         }
     }
@@ -123,7 +123,8 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                 style.addSource(source)
                 let layer = MGLRasterStyleLayer(identifier: "plan-image-\(building.code)-layer", source: source)
                 layer.rasterOpacity = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-                                                   [16.75: 0, 17: 1])
+                                                   [16.75: 0, 17
+                                                    : 1])
                 style.addLayer(layer)
             }
         }
