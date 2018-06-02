@@ -14,6 +14,7 @@ final class AppData {
     let pointsOfInterest: PointsOfInterest
     let buildingOutlines: [BuildingPolygons]
     let buildingPoints: [BuildingPoints]
+    let locationPoints: [LocationPoint]
     
     init() {
         guard let path = Bundle.main.path(forResource: "Fatec", ofType: "json") else {
@@ -35,5 +36,11 @@ final class AppData {
         }
         buildingOutlines = bps
         buildingPoints = bpts
+        
+        var lpts: [LocationPoint] = []
+        for location in self.pointsOfInterest.pointsOfInterest {
+            lpts.append(LocationPoint(location: location))
+        }
+        self.locationPoints = lpts
     }
 }

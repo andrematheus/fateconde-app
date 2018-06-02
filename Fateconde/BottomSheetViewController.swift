@@ -13,6 +13,7 @@ protocol BottomSheetDelegate: class {
     func growBottomSheet()
     func shrinkBottomSheet()
     func zoomBuilding(building: Building)
+    func zoomLocation(location: Location)
 }
 
 class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
@@ -61,7 +62,9 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
             let building = appData.pointsOfInterest.allBuildings()[indexPath.row]
             delegate?.zoomBuilding(building: building)
         } else {
-            
+            let building = appData.pointsOfInterest.allBuildings()[indexPath.section - 1]
+            let location = appData.pointsOfInterest.listingForBuildings(buildings: building)[indexPath.row]
+            delegate?.zoomLocation(location: location)
         }
         self.tableView.deselectRow(at: indexPath, animated: true)
     }

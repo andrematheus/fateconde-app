@@ -59,6 +59,10 @@ class ViewController: UIViewController, BottomSheetDelegate {
         mapController?.zoomToBuilding(building: building)
     }
     
+    func zoomLocation(location: Location) {
+        mapController?.zoomToLocation(location: location)
+    }
+    
     @IBAction func toggleDebug(_ sender: Any) {
         mapController?.toggleDebug()
     }

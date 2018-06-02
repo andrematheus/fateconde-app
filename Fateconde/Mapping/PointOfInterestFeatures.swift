@@ -91,3 +91,21 @@ public struct BuildingPoints: FeatureConverter {
     let building: Building
     let symbolTextLayerAttributes = SymbolTextLayerAttributes()
 }
+
+public struct LocationPoint: FeatureConverter {
+    typealias FeatureType = MGLPointFeature
+    let symbolTextLayerAttributes = SymbolTextLayerAttributes()
+    
+    let location: Location
+    
+    var features: [MGLPointFeature] {
+        let pointFeature = MGLPointFeature()
+        pointFeature.identifier = "point-feature-location-\(self.location.id.code)"
+        let coord: CLLocationCoordinate2D = unwrapCoordinates(coordinates: location.point.geometry.coordinates)!
+        pointFeature.coordinate = coord
+        pointFeature.attributes = [
+            "name": location.name
+        ]
+        return [pointFeature]
+    }
+}
