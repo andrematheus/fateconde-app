@@ -3,37 +3,100 @@
     {
       "type": "Feature",
       "properties": {
-        "building_code": "sa",
+        "kind": "fatec"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632708,
+          -23.529364
+        ],
+        "type": "Point"
+      },
+      "id": "0df530f561c54b2068c22be55b3f8748"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cn",
         "kind": "building_outline"
       },
       "geometry": {
         "coordinates": [
           [
             [
-              -46.632751,
-              -23.530194
+              -46.63287,
+              -23.529083
             ],
             [
-              -46.632642,
-              -23.529819
+              -46.632779,
+              -23.529105
             ],
             [
-              -46.632284,
-              -23.529905
+              -46.632716,
+              -23.528903
             ],
             [
-              -46.632391,
-              -23.530281
+              -46.632806,
+              -23.528877
             ],
             [
-              -46.632751,
-              -23.530194
+              -46.63287,
+              -23.529083
             ]
           ]
         ],
         "type": "Polygon"
       },
-      "id": "1b4ee34395ed6fcd3a06588a8f589da1"
+      "id": "1467d0f5e5c22c09c280130b90c78994"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "at",
+        "kind": "building",
+        "name": "Ed. Ary Torres",
+        "longName": "Edifício Ary Torres (ETESP)"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633159,
+          -23.529155
+        ],
+        "type": "Point"
+      },
+      "id": "14f0f4701cb39b209b019d1baaf024da"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "om",
+        "kind": "building",
+        "name": "Ed. Oscar Machado",
+        "longName": "Edifício Oscar Machado"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633189,
+          -23.529809
+        ],
+        "type": "Point"
+      },
+      "id": "1c7258bcd389eb36fc26dac388250c3a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "location_code": "g1",
+        "kind": "location"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632187,
+          -23.529802
+        ],
+        "type": "Point"
+      },
+      "id": "27786f2d3b113ec96304c50b85485a34"
     },
     {
       "type": "Feature",
@@ -53,37 +116,17 @@
     {
       "type": "Feature",
       "properties": {
-        "building_code": "bb",
-        "kind": "building_outline"
+        "building_code": "g1",
+        "kind": "building"
       },
       "geometry": {
         "coordinates": [
-          [
-            [
-              -46.632764,
-              -23.529321
-            ],
-            [
-              -46.632727,
-              -23.529198
-            ],
-            [
-              -46.632264,
-              -23.529318
-            ],
-            [
-              -46.632303,
-              -23.529442
-            ],
-            [
-              -46.632764,
-              -23.529321
-            ]
-          ]
+          -46.632192,
+          -23.529802
         ],
-        "type": "Polygon"
+        "type": "Point"
       },
-      "id": "348120f0f2b7aac00b867dc29d4c010a"
+      "id": "33801402d6df31164ce3ff95314259db"
     },
     {
       "type": "Feature",
@@ -118,6 +161,21 @@
     {
       "type": "Feature",
       "properties": {
+        "location_code": "g2",
+        "kind": "route_point"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632324,
+          -23.530255
+        ],
+        "type": "Point"
+      },
+      "id": "3915615651bf48885e1a6ae12ee5ea85"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "kind": "route_point",
         "location_code": "sa0s1"
       },
@@ -129,41 +187,6 @@
         "type": "Point"
       },
       "id": "3be66863bd4f8a5c04bb26f339085004"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "building_code": "bc",
-        "kind": "building_outline"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              -46.632914,
-              -23.529663
-            ],
-            [
-              -46.63282,
-              -23.529361
-            ],
-            [
-              -46.632273,
-              -23.529506
-            ],
-            [
-              -46.632367,
-              -23.529805
-            ],
-            [
-              -46.632914,
-              -23.529663
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": "4334a5cb53208f2c5377cea1a718031d"
     },
     {
       "type": "Feature",
@@ -215,6 +238,76 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "fm",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633165,
+              -23.529012
+            ],
+            [
+              -46.632908,
+              -23.529074
+            ],
+            [
+              -46.632826,
+              -23.528799
+            ],
+            [
+              -46.633079,
+              -23.528733
+            ],
+            [
+              -46.633165,
+              -23.529012
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "62cc5df6b60beb0b9afa843404aa204e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "bj",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633332,
+              -23.529469
+            ],
+            [
+              -46.633249,
+              -23.529488
+            ],
+            [
+              -46.633203,
+              -23.529329
+            ],
+            [
+              -46.633285,
+              -23.529308
+            ],
+            [
+              -46.633332,
+              -23.529469
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "6ecf7b7a956ba77beb67504b632a6c99"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "bc",
         "name": "Bl. C",
         "longName": "Bloco C",
@@ -232,6 +325,110 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "bj",
+        "kind": "building",
+        "name": "Bl. J",
+        "longName": "Bloco J"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633265,
+          -23.529401
+        ],
+        "type": "Point"
+      },
+      "id": "7574ef6bc670f83d43bb0138c6d36b9f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "g2",
+        "kind": "building_outline",
+        "longName": "Guarita",
+        "name": "Guarita"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632352,
+              -23.530292
+            ],
+            [
+              -46.632317,
+              -23.530301
+            ],
+            [
+              -46.632306,
+              -23.53026
+            ],
+            [
+              -46.63234,
+              -23.530252
+            ],
+            [
+              -46.632352,
+              -23.530292
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "7a76fb9f982da95cf4fdde310aa054c3"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "g2",
+        "kind": "building"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632333,
+          -23.530276
+        ],
+        "type": "Point"
+      },
+      "id": "7b19c0530bf70d063b04227c3675d329"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cci",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632937,
+              -23.529304
+            ],
+            [
+              -46.632865,
+              -23.529322
+            ],
+            [
+              -46.632813,
+              -23.529151
+            ],
+            [
+              -46.632885,
+              -23.529133
+            ],
+            [
+              -46.632937,
+              -23.529304
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "89a9388d5bfdb46cf5b21f0c6c6b4231"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "sa",
         "name": "Ed. Santiago",
         "longName": "Edifiício Santiago",
@@ -245,6 +442,111 @@
         "type": "Point"
       },
       "id": "8adabedd011cf85c2538155e522219b7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ps",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633138,
+              -23.530089
+            ],
+            [
+              -46.632769,
+              -23.530181
+            ],
+            [
+              -46.632674,
+              -23.529871
+            ],
+            [
+              -46.633041,
+              -23.529776
+            ],
+            [
+              -46.633138,
+              -23.530089
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "8d83bcdd9512953e4f820772400ddf91"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "sa",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632748,
+              -23.530188
+            ],
+            [
+              -46.632391,
+              -23.530281
+            ],
+            [
+              -46.632277,
+              -23.529911
+            ],
+            [
+              -46.632635,
+              -23.529815
+            ],
+            [
+              -46.632748,
+              -23.530188
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "8eb4c0fe2537efd9ce0f99514ea383a4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cn",
+        "kind": "building",
+        "name": "Cantina",
+        "longName": "Cantina",
+        "location_code": "cn"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632789,
+          -23.528991
+        ],
+        "type": "Point"
+      },
+      "id": "9a651aeb929cec0c0005dbf98a831335"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ps",
+        "kind": "building",
+        "name": "Ed. Paula Souza",
+        "longName": "Edifício Paula Souza"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632905,
+          -23.52998
+        ],
+        "type": "Point"
+      },
+      "id": "9ac4807fad882d8e10a3308dda888a76"
     },
     {
       "type": "Feature",
@@ -269,12 +571,29 @@
       },
       "geometry": {
         "coordinates": [
-          -46.632681,
-          -23.529958
+          -46.632677,
+          -23.529957
         ],
         "type": "Point"
       },
       "id": "a9cedab23917e08c151409c7f3e615b5"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "hp",
+        "kind": "building",
+        "name": "Ed. Hipólito Pujol",
+        "longName": "Edifício Hipólito Pujol"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633365,
+          -23.52995
+        ],
+        "type": "Point"
+      },
+      "id": "afc557cece621efa4f071c48aef424c7"
     },
     {
       "type": "Feature",
@@ -294,6 +613,76 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "om",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633447,
+              -23.529856
+            ],
+            [
+              -46.633136,
+              -23.529936
+            ],
+            [
+              -46.633042,
+              -23.529628
+            ],
+            [
+              -46.633351,
+              -23.529544
+            ],
+            [
+              -46.633447,
+              -23.529856
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "b7a8daad1bb0bec870a17d0ff684fab0"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "hp",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633432,
+              -23.530012
+            ],
+            [
+              -46.633179,
+              -23.530073
+            ],
+            [
+              -46.633136,
+              -23.529937
+            ],
+            [
+              -46.633389,
+              -23.529871
+            ],
+            [
+              -46.633432,
+              -23.530012
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "b834dbd204a29efe9387c6a7d7359f44"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "kind": "route_point",
         "location_code": "sa0s3"
       },
@@ -309,6 +698,41 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "bc",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632914,
+              -23.529663
+            ],
+            [
+              -46.632367,
+              -23.529805
+            ],
+            [
+              -46.632272,
+              -23.529506
+            ],
+            [
+              -46.63282,
+              -23.52936
+            ],
+            [
+              -46.632914,
+              -23.529663
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "be1e1937502e921c71c1dc75a2b4b7b9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "kind": "route_point",
         "location_code": "sa0a3"
       },
@@ -320,6 +744,108 @@
         "type": "Point"
       },
       "id": "c497522528e35b45f84a2d48004f2a70"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "at",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633225,
+              -23.529235
+            ],
+            [
+              -46.632976,
+              -23.529298
+            ],
+            [
+              -46.632921,
+              -23.529116
+            ],
+            [
+              -46.633171,
+              -23.529056
+            ],
+            [
+              -46.633225,
+              -23.529235
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "c7d36c74314288262525560fe430f365"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "fm",
+        "kind": "building",
+        "name": "Ed. Francisco Maffei",
+        "longName": "Edifício Francisco Maffei"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632996,
+          -23.52891
+        ],
+        "type": "Point"
+      },
+      "id": "cc4fe22bc21cacc8884aa8a8e6ff938e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ba",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632704,
+              -23.529129
+            ],
+            [
+              -46.632245,
+              -23.529251
+            ],
+            [
+              -46.632205,
+              -23.529127
+            ],
+            [
+              -46.632667,
+              -23.529008
+            ],
+            [
+              -46.632704,
+              -23.529129
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "cefdf4471fbb33469eecbb317e3d6a8b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "location_code": "g1",
+        "kind": "route_point"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632198,
+          -23.529826
+        ],
+        "type": "Point"
+      },
+      "id": "cfc10fa39cd41a673c859cc6793b5905"
     },
     {
       "type": "Feature",
@@ -354,6 +880,41 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "bb",
+        "kind": "building_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632764,
+              -23.529321
+            ],
+            [
+              -46.632303,
+              -23.529441
+            ],
+            [
+              -46.632263,
+              -23.529317
+            ],
+            [
+              -46.632727,
+              -23.529197
+            ],
+            [
+              -46.632764,
+              -23.529321
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "d61428ebc6f8224d9bca282e49a5f0f4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "ba",
         "name": "Bl. A",
         "longName": "Bloco A",
@@ -367,6 +928,76 @@
         "type": "Point"
       },
       "id": "d8339095429a04cc0b932f0b5a24fe76"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "g1",
+        "kind": "building_outline",
+        "longName": "Guarita",
+        "name": "Guarita"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632227,
+              -23.529819
+            ],
+            [
+              -46.632171,
+              -23.529833
+            ],
+            [
+              -46.632155,
+              -23.52978
+            ],
+            [
+              -46.632212,
+              -23.529766
+            ],
+            [
+              -46.632227,
+              -23.529819
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "e59f66bb00df22f40c45d665ef81ed1a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "location_code": "g2",
+        "kind": "location"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632329,
+          -23.530277
+        ],
+        "type": "Point"
+      },
+      "id": "e5ca64ee61763509a7dbf99ec744a9fa"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cci",
+        "kind": "building",
+        "location_code": "cci",
+        "longName": "CCI",
+        "name": "Centro de Convivência Infantil"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632873,
+          -23.529227
+        ],
+        "type": "Point"
+      },
+      "id": "e60b3bdd6e808523a3144ee8af7ed541"
     },
     {
       "type": "Feature",
@@ -386,6 +1017,40 @@
     {
       "type": "Feature",
       "properties": {
+        "kind": "fatec_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633593,
+              -23.530002
+            ],
+            [
+              -46.632326,
+              -23.530326
+            ],
+            [
+              -46.631818,
+              -23.528704
+            ],
+            [
+              -46.6331,
+              -23.528363
+            ],
+            [
+              -46.633593,
+              -23.530002
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "e9e4560f7bdfe03fcfa0c0e566358c81"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "kind": "location",
         "location_code": "sa0s3"
       },
@@ -397,41 +1062,6 @@
         "type": "Point"
       },
       "id": "f4fd95116eed4c9f003938400e082f09"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "building_code": "ba",
-        "kind": "building_outline"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              -46.632701,
-              -23.529131
-            ],
-            [
-              -46.632662,
-              -23.52901
-            ],
-            [
-              -46.632205,
-              -23.529128
-            ],
-            [
-              -46.632245,
-              -23.529251
-            ],
-            [
-              -46.632701,
-              -23.529131
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": "f7607547ea6ea3c963d52f267a839d13"
     }
   ],
   "type": "FeatureCollection"

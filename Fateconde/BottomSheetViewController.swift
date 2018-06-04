@@ -21,26 +21,26 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     let appData: AppData = AppData.sharedInstance
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return appData.pointsOfInterest.allBuildings().count + 1
+        return appData.pointsOfInterest.buildings.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return appData.pointsOfInterest.allBuildings().count
+            return appData.pointsOfInterest.buildings.count
         } else {
-            let building = appData.pointsOfInterest.allBuildings()[section - 1]
-            return appData.pointsOfInterest.listingForBuildings(buildings: building).count
+            let building = appData.pointsOfInterest.buildings[section - 1]
+            return appData.pointsOfInterest.locationsByBuilding[building.code]?.count ?? 0
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pointOfInterestCell", for: indexPath)
-        let listable: Listable
+        let listable: PointOfInterest
         if indexPath.section == 0 {
-            listable = appData.pointsOfInterest.allBuildings()[indexPath.row]
+            listable = appData.pointsOfInterest.buildings[indexPath.row]
         } else {
-            let building = appData.pointsOfInterest.allBuildings()[indexPath.section - 1]
-            listable = appData.pointsOfInterest.listingForBuildings(buildings: building)[indexPath.row]
+            let building = appData.pointsOfInterest.buildings[indexPath.section - 1]
+            listable = appData.pointsOfInterest.locationsByBuilding[building.code]![indexPath.row]
         }
         cell.textLabel?.text = listable.title
         cell.detailTextLabel?.text = listable.description
@@ -53,17 +53,17 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         if section == 0 {
             return "Prédios"
         } else {
-            return appData.pointsOfInterest.allBuildings()[section - 1].name
+            return appData.pointsOfInterest.buildings[section - 1].name
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let building = appData.pointsOfInterest.allBuildings()[indexPath.row]
+            let building = appData.pointsOfInterest.buildings[indexPath.row]
             delegate?.zoomBuilding(building: building)
         } else {
-            let building = appData.pointsOfInterest.allBuildings()[indexPath.section - 1]
-            let location = appData.pointsOfInterest.listingForBuildings(buildings: building)[indexPath.row]
+            let building = appData.pointsOfInterest.buildings[indexPath.section - 1]
+            let location = appData.pointsOfInterest.locationsByBuilding[building.code]![indexPath.row]
             delegate?.zoomLocation(location: location)
         }
         self.tableView.deselectRow(at: indexPath, animated: true)

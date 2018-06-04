@@ -11,10 +11,10 @@ import PointOfInterest
 
 final class AppData {
     static let sharedInstance = AppData()
-    let pointsOfInterest: PointsOfInterest
-    let buildingOutlines: [BuildingPolygons]
-    let buildingPoints: [BuildingPoints]
-    let locationPoints: [LocationPoint]
+    let pointsOfInterest: MapData
+    let fatecHelper: FatecMapHelper
+    let buildingHelpers: [String: BuildingMapHelper]
+    let locationHelpers: [String: LocationMapHelper]
     
     init() {
         guard let path = Bundle.main.path(forResource: "Fatec", ofType: "json") else {
@@ -23,24 +23,22 @@ final class AppData {
         guard let data = FileManager.default.contents(atPath: path) else {
             preconditionFailure("Failed to load Locations data.")
         }
-        guard let pois = try? data.toPointsOfInterest() else {
+        guard let pois = try? MapData.fromData(data) else {
             preconditionFailure("Failed to convert Locations data.")
         }
         self.pointsOfInterest = pois
         
-        var bps: [BuildingPolygons] = []
-        var bpts: [BuildingPoints] = []
-        for building in self.pointsOfInterest.allBuildings() {
-            bps.append(BuildingPolygons(building: building))
-            bpts.append(BuildingPoints(building: building))
+        self.fatecHelper = FatecMapHelper(fatec: pointsOfInterest.fatec)
+        var buildingHelpers: [String: BuildingMapHelper] = [:]
+        for building in pointsOfInterest.buildings {
+            buildingHelpers[building.code] = BuildingMapHelper(building: building)
         }
-        buildingOutlines = bps
-        buildingPoints = bpts
+        self.buildingHelpers = buildingHelpers
         
-        var lpts: [LocationPoint] = []
-        for location in self.pointsOfInterest.pointsOfInterest {
-            lpts.append(LocationPoint(location: location))
+        var locationHelpers: [String: LocationMapHelper] = [:]
+        for location in pointsOfInterest.locations {
+            locationHelpers[location.id.code] = LocationMapHelper(location: location)
         }
-        self.locationPoints = lpts
+        self.locationHelpers = locationHelpers
     }
 }

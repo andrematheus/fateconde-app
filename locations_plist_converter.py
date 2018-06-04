@@ -65,6 +65,8 @@ json_file = os.path.splitext(locations_file)[0] + '.json'
 with open(geojson_file, 'r') as f:
     geojson = json.loads(f.read())
 
+fatec_outline = {}
+
 for feature in geojson["features"]:
     if "kind" in feature["properties"]:
         if feature["properties"]["kind"] == "building_outline":
@@ -72,17 +74,28 @@ for feature in geojson["features"]:
             buildings_map[building_code]["outline"] = feature
         elif feature["properties"]["kind"] == "location" or feature["properties"]["kind"] == "route_point":
             location_code = feature["properties"]["location_code"]
-            locations_map[location_code]["point"] = feature
+            if feature["properties"]["kind"] == "location":
+                locations_map[location_code]["point"] = feature
+            elif feature["properties"]["kind"] == "route_point":
+                locations_map[location_code]["route_point"] = feature
         elif feature["properties"]["kind"] == "building":
             building_code = feature["properties"]["building_code"]
             buildings_map[building_code]["point"] = feature
+        elif feature["properties"]["kind"] == "fatec_outline":
+            fatec_outline["outline"] = feature
+        elif feature["properties"]["kind"] == "fatec":
+            fatec_outline["point"] = feature
     else:
         print("feature {} has no kind".format(feature))
+
+for location in locations:
+    if location["type"] == "Access" or location["type"] == "Invisible":
+        location["point"] = location["route_point"]
 
 errors = []
 
 for location in locations:
-    errors += verify("location {}".format(location["id.code"]), location, ["id", "name", "type", "point"])
+    errors += verify("location {}".format(location["id.code"]), location, ["id", "name", "type", "point", "route_point"])
 
 for building in buildings:
     errors += (verify("building {}".format(building["code"]), building, ["code", "name", "numberOfLevels", "outline", "point"]))
@@ -98,6 +111,7 @@ result = {
     'locations': locations,
     'buildings': buildings,
     'routes': routes,
+    'fatec': fatec_outline,
 }
 
 # plistlib.writePlist(result, plist_file)

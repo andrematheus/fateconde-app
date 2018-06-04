@@ -10,6 +10,14 @@ import UIKit
 import Mapbox
 import PointOfInterest
 
+enum MapZoomLevel: Double {
+    case Surroundings = 15.0
+    case Fatec = 16.75
+    case Building = 17.0
+    
+    static let allValues: [MapZoomLevel] = [.Surroundings, .Fatec, .Building]
+}
+
 class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView?
     var debug = true
@@ -61,35 +69,34 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func zoomToSantiago() {
-        for building in data.buildingOutlines {
-            if building.building.code == "sa" {
-                let santiago = building.features
-                mapView?.showAnnotations(santiago, animated: true)
+        if let santiago = data.pointsOfInterest.buildingsByCode["sa"] {
+            zoomToBuilding(building: santiago)
+            if let bh = data.buildingHelpers["sa"],
+                let l = bh.outlineLayer as? OutlineLayer {
+                l.strokeLayer.lineWidth = NSExpression(forConstantValue: 5.0)
             }
         }
     }
     
     func zoomToBuilding(building: Building) {
-        for b in data.buildingOutlines {
-            if b.building.code == building.code {
-                let santiago = b.features
-                mapView?.showAnnotations(santiago, edgePadding: .zero, animated: true)
-            }
+        if let b = data.buildingHelpers[building.code],
+            let outline = b.outlineLayer as? OutlineLayer {
+            let features = [outline.feature]
+            mapView?.showAnnotations(features, edgePadding: .zero, animated: true)
         }
     }
     
     func zoomToLocation(location: Location) {
-        for l in data.locationPoints {
-            if l.location.id == location.id {
-                let building = data.pointsOfInterest.buildingsByCode[location.id.buildingCode]!
-                zoomToBuilding(building: building)
-                if let ann = currentAnnotation {
-                    mapView?.removeAnnotation(ann)
-                }
-                let ann = l.features[0]
-                mapView?.addAnnotation(ann)
-                currentAnnotation = ann
+        if let l = data.locationHelpers[location.id.code],
+            let nameLayer = l.nameLayer as? NameLayer {
+            let building = data.pointsOfInterest.buildingsByCode[location.id.buildingCode]!
+            zoomToBuilding(building: building)
+            if let ann = currentAnnotation {
+                mapView?.removeAnnotation(ann)
             }
+            let ann =  nameLayer.pointFeature
+            mapView?.addAnnotation(ann)
+            currentAnnotation = ann
         }
     }
     
@@ -104,66 +111,24 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func drawFeatures(_ style: MGLStyle) {
+        data.fatecHelper.imageLayer.install(style: style)
+        data.fatecHelper.outlineLayer.install(style: style)
+        data.fatecHelper.nameLayer.install(style: style)
         
-        for building in data.buildingOutlines {
-            let source = MGLShapeSource(identifier: "fatec-building-outline-\(building.building.code)", features: building.features, options: nil)
-            style.addSource(source)
-            
-            let fillLayer = MGLFillStyleLayer(identifier: "fatec-building-fill-\(building.building.code)-layer", source: source)
-            fillLayer.fillColor = NSExpression(forConstantValue: building.fillLayerAttributes.fillColor)
-            fillLayer.fillOpacity = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-                                                   [16.75: 1, 17: 0])
-            style.addLayer(fillLayer)
-            
-            let strokeLayer = MGLLineStyleLayer(identifier: "fatec-building-outline-\(building.building.code)-layer", source: source)
-            strokeLayer.lineColor = NSExpression(forConstantValue: building.lineLayerAttributes.lineColor)
-            strokeLayer.lineWidth = NSExpression(forConstantValue: building.lineLayerAttributes.lineWidth)
-            strokeLayer.lineOpacity = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-                                               [16.75: 1, 17: 0])
-            style.addLayer(strokeLayer)
-        }
-        let annotationsLayer = style.layer(withIdentifier: "com.mapbox.annotations.points")!
-        
-        for building in data.pointsOfInterest.allBuildings() {
-            if let planImage = building.planImage {
-                let coords = building.outline.geometry.coordinates.coordinates()
-                let quad = MGLCoordinateQuad(
-                    topLeft: coords[0],
-                    bottomLeft: coords[3],
-                    bottomRight: coords[2],
-                    topRight: coords[1]
-                )
-                let source = MGLImageSource(identifier: "plan-image-\(building.code)", coordinateQuad: quad, image: planImage)
-                style.addSource(source)
-                let layer = MGLRasterStyleLayer(identifier: "plan-image-\(building.code)-layer", source: source)
-                layer.rasterOpacity = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-                                                   [16.75: 0, 17: 1])
-                style.insertLayer(layer, below: annotationsLayer)
+        for bh in data.buildingHelpers.values {
+            for pl in bh.planLayers.values {
+                pl.install(style: style)
             }
         }
-        for building in data.buildingPoints {
-            let source = MGLShapeSource(identifier: "fatec-building-name-\(building.building.code)", features: building.features, options: nil)
-            style.addSource(source)
-            
-            let symbolLayer = MGLSymbolStyleLayer(identifier: "fatec-building-name-\(building.building.code)-layer", source: source)
-            symbolLayer.text = NSExpression(forConstantValue: building.building.point.properties["name"])
-            symbolLayer.textAllowsOverlap = NSExpression(forConstantValue: true)
-            symbolLayer.textFontSize = NSExpression(forConstantValue: 12)
-            symbolLayer.textOpacity = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-                                                   [16.75: 1, 17: 0])
-            style.addLayer(symbolLayer)
+        for bh in data.buildingHelpers.values {
+            bh.outlineLayer.install(style: style)
         }
-        for location in data.locationPoints {
-            let source = MGLShapeSource(identifier: "fatec-location-name-\(location.location.id.code)", features: location.features, options: nil)
-            style.addSource(source)
-            
-            let symbolLayer = MGLSymbolStyleLayer(identifier: "fatec-location-name-\(location.location.id.code)-layer", source: source)
-            symbolLayer.text = NSExpression(forConstantValue: location.location.name)
-            symbolLayer.textAllowsOverlap = NSExpression(forConstantValue: true)
-            symbolLayer.textFontSize = NSExpression(forConstantValue: 9)
-            symbolLayer.textOpacity = NSExpression(format: "mgl_interpolate:withCurveType:parameters:stops:($zoomLevel, 'linear', nil, %@)",
-                                               [16.75: 0, 17: 1])
-            style.addLayer(symbolLayer)
+        for bh in data.buildingHelpers.values {
+            bh.nameLayer.install(style: style)
+        }
+        
+        for l in data.locationHelpers.values {
+            l.nameLayer.install(style: style)
         }
     }
     
