@@ -10,57 +10,62 @@ import UIKit
 import PointOfInterest
 
 class ViewController: UIViewController, BottomSheetDelegate {
-
-    @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
-    @IBOutlet weak var bottomSheet: UIView!
+    var data: AppData = AppData.sharedInstance
     var mapController: MapboxViewController?
     let bottomSheetSmall: CGFloat = 66
     let bottomSheetMedium: CGFloat = 240
-    
+    var bottomSheetLarge: CGFloat {
+        return self.view.frame.height - 80
+    }
+
+    @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomSheet: UIView!
     @IBOutlet weak var showFatecButton: UIButton!
     @IBOutlet weak var showSurroundingsButton: UIButton!
-    
     @IBOutlet weak var locationLabel: PillLabel!
     
-    var currentLocation: String = "FATEC" {
+    var selectedPoi: PointOfInterest? = nil {
         didSet {
-            locationLabel?.text = currentLocation
-        }
-    }
-    
-    var bottomSheetLarge: CGFloat {
-        get {
-            return self.view.frame.height - 80
+            if let title = selectedPoi?.title {
+                locationLabel?.text = title
+            }
+            updateViewButtons()
+            if let poi = selectedPoi {
+                mapController?.lookAt(poi: poi)
+            }
         }
     }
    
     override func viewDidLoad() {
-        
+        mapController?.setup(with: self)
+        selectedPoi = data.pointsOfInterest.fatec
     }
     
     @IBAction func showFatec(_ sender: Any) {
-        self.mapController?.lookAtFatec()
-        self.showFatecButton.isSelected = true
-        self.showSurroundingsButton.isSelected = false
+        self.selectedPoi = data.pointsOfInterest.fatec
     }
     
     
     @IBAction func showSurroundings(_ sender: Any) {
-        self.mapController?.lookAtSurroundings()
-        self.showFatecButton.isSelected = false
-        self.showSurroundingsButton.isSelected = true
-    }
-
-    func zoomToSantiago() {
-        mapController?.zoomToSantiago()
+        self.selectedPoi = data.pointsOfInterest.surroundings
     }
     
-    func zoomBuilding(building: Building) {
-        mapController?.zoomToBuilding(building: building)
-    }
-    
-    func zoomLocation(location: Location) {
-        mapController?.zoomToLocation(location: location)
+    func updateViewButtons() {
+        if let poi = selectedPoi {
+            if poi is Fatec {
+                self.showFatecButton.isSelected = true
+                self.showSurroundingsButton.isSelected = false
+            } else if poi is Surroundings {
+                self.showFatecButton.isSelected = false
+                self.showSurroundingsButton.isSelected = true
+            } else {
+                self.showFatecButton.isSelected = false
+                self.showSurroundingsButton.isSelected = false
+            }
+        } else {
+            self.showFatecButton.isSelected = false
+            self.showSurroundingsButton.isSelected = false
+        }
     }
     
     @IBAction func toggleDebug(_ sender: Any) {

@@ -66,6 +66,7 @@ with open(geojson_file, 'r') as f:
     geojson = json.loads(f.read())
 
 fatec_outline = {}
+surroundings = {}
 
 for feature in geojson["features"]:
     if "kind" in feature["properties"]:
@@ -85,6 +86,10 @@ for feature in geojson["features"]:
             fatec_outline["outline"] = feature
         elif feature["properties"]["kind"] == "fatec":
             fatec_outline["point"] = feature
+        elif feature["properties"]["kind"] == "surroundings_outline":
+            surroundings["outline"] = feature
+        elif feature["properties"]["kind"] == "surroundings":
+            surroundings["point"] = feature
     else:
         print("feature {} has no kind".format(feature))
 
@@ -112,6 +117,7 @@ result = {
     'buildings': buildings,
     'routes': routes,
     'fatec': fatec_outline,
+    'surroundings': surroundings,
 }
 
 # plistlib.writePlist(result, plist_file)

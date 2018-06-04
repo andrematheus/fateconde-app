@@ -13,6 +13,7 @@ final class AppData {
     static let sharedInstance = AppData()
     let pointsOfInterest: MapData
     let fatecHelper: FatecMapHelper
+    let surroundingsHelper: SurroundingsHelper
     let buildingHelpers: [String: BuildingMapHelper]
     let locationHelpers: [String: LocationMapHelper]
     
@@ -29,6 +30,7 @@ final class AppData {
         self.pointsOfInterest = pois
         
         self.fatecHelper = FatecMapHelper(fatec: pointsOfInterest.fatec)
+        self.surroundingsHelper = SurroundingsHelper()
         var buildingHelpers: [String: BuildingMapHelper] = [:]
         for building in pointsOfInterest.buildings {
             buildingHelpers[building.code] = BuildingMapHelper(building: building)

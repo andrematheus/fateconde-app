@@ -239,6 +239,7 @@ class FatecMapHelper {
     let outlineLayer: MappingLayer
     let imageLayer: MappingLayer
     let nameLayer: MappingLayer
+    let zoomLevel = 16.75
     let stroke = LineLayerAttributes(lineColor: FatecColors.cinza,
                                      lineWidth: ZoomableInfo<Double>([:], defaultValue: 1.0),
                                      visibility: ZoomableInfo<Bool>(defaultValue: true))
@@ -259,6 +260,11 @@ class FatecMapHelper {
         self.nameLayer = NameLayer(identifier: identifier, coordinate: fatec.point, text: "FATEC",
                                    attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 12.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Surroundings: true], defaultValue: false)))
     }
+}
+
+class SurroundingsHelper {
+    let zoomLevel = 15.0
+
 }
 
 class BuildingMapHelper {

@@ -85,7 +85,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FATEC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZpX-d2-vSw" customClass="PillLabel" customModule="Fateconde" customModuleProvider="target">
-                                <rect key="frame" x="139.5" y="30" width="41" height="16"/>
+                                <rect key="frame" x="131.5" y="30" width="57" height="16"/>
                                 <color key="backgroundColor" red="0.68627450980000004" green="0.0078431372550000003" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,6 +115,7 @@
                     <connections>
                         <outlet property="bottomSheet" destination="whk-Ae-STm" id="cuc-Lf-cU0"/>
                         <outlet property="bottomSheetHeight" destination="KII-Iy-0Vf" id="Hxl-he-w3e"/>
+                        <outlet property="locationLabel" destination="ZpX-d2-vSw" id="n2q-zG-i5S"/>
                         <outlet property="showFatecButton" destination="9Jq-30-44g" id="Wbs-Jk-hzs"/>
                         <outlet property="showSurroundingsButton" destination="apv-iz-fie" id="VaB-U0-OGr"/>
                     </connections>

@@ -12,8 +12,7 @@ import PointOfInterest
 protocol BottomSheetDelegate: class {
     func growBottomSheet()
     func shrinkBottomSheet()
-    func zoomBuilding(building: Building)
-    func zoomLocation(location: Location)
+    var selectedPoi: PointOfInterest? { get set }
 }
 
 class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
@@ -60,13 +59,12 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let building = appData.pointsOfInterest.buildings[indexPath.row]
-            delegate?.zoomBuilding(building: building)
+            delegate?.selectedPoi = building
         } else {
             let building = appData.pointsOfInterest.buildings[indexPath.section - 1]
             let location = appData.pointsOfInterest.locationsByBuilding[building.code]![indexPath.row]
-            delegate?.zoomLocation(location: location)
+            delegate?.selectedPoi = location
         }
-        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

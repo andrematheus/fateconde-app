@@ -581,6 +581,40 @@
     {
       "type": "Feature",
       "properties": {
+        "kind": "surroundings_outline"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.634492,
+              -23.530761
+            ],
+            [
+              -46.631588,
+              -23.531499
+            ],
+            [
+              -46.630763,
+              -23.528868
+            ],
+            [
+              -46.633706,
+              -23.528104
+            ],
+            [
+              -46.634492,
+              -23.530761
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "ac8a38ebe1226165725cbc55e94b3276"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "hp",
         "kind": "building",
         "name": "Ed. Hipólito Pujol",
@@ -1062,6 +1096,20 @@
         "type": "Point"
       },
       "id": "f4fd95116eed4c9f003938400e082f09"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "surroundings"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632747,
+          -23.529745
+        ],
+        "type": "Point"
+      },
+      "id": "f8d605ed887fb453af4f31155e186c45"
     }
   ],
   "type": "FeatureCollection"

@@ -24,17 +24,15 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     
     let data = AppData.sharedInstance
     
-    let fatecLocation = CLLocationCoordinate2D.init(
-        latitude: -23.529397679087438,
-        longitude: -46.632665554213531
-    )
     let direction = 285.326971003092
-    let zoomLevel = 16.75
-    let surroundingsZoomLevel = 15.0
     
     var bottomInset: CGFloat = 240
     
     weak var currentAnnotation: MGLPointAnnotation? = nil
+    
+    weak var viewController: ViewController? = nil
+    
+    var setupDone = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,47 +54,41 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         view.addSubview(mapView!)
     }
     
-    func updateInsets(bottom: CGFloat) {
-    
-    }
-
-    func lookAtFatec() {
-        mapView?.setCenter(fatecLocation, zoomLevel: zoomLevel, direction: self.direction, animated: true)
+    func setup(with: ViewController) {
+        viewController = with
     }
     
-    func lookAtSurroundings() {
-        mapView?.setCenter(fatecLocation, zoomLevel: surroundingsZoomLevel, direction: self.direction, animated: true)
-    }
-    
-    func zoomToSantiago() {
-        if let santiago = data.pointsOfInterest.buildingsByCode["sa"] {
-            zoomToBuilding(building: santiago)
-            if let bh = data.buildingHelpers["sa"],
-                let l = bh.outlineLayer as? OutlineLayer {
-                l.strokeLayer.lineWidth = NSExpression(forConstantValue: 5.0)
-            }
-        }
-    }
-    
-    func zoomToBuilding(building: Building) {
-        if let b = data.buildingHelpers[building.code],
-            let outline = b.outlineLayer as? OutlineLayer {
-            let features = [outline.feature]
-            mapView?.showAnnotations(features, edgePadding: .zero, animated: true)
-        }
-    }
-    
-    func zoomToLocation(location: Location) {
-        if let l = data.locationHelpers[location.id.code],
-            let nameLayer = l.nameLayer as? NameLayer {
-            let building = data.pointsOfInterest.buildingsByCode[location.id.buildingCode]!
-            zoomToBuilding(building: building)
+    func lookAt(poi: PointOfInterest) {
+        if setupDone {
             if let ann = currentAnnotation {
                 mapView?.removeAnnotation(ann)
             }
-            let ann =  nameLayer.pointFeature
-            mapView?.addAnnotation(ann)
-            currentAnnotation = ann
+            
+            switch poi {
+            case let fatec as Fatec:
+                let helper = data.fatecHelper
+                mapView?.setCenter(fatec.point, zoomLevel: helper.zoomLevel, direction: self.direction, animated: true)
+            case let surroundings as Surroundings:
+                let helper = data.surroundingsHelper
+                mapView?.setCenter(surroundings.point, zoomLevel: helper.zoomLevel, direction: self.direction, animated: true)
+            case let building as Building:
+                if let helper = data.buildingHelpers[building.code],
+                    let outline = helper.outlineLayer as? OutlineLayer {
+                    let features = [outline.feature]
+                    mapView?.showAnnotations(features, edgePadding: .zero, animated: true)
+                }
+            case let location as Location:
+                if let building = data.pointsOfInterest.buildingsByCode[location.id.buildingCode] {
+                    lookAt(poi: building)
+                }
+                if let nameLayer = data.locationHelpers[location.id.code]?.nameLayer as? NameLayer {
+                    let ann = nameLayer.pointFeature
+                    mapView?.addAnnotation(ann)
+                    currentAnnotation = ann
+                }
+            default:
+                print("Unknown poi: \(poi)")
+            }
         }
     }
     
@@ -106,8 +98,11 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-        lookAtFatec()
         drawFeatures(style)
+        setupDone = true
+        if let poi = viewController?.selectedPoi {
+            lookAt(poi: poi)
+        }
     }
     
     func drawFeatures(_ style: MGLStyle) {

@@ -28,7 +28,7 @@ class DebugTableViewController: UITableViewController {
     }
 
     @IBAction func zoomToSantiago(_ sender: Any) {
-        mainViewController?.zoomToSantiago()
+        mainViewController?.selectedPoi = AppData.sharedInstance.pointsOfInterest.locationsByCode["sa"]
         self.dismiss(animated: true, completion: nil)
     }
     
