@@ -20,15 +20,15 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     let appData: AppData = AppData.sharedInstance
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return appData.pointsOfInterest.buildings.count + 1
+        return appData.pointsOfInterest.buildingsForList.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return appData.pointsOfInterest.buildings.count
+            return appData.pointsOfInterest.buildingsForList.count
         } else {
-            let building = appData.pointsOfInterest.buildings[section - 1]
-            return appData.pointsOfInterest.locationsByBuilding[building.code]?.count ?? 0
+            let building = appData.pointsOfInterest.buildingsForList[section - 1]
+            return building.locationsForList.count
         }
     }
 
@@ -36,10 +36,10 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pointOfInterestCell", for: indexPath)
         let listable: PointOfInterest
         if indexPath.section == 0 {
-            listable = appData.pointsOfInterest.buildings[indexPath.row]
+            listable = appData.pointsOfInterest.buildingsForList[indexPath.row]
         } else {
-            let building = appData.pointsOfInterest.buildings[indexPath.section - 1]
-            listable = appData.pointsOfInterest.locationsByBuilding[building.code]![indexPath.row]
+            let building = appData.pointsOfInterest.buildingsForList[indexPath.section - 1]
+            listable = building.locationsForList[indexPath.row]
         }
         cell.textLabel?.text = listable.title
         cell.detailTextLabel?.text = listable.description
@@ -52,17 +52,17 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         if section == 0 {
             return "Prédios"
         } else {
-            return appData.pointsOfInterest.buildings[section - 1].name
+            return appData.pointsOfInterest.buildingsForList[section - 1].name
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let building = appData.pointsOfInterest.buildings[indexPath.row]
+            let building = appData.pointsOfInterest.buildingsForList[indexPath.row]
             delegate?.selectedPoi = building
         } else {
-            let building = appData.pointsOfInterest.buildings[indexPath.section - 1]
-            let location = appData.pointsOfInterest.locationsByBuilding[building.code]![indexPath.row]
+            let building = appData.pointsOfInterest.buildingsForList[indexPath.section - 1]
+            let location = building.locationsForList[indexPath.row]
             delegate?.selectedPoi = location
         }
     }
