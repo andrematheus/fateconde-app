@@ -98,6 +98,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
+        mapView.direction = self.direction
         drawFeatures(style)
         setupDone = true
         if let poi = viewController?.selectedPoi {
@@ -107,7 +108,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     
     func drawFeatures(_ style: MGLStyle) {
         data.fatecHelper.imageLayer.install(style: style)
-        data.fatecHelper.outlineLayer.install(style: style)
+        //data.fatecHelper.outlineLayer.install(style: style)
         data.fatecHelper.nameLayer.install(style: style)
         
         for bh in data.buildingHelpers.values {

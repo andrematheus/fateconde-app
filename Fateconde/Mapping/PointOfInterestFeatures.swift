@@ -45,9 +45,9 @@ struct ZoomableInfo<T> {
         }
     }
     
-    func map<R>(_ transform: (T) -> R, defaultValue: R) -> ZoomableInfo<R> {
+    func map<R>(_ transform: (T) -> R) -> ZoomableInfo<R> {
         let transformed: [MapZoomLevel: R] = self.byLevel.mapValues(transform)
-        return ZoomableInfo<R>(transformed, defaultValue: defaultValue)
+        return ZoomableInfo<R>(transformed, defaultValue: transform(self.defaultValue))
     }
     
     var nsExpression: NSExpression {
@@ -191,7 +191,7 @@ struct LineLayerAttributes {
     func applyTo(_ layer: MGLLineStyleLayer) {
         layer.lineColor = NSExpression(forConstantValue: lineColor)
         layer.lineWidth = lineWidth.nsExpression
-        layer.lineOpacity = visibility.map(boolToVisibility, defaultValue: 0.0).nsExpression
+        layer.lineOpacity = visibility.map(boolToVisibility).nsExpression
     }
 }
 
@@ -201,7 +201,7 @@ struct FillLayerAttributes {
     
     func applyTo(_ layer: MGLFillStyleLayer) {
         layer.fillColor = NSExpression(forConstantValue: fillColor)
-        layer.fillOpacity = visibility.map(boolToVisibility, defaultValue: 0.0).nsExpression
+        layer.fillOpacity = visibility.map(boolToVisibility).nsExpression
     }
 }
 
@@ -221,7 +221,7 @@ struct SymbolTextLayerAttributes {
         print(layer.identifier)
         layer.textAllowsOverlap = NSExpression(forConstantValue: true)
         layer.textFontSize = textSize.nsExpression
-        layer.textOpacity = visibility.map(boolToVisibility, defaultValue: 0.0).nsExpression
+        layer.textOpacity = visibility.map(boolToVisibility).nsExpression
     }
 }
 
@@ -229,7 +229,7 @@ struct ImageLayerAttributes {
     let visibility: ZoomableInfo<Bool>
     
     func applyTo(_ layer: MGLRasterStyleLayer) {
-        layer.rasterOpacity = visibility.map(boolToVisibility, defaultValue: 0.0).nsExpression
+        layer.rasterOpacity = visibility.map(boolToVisibility).nsExpression
     }
 }
 
@@ -275,15 +275,11 @@ class BuildingMapHelper {
     let nameLayer: MappingLayer
     let stroke = LineLayerAttributes(lineColor: FatecColors.cinza,
                                      lineWidth: ZoomableInfo<Double>([:], defaultValue: 1.0),
-                                     visibility: ZoomableInfo<Bool>([.Fatec: true], defaultValue: false))
-    let fill = FillLayerAttributes(fillColor: FatecColors.branco,
-                                   visibility: ZoomableInfo<Bool>([.Fatec: true], defaultValue: false))
+                                     visibility: ZoomableInfo<Bool>([.Surroundings: false], defaultValue: true))
     
     init(building: Building) {
         self.building = building
         self.identifier = "building-\(building.code)"
-        self.outlineLayer = OutlineLayer(identifier: identifier, coordinates: building.quadPolygon.coordinates,
-                                         strokeAttributes: stroke, fillAttributes: fill)
         // TODO: use short name
         self.nameLayer = NameLayer(identifier: identifier, coordinate: building.point, text: building.name,
                                    attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 9.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Fatec: true], defaultValue: false)))
@@ -297,6 +293,15 @@ class BuildingMapHelper {
         } else {
             self.planLayers = [:]
         }
+        
+        let fillDefaultValue = self.planLayers.isEmpty
+        
+        let fill = FillLayerAttributes(fillColor: FatecColors.branco,
+                                       visibility: ZoomableInfo<Bool>([.Fatec: true], defaultValue: fillDefaultValue))
+        
+        self.outlineLayer = OutlineLayer(identifier: identifier, coordinates: building.quadPolygon.coordinates,
+                                         strokeAttributes: stroke, fillAttributes: fill)
+
     }
 }
 
