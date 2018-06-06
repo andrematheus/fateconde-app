@@ -17,6 +17,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     var bottomSheetLarge: CGFloat {
         return self.view.frame.height - 80
     }
+    var bottomSheetController: BottomSheetViewController? = nil
 
     @IBOutlet weak var bottomSheetHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomSheet: UIView!
@@ -32,6 +33,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
             updateViewButtons()
             if let poi = selectedPoi {
                 mapController?.lookAt(poi: poi)
+                bottomSheetController?.selectedPoiChanged(poi)
             }
         }
     }

@@ -14,10 +14,15 @@ protocol BottomSheetDelegate: class {
     func shrinkBottomSheet()
     var bottomSheetIsHuge: Bool { get }
     var selectedPoi: PointOfInterest? { get set }
+    var bottomSheetController: BottomSheetViewController? { get set }
 }
 
 class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
-    weak var delegate: BottomSheetDelegate? = nil
+    weak var delegate: BottomSheetDelegate? = nil {
+        didSet {
+            self.delegate?.bottomSheetController = self
+        }
+    }
     weak var searchBar: UISearchBar!
     let appData: AppData = AppData.sharedInstance
     var filteredPois = [PointOfInterest]()
@@ -95,6 +100,56 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    func selectedPoiChanged(_ poi: PointOfInterest) {
+        if filteredPois.isEmpty {
+            if let location = poi as? Location {
+                if let building = location.building,
+                    let section = self.appData.pointsOfInterest.buildingsForList.index(of: building),
+                    let row = building.locationsForList.index(of: location) {
+                    let indexPath = IndexPath(row: row, section: section + 1)
+                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                    return
+                }
+            } else if let building = poi as? Building {
+                let section = 0
+                if let row = self.appData.pointsOfInterest.buildingsForList.index(of: building) {
+                    let indexPath = IndexPath(row: row, section: section)
+                    self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .none)
+                    return
+                }
+            }
+        } else {
+            if let location = poi as? Location {
+                if let row = filteredPois.index(where: { p in
+                    if let l = p as? Location {
+                        return l == location
+                    } else {
+                        return false
+                    }
+                }) {
+                    let indexPath = IndexPath(row: row, section: 0)
+                    self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .none)
+                    return
+                }
+            } else if let building = poi as? Building {
+                if let row = filteredPois.index(where: { p in
+                    if let l = p as? Building {
+                        return l == building
+                    } else {
+                        return false
+                    }
+                }) {
+                    let indexPath = IndexPath(row: row, section: 0)
+                    self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .none)
+                    return
+                }
+            }
+        }
+        if let row = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: row, animated: true)
+        }
+    }
+    
     func filterPois(_ text: String) {
         if text.isEmpty {
             filteredPois = []
@@ -117,7 +172,10 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if delegate?.bottomSheetIsHuge ?? false {
             delegate?.shrinkBottomSheet()
-        }        
+        }
+        if let poi = delegate?.selectedPoi {
+            self.selectedPoiChanged(poi)
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
