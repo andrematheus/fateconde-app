@@ -100,6 +100,10 @@ class ViewController: UIViewController, BottomSheetDelegate {
         }
     }
     
+    var bottomSheetIsHuge: Bool {
+        return self.bottomSheetHeight.constant > bottomSheetMedium
+    }
+    
     private func animateBottomSheetHeight(newHeight: CGFloat) {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {

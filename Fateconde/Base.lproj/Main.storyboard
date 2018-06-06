@@ -132,7 +132,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IMX-hz-Adg">
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IMX-hz-Adg">
                             <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Toggle Debug"/>
@@ -186,7 +186,7 @@
                                 <rect key="frame" x="0.0" y="66" width="320" height="174"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="pointOfInterestCell" textLabel="HKQ-la-Zdy" detailTextLabel="7TE-2S-EOF" style="IBUITableViewCellStyleValue1" id="Y30-Ep-WdL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="pointOfInterestCell" textLabel="HKQ-la-Zdy" detailTextLabel="7TE-2S-EOF" style="IBUITableViewCellStyleValue1" id="Y30-Ep-WdL">
                                         <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y30-Ep-WdL" id="Y47-M1-NIi">
@@ -243,7 +243,7 @@
                                             <constraint firstAttribute="height" constant="10" id="YNO-4M-kJI"/>
                                         </constraints>
                                     </view>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Busque um lugar" showsSearchResultsButton="YES" showsBookmarkButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRJ-ie-1Ah">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Busque um lugar" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRJ-ie-1Ah">
                                         <rect key="frame" x="0.0" y="10" width="320" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -279,6 +279,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomSheetViewController" destination="mQb-LC-H8h" id="gUu-iS-KKj"/>
+                        <outlet property="searchBar" destination="bRJ-ie-1Ah" id="O6q-XY-NDV"/>
+                        <outlet property="tableView" destination="FJO-11-Mce" id="jv1-IK-Ugy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pik-8f-b14" userLabel="First Responder" sceneMemberID="firstResponder"/>

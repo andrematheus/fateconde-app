@@ -10,6 +10,8 @@ import UIKit
 
 class EmbeddedViewController: UIViewController {
     @IBOutlet var bottomSheetViewController: BottomSheetViewController!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     public weak var delegate: ViewController?
     
     override func viewDidLoad() {
@@ -26,6 +28,9 @@ class EmbeddedViewController: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan))
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(panGesture)
+        
+        bottomSheetViewController.tableView = self.tableView
+        bottomSheetViewController.searchBar = self.searchBar
     }
     
     @objc func didPan(sender: UIPanGestureRecognizer) {
