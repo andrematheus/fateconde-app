@@ -36,28 +36,47 @@ class ViewController: UIViewController, BottomSheetDelegate {
                 mapController?.lookAt(poi: poi)
                 bottomSheetController?.selectedPoiChanged(poi)
                 if poi.hasMoreThanOneLevel {
-                    selectedLevel = poi.levels[0]
-                    self.levels.removeAllSegments()
-                    for level in poi.levels {
-                        self.levels.insertSegment(withTitle: floorLabel(level),
-                                                  at: self.levels.numberOfSegments,
-                                                  animated: false)
-                    }
-                    self.levels.selectedSegmentIndex = 0
-                    self.levels.isHidden = false
+                    updateLevels(poi: poi)
                 } else {
-                    selectedLevel = 0
-                    self.levels.isHidden = true
+                    if let location = poi as? Location {
+                        if let building = location.building {
+                            updateLevels(poi: building)
+                        }
+                        selectedLevel = location.id.buildingLevel
+                    } else {
+                        selectedLevel = 0
+                        self.levels.isHidden = true
+                    }
                 }
             }
         }
     }
     
+    func updateLevels(poi: PointOfInterest) {
+        selectedLevel = poi.levels[0]
+        self.levels.removeAllSegments()
+        for level in poi.levels {
+            self.levels.insertSegment(withTitle: floorLabel(level),
+                                      at: self.levels.numberOfSegments,
+                                      animated: false)
+        }
+        self.levels.selectedSegmentIndex = 0
+        self.levels.isHidden = false
+    }
+    
     var selectedLevel: Int = 0 {
         didSet {
             mapController?.showLevel(selectedLevel)
-            if selectedPoi?.hasMoreThanOneLevel ?? false {
-                if let index = selectedPoi?.levels.index(of: selectedLevel) {
+            if self.levels.numberOfSegments > 0 {
+                let levels: [Int]
+                if let location = selectedPoi as? Location {
+                    levels = location.building?.levels ?? []
+                } else if let building = selectedPoi as? Building {
+                    levels = building.levels
+                } else {
+                    levels = []
+                }
+                if let index = levels.index(of: selectedLevel) {
                     if self.levels.selectedSegmentIndex != index {
                         self.levels.selectedSegmentIndex = index
                     }
