@@ -92,6 +92,17 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="-2"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dHb-rb-4Ea">
+                                <rect key="frame" x="100" y="203" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="levelChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="kVr-UO-vRL"/>
+                                    <action selector="levelChanged:" destination="ApF-yl-6oj" eventType="valueChanged" id="xwI-1e-LBt"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -100,6 +111,7 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qk9-Pf-66b" secondAttribute="trailing" constant="20" symbolic="YES" id="9U4-Dc-y28"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="top" secondItem="VdG-nR-Qav" secondAttribute="bottom" id="AIz-kR-zqD"/>
                             <constraint firstItem="TaA-Xo-Veg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="B39-RB-arx"/>
+                            <constraint firstItem="whk-Ae-STm" firstAttribute="top" secondItem="dHb-rb-4Ea" secondAttribute="bottom" constant="9" id="CUl-k7-Dt9"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="N7D-gV-qb1"/>
                             <constraint firstItem="ZpX-d2-vSw" firstAttribute="centerX" secondItem="VdG-nR-Qav" secondAttribute="centerX" id="O2b-bb-XBn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="ZpX-d2-vSw" secondAttribute="top" constant="-10" id="TgL-s2-Lgl"/>
@@ -107,6 +119,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TaA-Xo-Veg" secondAttribute="trailing" constant="12" id="a3y-ix-jGA"/>
                             <constraint firstItem="Qk9-Pf-66b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bJB-O6-dSb"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e9R-37-yz4"/>
+                            <constraint firstItem="dHb-rb-4Ea" firstAttribute="centerX" secondItem="VdG-nR-Qav" secondAttribute="centerX" id="jrP-5m-AqJ"/>
                             <constraint firstItem="whk-Ae-STm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kUK-Nk-z7R"/>
                             <constraint firstItem="VdG-nR-Qav" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pEM-8C-E8A"/>
                         </constraints>
@@ -115,12 +128,14 @@
                     <connections>
                         <outlet property="bottomSheet" destination="whk-Ae-STm" id="cuc-Lf-cU0"/>
                         <outlet property="bottomSheetHeight" destination="KII-Iy-0Vf" id="Hxl-he-w3e"/>
+                        <outlet property="levels" destination="dHb-rb-4Ea" id="Ce4-xd-0ZB"/>
                         <outlet property="locationLabel" destination="ZpX-d2-vSw" id="n2q-zG-i5S"/>
                         <outlet property="showFatecButton" destination="9Jq-30-44g" id="Wbs-Jk-hzs"/>
                         <outlet property="showSurroundingsButton" destination="apv-iz-fie" id="VaB-U0-OGr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="ApF-yl-6oj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="135" y="123.59154929577466"/>
         </scene>

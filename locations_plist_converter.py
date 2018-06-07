@@ -4,6 +4,56 @@ import csv
 import plistlib
 import os
 import json
+import re
+import itertools
+import copy
+
+
+multifloor_regex = r'location_code.(\[[-?0-9]+:[-?0-9]+\]|[0-9]+)'
+location_multifloor_regex = r'.+(\[[-?0-9]+:[-?0-9]+\]).+'
+
+def parse_floors(floor_exp):
+    m = re.match(r'\[([-?0-9]+):([-?0-9]+)\]', floor_exp)
+    if m:
+        rgs = m.group(1)
+        rge = m.group(2)
+        return range(int(rgs), int(rge)+1)
+    else:
+        return int(floor_exp)
+
+def explode_location_floors(location_map):
+    global location_multifloor_regex
+    matches = re.match(location_multifloor_regex, location_map['id.code']) 
+    if matches:
+        key = matches
+        floors = parse_floors(key.group(1))
+        lms = []
+        for floor in floors:
+            m = copy.deepcopy(location_map)
+            m['id.code'] = location_map['id.code'].replace(key.group(1), str(floor))
+            m['id.buildingLevel'] = str(floor)
+            print(m)
+            lms.append(m)
+        return lms
+    else:        
+        return [location_map]
+
+def explode_floors(location_map):
+    global multifloor_regex
+    matches = [re.match(multifloor_regex, key) for key in location_map['properties'].keys()] 
+    successful = [match for match in matches if match]    
+    if successful:
+        key = successful[0]
+        floors = parse_floors(key.group(1))
+        lms = []
+        for floor in floors:
+            m = copy.deepcopy(location_map)
+            m['properties']['location_code'] = location_map['properties'][key.group(0)].replace('%F', str(floor))
+            lms.append(m)
+        return lms
+    else:
+        return [location_map]        
+
 
 def explode_id(location_map):
     if location_map['id.code'] != '':
@@ -38,12 +88,15 @@ with open(locations_file, 'r', encoding='utf-8-sig') as f:
     locations = list(csv.DictReader(f, delimiter=';'))
 
 locations = [ location for location in locations if not location['id.code'].startswith('#')]
+exploded_locations = [explode_location_floors(location) for location in locations]
+locations = list(itertools.chain.from_iterable(exploded_locations))
 locations = [ explode_id(location) for location in locations ]
 locations = [ location for location in locations if location is not None and location['id.code'] != '' ]
 
+
 locations_map = {}
 for location in locations:
-    locations_map[location["id.code"]] = location
+    locations_map[location["id"]['code']] = location
 
 with open(buildings_file, 'r', encoding='utf-8-sig') as f:
     buildings = list(csv.DictReader(f, delimiter=';'))
@@ -68,7 +121,11 @@ with open(geojson_file, 'r') as f:
 fatec_outline = {}
 surroundings = {}
 
-for feature in geojson["features"]:
+exploded_features = [explode_floors(feature) for feature in geojson["features"]]
+features = list(itertools.chain.from_iterable(exploded_features))
+
+
+for feature in features:
     if "kind" in feature["properties"]:
         if feature["properties"]["kind"] == "building_outline":
             building_code = feature["properties"]["building_code"]

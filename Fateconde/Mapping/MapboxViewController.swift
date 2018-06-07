@@ -34,6 +34,8 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     
     var setupDone = false
     
+    weak var selectedBuilding: Building? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Replace the string in the URL below with your custom style URL from Mapbox Studio.
@@ -63,6 +65,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
             if let ann = currentAnnotation {
                 mapView?.removeAnnotation(ann)
             }
+            selectedBuilding = nil
             
             switch poi {
             case let fatec as Fatec:
@@ -77,6 +80,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                     let features = [outline.feature]
                     mapView?.showAnnotations(features, edgePadding: .zero, animated: true)
                 }
+                selectedBuilding = building
             case let location as Location:
                 if let building = data.pointsOfInterest.buildingsByCode[location.id.buildingCode] {
                     lookAt(poi: building)
@@ -114,6 +118,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         for bh in data.buildingHelpers.values {
             for pl in bh.planLayers.values {
                 pl.install(style: style)
+                pl.hide()
             }
         }
         for bh in data.buildingHelpers.values {
@@ -125,6 +130,32 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         
         for l in data.locationHelpers.values {
             l.nameLayer.install(style: style)
+            l.nameLayer.hide()
+        }
+    }
+    
+    func showLevel(_ level: Int) {
+        if let sb = selectedBuilding {
+            if let h = data.buildingHelpers[sb.code] {
+                for l in sb.levels {
+                    if l == level {
+                        h.planLayers[l]?.show()
+                    } else {
+                        h.planLayers[l]?.hide()
+                    }
+                }
+            }
+            for l in data.locationHelpers.values {
+                if let b = l.location.building {
+                    if b == sb && l.location.id.buildingLevel == level {
+                        l.nameLayer.show()
+                    } else {
+                        l.nameLayer.hide()
+                    }
+                } else {
+                    l.nameLayer.hide()
+                }
+            }
         }
     }
     
@@ -135,6 +166,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
             print(mapView.zoomLevel)
         }
     }
+
     
     func toggleDebug() {
         self.debug = !self.debug

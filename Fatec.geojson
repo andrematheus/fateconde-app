@@ -102,7 +102,7 @@
       "type": "Feature",
       "properties": {
         "kind": "route_point",
-        "location_code": "sa0i1"
+        "location_code.[0:4]": "sa%Fi1"
       },
       "geometry": {
         "coordinates": [
@@ -132,7 +132,7 @@
       "type": "Feature",
       "properties": {
         "kind": "route_point",
-        "location_code": "sa0i4"
+        "location_code.[0:4]": "sa%Fi4"
       },
       "geometry": {
         "coordinates": [
@@ -147,7 +147,7 @@
       "type": "Feature",
       "properties": {
         "kind": "location",
-        "location_code": "sa0s2"
+        "location_code.[0:4]": "sa%Fs2"
       },
       "geometry": {
         "coordinates": [
@@ -224,7 +224,7 @@
       "type": "Feature",
       "properties": {
         "kind": "route_point",
-        "location_code": "sa0a2"
+        "location_code.[0:4]": "sa%Fa2"
       },
       "geometry": {
         "coordinates": [
@@ -552,7 +552,7 @@
       "type": "Feature",
       "properties": {
         "kind": "route_point",
-        "location_code": "sa0a4"
+        "location_code.[0:4]": "sa%Fa4"
       },
       "geometry": {
         "coordinates": [
@@ -633,7 +633,7 @@
       "type": "Feature",
       "properties": {
         "kind": "route_point",
-        "location_code": "sa0i3"
+        "location_code.[0:4]": "sa%Fi3"
       },
       "geometry": {
         "coordinates": [
@@ -900,7 +900,7 @@
       "type": "Feature",
       "properties": {
         "kind": "route_point",
-        "location_code": "sa0s2"
+        "location_code.[0:4]": "sa%Fs2"
       },
       "geometry": {
         "coordinates": [
@@ -1037,7 +1037,7 @@
       "type": "Feature",
       "properties": {
         "kind": "route_point",
-        "location_code": "sa0i2"
+        "location_code.[0:4]": "sa%Fi2"
       },
       "geometry": {
         "coordinates": [

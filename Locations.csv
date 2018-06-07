@@ -2,19 +2,24 @@
 # ur: upper right, ul: upper left, ll: lower left, lr: lower right
 # Santiago;;;;
 sa0s1;0;sa;Biblioteca;Service
-sa0s2;0;sa;Secretaria;Service
+sa0s2;0;sa;Secretaria 0;Service
+sa1s2;1;sa;Secretaria 1;Service
+sa2s2;2;sa;Secretaria 2;Service
+sa3s2;3;sa;Secretaria 3;Service
+sa4s2;4;sa;Secretaria 4;Service
 sa0s3;0;sa;Sala de Estudos;Service
 
 sa0a1;0;sa;Entrada;Access;Entrada aberta hoje
-sa0a2;0;sa;Escada;Access;Escada próxima Hall
 sa0a3;0;sa;Elevador;Access;Elevador próximo ao Hall
-sa0a4;0;sa;Escada;Access;Escada próxima Hall
 sa0a5;0;sa;Elevador;Access;Elevador próximo Hall
 
-sa0i1;0;sa;;Invisible;ur
-sa0i2;0;sa;;Invisible;ul
-sa0i3;0;sa;;Invisible;ll
-sa0i4;0;sa;;Invisible;lr
+sa[0:4]a2;0;sa;Escada;Access;Escada próxima Hall
+sa[0:4]a4;0;sa;Escada;Access;Escada próxima Hall
+
+sa[0:4]i1;0;sa;;Invisible;ur
+sa[0:4]i2;0;sa;;Invisible;ul
+sa[0:4]i3;0;sa;;Invisible;ll
+sa[0:4]i4;0;sa;;Invisible;lr
 
 # Bloco B;;;;
 # bb1;0;bb;iCenter;Service

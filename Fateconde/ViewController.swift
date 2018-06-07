@@ -24,6 +24,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     @IBOutlet weak var showFatecButton: UIButton!
     @IBOutlet weak var showSurroundingsButton: UIButton!
     @IBOutlet weak var locationLabel: PillLabel!
+    @IBOutlet weak var levels : UISegmentedControl!
     
     var selectedPoi: PointOfInterest? = nil {
         didSet {
@@ -34,6 +35,44 @@ class ViewController: UIViewController, BottomSheetDelegate {
             if let poi = selectedPoi {
                 mapController?.lookAt(poi: poi)
                 bottomSheetController?.selectedPoiChanged(poi)
+                if poi.hasMoreThanOneLevel {
+                    selectedLevel = poi.levels[0]
+                    self.levels.removeAllSegments()
+                    for level in poi.levels {
+                        self.levels.insertSegment(withTitle: floorLabel(level),
+                                                  at: self.levels.numberOfSegments,
+                                                  animated: false)
+                    }
+                    self.levels.selectedSegmentIndex = 0
+                    self.levels.isHidden = false
+                } else {
+                    selectedLevel = 0
+                    self.levels.isHidden = true
+                }
+            }
+        }
+    }
+    
+    var selectedLevel: Int = 0 {
+        didSet {
+            mapController?.showLevel(selectedLevel)
+            if selectedPoi?.hasMoreThanOneLevel ?? false {
+                if let index = selectedPoi?.levels.index(of: selectedLevel) {
+                    if self.levels.selectedSegmentIndex != index {
+                        self.levels.selectedSegmentIndex = index
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func levelChanged(_ sender: Any) {
+        if let poi = selectedPoi {
+            if poi.hasMoreThanOneLevel {
+                let levels = poi.levels
+                let index = self.levels.selectedSegmentIndex
+                let newLevel = levels[index]
+                self.selectedLevel = newLevel
             }
         }
     }
@@ -41,6 +80,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     override func viewDidLoad() {
         mapController?.setup(with: self)
         selectedPoi = data.pointsOfInterest.fatec
+        self.levels.isHidden = true
     }
     
     @IBAction func showFatec(_ sender: Any) {

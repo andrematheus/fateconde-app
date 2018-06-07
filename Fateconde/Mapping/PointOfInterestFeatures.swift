@@ -250,7 +250,7 @@ class FatecMapHelper {
         self.fatec = fatec
         self.outlineLayer = OutlineLayer(identifier: identifier, coordinates: fatec.quadPolygon.coordinates, strokeAttributes: stroke, fillAttributes: fill)
         
-        if let fatecPlanImage = fatec.planImage {
+        if let fatecPlanImage = UIImage(named: fatec.planImageKey) {
             self.imageLayer = ImageLayer(identifier: identifier, polygon: fatec.quadPolygon, image: fatecPlanImage,
                                            attributes: ImageLayerAttributes(visibility: ZoomableInfo<Bool>([MapZoomLevel.Fatec: true], defaultValue: false)))
         } else {
@@ -284,15 +284,19 @@ class BuildingMapHelper {
         self.nameLayer = NameLayer(identifier: identifier, coordinate: building.point, text: building.name,
                                    attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 9.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Fatec: true], defaultValue: false)))
         // TODO: play layers by floor
-        if let image = building.planImage {
-            self.planLayers = [
-                0: ImageLayer(identifier: "\(identifier)-floor-0", polygon: building.quadPolygon,
-                              image: image,
-                              attributes: ImageLayerAttributes(visibility: ZoomableInfo<Bool>([MapZoomLevel.Building: true], defaultValue: false)))
-            ]
-        } else {
-            self.planLayers = [:]
+        var planLayers: [Int: MappingLayer] = [:]
+        for level in self.building.levels {
+            let imageKey = "\(self.building.planImageKey)\(level)"
+            if let image = UIImage(named: imageKey) {
+                planLayers[level] =
+                    ImageLayer(identifier: "\(identifier)-floor-\(level)", polygon: building.quadPolygon,
+                                  image: image,
+                                  attributes: ImageLayerAttributes(visibility: ZoomableInfo<Bool>([MapZoomLevel.Building: true], defaultValue: false)))                
+            }
         }
+        
+        self.planLayers = planLayers
+        
         
         let fillDefaultValue = self.planLayers.isEmpty
         

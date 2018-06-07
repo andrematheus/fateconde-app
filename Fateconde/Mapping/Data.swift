@@ -38,7 +38,7 @@ final class AppData {
         self.buildingHelpers = buildingHelpers
         
         var locationHelpers: [String: LocationMapHelper] = [:]
-        for location in pointsOfInterest.locations {
+        for location in pointsOfInterest.locationsForMap {
             locationHelpers[location.id.code] = LocationMapHelper(location: location)
         }
         self.locationHelpers = locationHelpers
