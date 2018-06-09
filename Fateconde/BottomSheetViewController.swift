@@ -18,6 +18,8 @@ protocol BottomSheetDelegate: class {
 }
 
 class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
+    @IBOutlet var embeddingParent: EmbeddedViewController!
+    
     weak var delegate: BottomSheetDelegate? = nil {
         didSet {
             self.delegate?.bottomSheetController = self
@@ -102,6 +104,12 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     
     func selectedPoiChanged(_ poi: PointOfInterest?) {
         if let poi = poi {
+            if poi.displaysInfo {
+                if let vc = self.embeddingParent {
+                    let poiInfo = PoiInfoViewController(nibName: "PoiInfoViewController", bundle: nil)
+                    vc.displayPoiInfo(poiInfo: poiInfo)
+                }
+            }
             if filteredPois.isEmpty {
                 if let location = poi as? Location {
                     if let building = location.building,

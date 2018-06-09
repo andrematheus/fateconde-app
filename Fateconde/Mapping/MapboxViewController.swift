@@ -20,7 +20,7 @@ enum MapZoomLevel: Double {
 
 class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView?
-    var debug = true
+    var debug = false
     
     let data = AppData.sharedInstance
     

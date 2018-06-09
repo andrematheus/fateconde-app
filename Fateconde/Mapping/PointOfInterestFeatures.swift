@@ -218,7 +218,6 @@ struct SymbolTextLayerAttributes {
     let visibility: ZoomableInfo<Bool>
     
     func applyTo(_ layer: MGLSymbolStyleLayer) {
-        print(layer.identifier)
         layer.textAllowsOverlap = NSExpression(forConstantValue: true)
         layer.textFontSize = textSize.nsExpression
         layer.textOpacity = visibility.map(boolToVisibility).nsExpression

@@ -10,9 +10,11 @@ import UIKit
 
 class EmbeddedViewController: UIViewController {
     @IBOutlet var bottomSheetViewController: BottomSheetViewController!
+    @IBOutlet var outerView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     public weak var delegate: ViewController?
+    weak var poiInfo: PoiInfoViewController?
     
     override func viewDidLoad() {
         view.clipsToBounds = false;
@@ -55,5 +57,26 @@ class EmbeddedViewController: UIViewController {
     
     func forwardDelegate(delegate: BottomSheetDelegate) {
         self.bottomSheetViewController.delegate = delegate
+    }
+    
+    func displayPoiInfo(poiInfo: PoiInfoViewController) {
+        self.addChildViewController(poiInfo)
+        poiInfo.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
+        poiInfo.didMove(toParentViewController: self)
+        self.outerView.addSubview(poiInfo.view)
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
+            poiInfo.view.frame = self.outerView.frame
+        })
+        poiInfo.embedParent = self
+        self.poiInfo = poiInfo
+    }
+    
+    func hidePoiInfo() {
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
+            self.poiInfo?.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
+        }, completion: { done in
+            self.poiInfo?.remove()
+            self.poiInfo = nil
+        })
     }
 }
