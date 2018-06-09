@@ -100,53 +100,59 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    func selectedPoiChanged(_ poi: PointOfInterest) {
-        if filteredPois.isEmpty {
-            if let location = poi as? Location {
-                if let building = location.building,
-                    let section = self.appData.pointsOfInterest.buildingsForList.index(of: building),
-                    let row = building.locationsForList.index(of: location) {
-                    let indexPath = IndexPath(row: row, section: section + 1)
-                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-                    return
+    func selectedPoiChanged(_ poi: PointOfInterest?) {
+        if let poi = poi {
+            if filteredPois.isEmpty {
+                if let location = poi as? Location {
+                    if let building = location.building,
+                        let section = self.appData.pointsOfInterest.buildingsForList.index(of: building),
+                        let row = building.locationsForList.index(of: location) {
+                        let indexPath = IndexPath(row: row, section: section + 1)
+                        self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                        return
+                    }
+                } else if let building = poi as? Building {
+                    let section = 0
+                    if let row = self.appData.pointsOfInterest.buildingsForList.index(of: building) {
+                        let indexPath = IndexPath(row: row, section: section)
+                        self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .top)
+                        return
+                    }
                 }
-            } else if let building = poi as? Building {
-                let section = 0
-                if let row = self.appData.pointsOfInterest.buildingsForList.index(of: building) {
-                    let indexPath = IndexPath(row: row, section: section)
-                    self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .none)
-                    return
+            } else {
+                if let location = poi as? Location {
+                    if let row = filteredPois.index(where: { p in
+                        if let l = p as? Location {
+                            return l == location
+                        } else {
+                            return false
+                        }
+                    }) {
+                        let indexPath = IndexPath(row: row, section: 0)
+                        self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .top)
+                        return
+                    }
+                } else if let building = poi as? Building {
+                    if let row = filteredPois.index(where: { p in
+                        if let l = p as? Building {
+                            return l == building
+                        } else {
+                            return false
+                        }
+                    }) {
+                        let indexPath = IndexPath(row: row, section: 0)
+                        self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .top)
+                        return
+                    }
                 }
+            }
+            if let row = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: row, animated: true)
             }
         } else {
-            if let location = poi as? Location {
-                if let row = filteredPois.index(where: { p in
-                    if let l = p as? Location {
-                        return l == location
-                    } else {
-                        return false
-                    }
-                }) {
-                    let indexPath = IndexPath(row: row, section: 0)
-                    self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .none)
-                    return
-                }
-            } else if let building = poi as? Building {
-                if let row = filteredPois.index(where: { p in
-                    if let l = p as? Building {
-                        return l == building
-                    } else {
-                        return false
-                    }
-                }) {
-                    let indexPath = IndexPath(row: row, section: 0)
-                    self.tableView.selectRow(at:indexPath, animated: true, scrollPosition: .none)
-                    return
-                }
+            if let row = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: row, animated: true)
             }
-        }
-        if let row = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRow(at: row, animated: true)
         }
     }
     

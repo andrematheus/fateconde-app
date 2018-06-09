@@ -25,6 +25,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     @IBOutlet weak var showSurroundingsButton: UIButton!
     @IBOutlet weak var locationLabel: PillLabel!
     @IBOutlet weak var levels : UISegmentedControl!
+    var theLevels: [Int] = []
     
     var selectedPoi: PointOfInterest? = nil {
         didSet {
@@ -32,11 +33,13 @@ class ViewController: UIViewController, BottomSheetDelegate {
                 locationLabel?.text = title
             }
             updateViewButtons()
-            if let poi = selectedPoi {
-                mapController?.lookAt(poi: poi)
-                bottomSheetController?.selectedPoiChanged(poi)
+            mapController?.lookAt(poi: selectedPoi)
+            bottomSheetController?.selectedPoiChanged(selectedPoi)
+            
+            if let poi = selectedPoi {                
                 if poi.hasMoreThanOneLevel {
                     updateLevels(poi: poi)
+                    mapController?.showLevel(selectedLevel)
                 } else {
                     if let location = poi as? Location {
                         if let building = location.building {
@@ -53,14 +56,16 @@ class ViewController: UIViewController, BottomSheetDelegate {
     }
     
     func updateLevels(poi: PointOfInterest) {
-        selectedLevel = poi.levels[0]
         self.levels.removeAllSegments()
         for level in poi.levels {
             self.levels.insertSegment(withTitle: floorLabel(level),
                                       at: self.levels.numberOfSegments,
                                       animated: false)
         }
-        self.levels.selectedSegmentIndex = 0
+        self.theLevels = poi.levels
+        if let index = self.theLevels.index(of: selectedLevel) {
+            self.levels.selectedSegmentIndex = index
+        }
         self.levels.isHidden = false
     }
     
@@ -81,19 +86,28 @@ class ViewController: UIViewController, BottomSheetDelegate {
                         self.levels.selectedSegmentIndex = index
                     }
                 }
+                if let poi = selectedPoi {
+                    if let location = poi as? Location {
+                        if location.id.buildingLevel != selectedLevel {
+                            let level = selectedLevel
+                            self.selectedPoi = location.building
+                            selectedLevel = level
+                        }
+                    }
+                    if let building = poi as? Building {
+                        if selectedLevel >= building.levels.count {
+                            selectedLevel = building.levels.last ?? building.levels.first ?? 0
+                        }
+                    }
+                }
             }
         }
     }
     
     @IBAction func levelChanged(_ sender: Any) {
-        if let poi = selectedPoi {
-            if poi.hasMoreThanOneLevel {
-                let levels = poi.levels
-                let index = self.levels.selectedSegmentIndex
-                let newLevel = levels[index]
-                self.selectedLevel = newLevel
-            }
-        }
+        let index = self.levels.selectedSegmentIndex
+        let newLevel = theLevels[index]
+        self.selectedLevel = newLevel
     }
    
     override func viewDidLoad() {

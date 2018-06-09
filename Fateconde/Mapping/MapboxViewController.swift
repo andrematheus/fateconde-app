@@ -60,38 +60,39 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         viewController = with
     }
     
-    func lookAt(poi: PointOfInterest) {
+    func lookAt(poi: PointOfInterest?) {
         if setupDone {
             if let ann = currentAnnotation {
                 mapView?.removeAnnotation(ann)
             }
             selectedBuilding = nil
-            
-            switch poi {
-            case let fatec as Fatec:
-                let helper = data.fatecHelper
-                mapView?.setCenter(fatec.point, zoomLevel: helper.zoomLevel, direction: self.direction, animated: true)
-            case let surroundings as Surroundings:
-                let helper = data.surroundingsHelper
-                mapView?.setCenter(surroundings.point, zoomLevel: helper.zoomLevel, direction: self.direction, animated: true)
-            case let building as Building:
-                if let helper = data.buildingHelpers[building.code],
-                    let outline = helper.outlineLayer as? OutlineLayer {
-                    let features = [outline.feature]
-                    mapView?.showAnnotations(features, edgePadding: .zero, animated: true)
+            if let poi = poi {
+                switch poi {
+                case let fatec as Fatec:
+                    let helper = data.fatecHelper
+                    mapView?.setCenter(fatec.point, zoomLevel: helper.zoomLevel, direction: self.direction, animated: true)
+                case let surroundings as Surroundings:
+                    let helper = data.surroundingsHelper
+                    mapView?.setCenter(surroundings.point, zoomLevel: helper.zoomLevel, direction: self.direction, animated: true)
+                case let building as Building:
+                    if let helper = data.buildingHelpers[building.code],
+                        let outline = helper.outlineLayer as? OutlineLayer {
+                        let features = [outline.feature]
+                        mapView?.showAnnotations(features, edgePadding: .zero, animated: true)
+                    }
+                    selectedBuilding = building
+                case let location as Location:
+                    if let building = data.pointsOfInterest.buildingsByCode[location.id.buildingCode] {
+                        lookAt(poi: building)
+                    }
+                    if let nameLayer = data.locationHelpers[location.id.code]?.nameLayer as? NameLayer {
+                        let ann = nameLayer.pointFeature
+                        mapView?.addAnnotation(ann)
+                        currentAnnotation = ann
+                    }
+                default:
+                    print("Unknown poi: \(poi)")
                 }
-                selectedBuilding = building
-            case let location as Location:
-                if let building = data.pointsOfInterest.buildingsByCode[location.id.buildingCode] {
-                    lookAt(poi: building)
-                }
-                if let nameLayer = data.locationHelpers[location.id.code]?.nameLayer as? NameLayer {
-                    let ann = nameLayer.pointFeature
-                    mapView?.addAnnotation(ann)
-                    currentAnnotation = ann
-                }
-            default:
-                print("Unknown poi: \(poi)")
             }
         }
     }
