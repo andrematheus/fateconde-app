@@ -103,15 +103,14 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func selectedPoiChanged(_ poi: PointOfInterest?) {
-        if let vc = self.embeddingParent {
-            vc.hidePoiInfo()
-        }
         if let poi = poi {
-            if poi.displaysInfo {
-                if let vc = self.embeddingParent {
+            if let vc = self.embeddingParent {
+                if poi.displaysInfo {
                     let poiInfo = PoiInfoViewController(nibName: "PoiInfoViewController", bundle: nil)
                     poiInfo.poi = poi
                     vc.displayPoiInfo(poiInfo: poiInfo)
+                } else {
+                    vc.hidePoiInfo()
                 }
             }
             if filteredPois.isEmpty {
@@ -164,6 +163,9 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         } else {
             if let row = self.tableView.indexPathForSelectedRow {
                 self.tableView.deselectRow(at: row, animated: true)
+            }
+            if let vc = self.embeddingParent {
+                vc.hidePoiInfo()
             }
         }
     }

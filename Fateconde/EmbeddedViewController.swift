@@ -62,6 +62,9 @@ class EmbeddedViewController: UIViewController {
     }
     
     func displayPoiInfo(poiInfo: PoiInfoViewController) {
+        if self.poiInfo != nil {
+            self.poiInfo?.remove()
+        }
         self.addChildViewController(poiInfo)
         poiInfo.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
         poiInfo.didMove(toParentViewController: self)

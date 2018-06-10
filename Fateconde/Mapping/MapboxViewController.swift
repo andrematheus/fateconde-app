@@ -68,6 +68,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
             }
             if let routeHelper = self.routeHelper, let style = self.mapView?.style {
                 routeHelper.routeLayer.uninstall(style: style)
+                routeHelper.circlesLayer.uninstall(style: style)
                 self.routeHelper = nil
             }
             showLevel(0)
@@ -107,8 +108,10 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                 case let leg as LocationRouteLeg:
                     let routeLegHelper = data.routeHelper(withLeg: leg)
                     let layer = routeLegHelper.routeLayer
+                    let circlesLayer = routeLegHelper.circlesLayer
                     if let mapView = self.mapView, let style = mapView.style {
                         layer.install(style: style)
+                        circlesLayer.install(style: style)
                         mapView.showAnnotations([layer.feature], animated: true)
                     }
                     self.routeHelper = routeLegHelper

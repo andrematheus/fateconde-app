@@ -133,6 +133,48 @@ struct LineLayer: MappingLayer {
     }
 }
 
+struct CirclesLayer: MappingLayer {
+    let identifier: String
+    let source: MGLShapeSource
+    let circlesLayer: MGLCircleStyleLayer
+    let circleAttributes: CircleLayerAttributes
+    let features: [MGLPointFeature]
+    
+    init(identifier: String, coordinates: [CLLocationCoordinate2D], circleAttributes: CircleLayerAttributes) {
+        self.identifier = identifier
+        var features: [MGLPointFeature] = []
+        for coord in coordinates {
+            let feature = MGLPointFeature()
+            feature.coordinate = coord
+            features.append(feature)
+        }
+        self.features = features
+        self.source = MGLShapeSource(identifier: "\(identifier)-circles-source", features: features, options: nil)
+        self.circlesLayer = MGLCircleStyleLayer(identifier: "\(identifier)-circles-layer", source: source)
+        circleAttributes.applyTo(self.circlesLayer)
+        self.circleAttributes = circleAttributes
+    }
+    
+    func install(style: MGLStyle) {
+        style.addSource(self.source)
+        style.addLayer(self.circlesLayer)
+    }
+    
+    func uninstall(style: MGLStyle) {
+        style.removeLayer(self.circlesLayer)
+        style.removeSource(self.source)
+    }
+    
+    func show() {
+        self.circlesLayer.isVisible = true
+    }
+    
+    func hide() {
+        self.circlesLayer.isVisible = false
+    }
+
+}
+
 struct OutlineLayer: MappingLayer {
     let identifier: String
     let source: MGLShapeSource
@@ -215,12 +257,12 @@ struct NameLayer: MappingLayer {
 struct LineLayerAttributes {
     let lineColor: UIColor
     let lineWidth: ZoomableInfo<Double>
-    let visibility: ZoomableInfo<Bool>
+    let visibility: ZoomableInfo<Double>
     
     func applyTo(_ layer: MGLLineStyleLayer) {
         layer.lineColor = NSExpression(forConstantValue: lineColor)
         layer.lineWidth = lineWidth.nsExpression
-        layer.lineOpacity = visibility.map(boolToVisibility).nsExpression
+        layer.lineOpacity = visibility.nsExpression
     }
 }
 
@@ -273,6 +315,18 @@ struct ImageLayerAttributes {
     }
 }
 
+struct CircleLayerAttributes {
+    let circleColor: UIColor
+    let circleRadius: ZoomableInfo<Double>
+    let opacity: Double
+    
+    func applyTo(_ layer: MGLCircleStyleLayer) {
+        layer.circleColor = NSExpression(forConstantValue:  self.circleColor)
+        layer.circleRadius = self.circleRadius.nsExpression
+        layer.circleOpacity = NSExpression(forConstantValue: self.opacity)
+    }
+}
+
 class FatecMapHelper {
     let identifier = "fatec"
     let fatec: Fatec
@@ -282,7 +336,7 @@ class FatecMapHelper {
     let zoomLevel = 16.75
     let stroke = LineLayerAttributes(lineColor: FatecColors.cinzaEscuro,
                                      lineWidth: ZoomableInfo<Double>([:], defaultValue: 1.0),
-                                     visibility: ZoomableInfo<Bool>(defaultValue: true))
+                                     visibility: ZoomableInfo(defaultValue: 1.0))
     let fill = FillLayerAttributes(fillColor: FatecColors.branco,
                                    visibility: ZoomableInfo<Bool>(defaultValue: true))
     
@@ -317,7 +371,7 @@ class BuildingMapHelper {
     let nameLayer: MappingLayer
     let stroke = LineLayerAttributes(lineColor: FatecColors.cinzaEscuro,
                                      lineWidth: ZoomableInfo<Double>([:], defaultValue: 1.0),
-                                     visibility: ZoomableInfo<Bool>([.Surroundings: false], defaultValue: true))
+                                     visibility: ZoomableInfo<Double>([.Surroundings: 0.0], defaultValue: 1.0))
     
     init(building: Building) {
         self.building = building
@@ -371,6 +425,7 @@ class RouteMapHelper {
     let route: Route<Location>?
     let leg: LocationRouteLeg?
     let routeLayer: LineLayer
+    let circlesLayer: CirclesLayer
     
     init(route: Route<Location>) {
         self.route = route
@@ -378,7 +433,9 @@ class RouteMapHelper {
         self.identifier = "route-\(route.from.id.code)-\(route.to.id.code)"
         self.routeLayer = LineLayer(identifier: self.identifier,
                                     coordinates: route.coordinates,
-                                    strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 1.0), visibility: ZoomableInfo.init(defaultValue: true)))
+                                    strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 2.0), visibility: ZoomableInfo.init(defaultValue: 0.75)))
+        self.circlesLayer = CirclesLayer(identifier: self.identifier, coordinates: [route.coordinates[0], route.coordinates.last!],
+                                         circleAttributes: CircleLayerAttributes(circleColor: FatecColors.vermelho, circleRadius: ZoomableInfo.init(defaultValue: 5.0), opacity: 0.75))
     }
     
     init(leg: LocationRouteLeg) {
@@ -387,7 +444,9 @@ class RouteMapHelper {
         self.identifier = "routeleg-\(leg.from.id.code)-\(leg.to.id.code)"
         self.routeLayer = LineLayer(identifier: self.identifier,
                                     coordinates: leg.coordinates,
-                                    strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 1.0), visibility: ZoomableInfo.init(defaultValue: true)))
+                                    strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 2.0), visibility: ZoomableInfo.init(defaultValue: 0.75)))
+        self.circlesLayer = CirclesLayer(identifier: self.identifier, coordinates: [leg.coordinates[0], leg.coordinates.last!],
+                                         circleAttributes: CircleLayerAttributes(circleColor: FatecColors.vermelho, circleRadius: ZoomableInfo.init(defaultValue: 5.0), opacity: 0.75))
     }
 }
 
