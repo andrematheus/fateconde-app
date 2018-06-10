@@ -28,7 +28,16 @@ class DebugTableViewController: UITableViewController {
     }
 
     @IBAction func zoomToSantiago(_ sender: Any) {
-        mainViewController?.selectedPoi = AppData.sharedInstance.pointsOfInterest.locationsByCode["sa"]
+        //mainViewController?.selectedPoi = AppData.sharedInstance.pointsOfInterest.locationsByCode["sa"]
+        //self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func showSampleRoute(_ sender: Any) {
+        let app = AppData.sharedInstance
+        let l1 = app.pointsOfInterest.locationsByCode["g1"]!
+        let l2 = app.pointsOfInterest.locationsByCode["sa0s2"]!
+        let route = app.pointsOfInterest.routes.route(from: l1, to: l2)
+        mainViewController?.selectedPoi = route
         self.dismiss(animated: true, completion: nil)
     }
     

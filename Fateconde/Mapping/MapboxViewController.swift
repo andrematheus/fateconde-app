@@ -20,7 +20,7 @@ enum MapZoomLevel: Double {
 
 class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView?
-    var debug = false
+    var debug = true
     
     let data = AppData.sharedInstance
     
@@ -29,6 +29,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var bottomInset: CGFloat = 240
     
     weak var currentAnnotation: MGLPointAnnotation? = nil
+    var routeHelper: RouteMapHelper? = nil
     
     weak var viewController: ViewController? = nil
     
@@ -65,6 +66,10 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
             if let ann = currentAnnotation {
                 mapView?.removeAnnotation(ann)
             }
+            if let routeHelper = self.routeHelper, let style = self.mapView?.style {
+                routeHelper.routeLayer.uninstall(style: style)
+                self.routeHelper = nil
+            }
             selectedBuilding = nil
             if let poi = poi {
                 switch poi {
@@ -90,6 +95,14 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                         mapView?.addAnnotation(ann)
                         currentAnnotation = ann
                     }
+                case let route as Route<Location>:
+                    let routeHelper = data.routeHelper(for: route)
+                    let layer = routeHelper.routeLayer
+                    if let mapView = self.mapView, let style = mapView.style {
+                        layer.install(style: style)
+                        mapView.showAnnotations([layer.feature], animated: true)
+                    }
+                    self.routeHelper = routeHelper
                 default:
                     print("Unknown poi: \(poi)")
                 }

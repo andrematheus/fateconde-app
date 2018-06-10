@@ -16,6 +16,8 @@ class EmbeddedViewController: UIViewController {
     public weak var delegate: ViewController?
     weak var poiInfo: PoiInfoViewController?
     
+    @IBOutlet weak var bottomBorderView: UIView!
+    
     override func viewDidLoad() {
         view.clipsToBounds = false;
         view.layer.shadowColor = UIColor.black.cgColor
@@ -72,11 +74,13 @@ class EmbeddedViewController: UIViewController {
     }
     
     func hidePoiInfo() {
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
-            self.poiInfo?.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
-        }, completion: { done in
-            self.poiInfo?.remove()
-            self.poiInfo = nil
-        })
+        if self.poiInfo != nil {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
+                self.poiInfo?.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
+            }, completion: { done in
+                self.poiInfo?.remove()
+                self.poiInfo = nil
+            })
+        }
     }
 }

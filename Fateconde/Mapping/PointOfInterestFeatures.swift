@@ -16,13 +16,6 @@ protocol MappingLayer {
     func hide()
 }
 
-class FatecColors: UIColor {
-    // TODO: cores da fatec
-    static let cinza = UIColor.gray
-    static let branco = UIColor.white
-    static let vermelho = UIColor.red
-}
-
 struct ZoomableInfo<T> {
     private let byLevel: [MapZoomLevel: T]
     let defaultValue: T
@@ -101,6 +94,42 @@ struct ImageLayer: MappingLayer {
     
     func hide() {
         layer.isVisible = false
+    }
+}
+
+struct LineLayer: MappingLayer {
+    let identifier: String
+    let source: MGLShapeSource
+    let strokeLayer: MGLLineStyleLayer
+    let strokeAttributes: LineLayerAttributes
+    let feature: MGLPolylineFeature
+    
+    init(identifier: String, coordinates: [CLLocationCoordinate2D], strokeAttributes: LineLayerAttributes) {
+        self.identifier = identifier
+        self.feature = MGLPolylineFeature(coordinates: coordinates, count: UInt(coordinates.count))
+        let features = [feature]
+        self.source = MGLShapeSource(identifier: "\(identifier)-line-source", features: features, options: nil)
+        self.strokeLayer = MGLLineStyleLayer(identifier: "\(identifier)-line-stroke", source: source)
+        self.strokeAttributes = strokeAttributes
+        self.strokeAttributes.applyTo(strokeLayer)
+    }
+    
+    func install(style: MGLStyle) {
+        style.addSource(source)
+        style.addLayer(strokeLayer)
+    }
+    
+    func uninstall(style: MGLStyle) {
+        style.removeLayer(strokeLayer)
+        style.removeSource(source)
+    }
+    
+    func show() {
+        strokeLayer.isVisible = true
+    }
+    
+    func hide() {
+        strokeLayer.isVisible = false
     }
 }
 
@@ -213,14 +242,26 @@ func boolToVisibility(_ bool: Bool) -> Double {
     }
 }
 
+struct Halo {
+    let width: ZoomableInfo<Double>
+    let color: UIColor
+    let blurWidth: ZoomableInfo<Double>
+}
+
 struct SymbolTextLayerAttributes {
     let textSize: ZoomableInfo<Double>
     let visibility: ZoomableInfo<Bool>
+    let textBlur: Halo?
     
     func applyTo(_ layer: MGLSymbolStyleLayer) {
         layer.textAllowsOverlap = NSExpression(forConstantValue: true)
         layer.textFontSize = textSize.nsExpression
         layer.textOpacity = visibility.map(boolToVisibility).nsExpression
+        if let halo = textBlur {
+            layer.textHaloBlur = halo.width.nsExpression
+            layer.textHaloColor = NSExpression.init(forConstantValue: halo.color)
+            layer.textHaloWidth = halo.blurWidth.nsExpression
+        }
     }
 }
 
@@ -239,7 +280,7 @@ class FatecMapHelper {
     let imageLayer: MappingLayer
     let nameLayer: MappingLayer
     let zoomLevel = 16.75
-    let stroke = LineLayerAttributes(lineColor: FatecColors.cinza,
+    let stroke = LineLayerAttributes(lineColor: FatecColors.cinzaEscuro,
                                      lineWidth: ZoomableInfo<Double>([:], defaultValue: 1.0),
                                      visibility: ZoomableInfo<Bool>(defaultValue: true))
     let fill = FillLayerAttributes(fillColor: FatecColors.branco,
@@ -257,7 +298,9 @@ class FatecMapHelper {
         }
         
         self.nameLayer = NameLayer(identifier: identifier, coordinate: fatec.point, text: "FATEC",
-                                   attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 12.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Surroundings: true], defaultValue: false)))
+                                   attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 12.0),
+                                                                         visibility: ZoomableInfo<Bool>([MapZoomLevel.Surroundings: true], defaultValue: false),
+                                                                         textBlur: Halo(width: ZoomableInfo.init(defaultValue: 0.1), color: UIColor.white, blurWidth: ZoomableInfo.init(defaultValue: 10.0))))
     }
 }
 
@@ -272,7 +315,7 @@ class BuildingMapHelper {
     let outlineLayer: MappingLayer
     let planLayers: [Int: MappingLayer]
     let nameLayer: MappingLayer
-    let stroke = LineLayerAttributes(lineColor: FatecColors.cinza,
+    let stroke = LineLayerAttributes(lineColor: FatecColors.cinzaEscuro,
                                      lineWidth: ZoomableInfo<Double>([:], defaultValue: 1.0),
                                      visibility: ZoomableInfo<Bool>([.Surroundings: false], defaultValue: true))
     
@@ -281,7 +324,8 @@ class BuildingMapHelper {
         self.identifier = "building-\(building.code)"
         // TODO: use short name
         self.nameLayer = NameLayer(identifier: identifier, coordinate: building.point, text: building.name,
-                                   attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 9.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Fatec: true], defaultValue: false)))
+                                   attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 9.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Fatec: true], defaultValue: false),
+                                                                         textBlur: Halo(width: ZoomableInfo.init(defaultValue: 0.1), color: UIColor.white, blurWidth: ZoomableInfo.init(defaultValue: 10.0))))
         // TODO: play layers by floor
         var planLayers: [Int: MappingLayer] = [:]
         for level in self.building.levels {
@@ -317,7 +361,20 @@ class LocationMapHelper {
         self.identifier = "location-\(location.id.code)"
         self.location = location
         self.nameLayer = NameLayer(identifier: identifier, coordinate: location.point, text: location.name,
-                                   attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 9.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Building: true], defaultValue: false)))
+                                   attributes: SymbolTextLayerAttributes(textSize: ZoomableInfo<Double>(defaultValue: 9.0), visibility: ZoomableInfo<Bool>([MapZoomLevel.Building: true], defaultValue: false),
+                                                                         textBlur: Halo(width: ZoomableInfo.init(defaultValue: 0.1), color: UIColor.white, blurWidth: ZoomableInfo.init(defaultValue: 10.0))))
+    }
+}
+
+class RouteMapHelper {
+    let identifier: String
+    let route: Route<Location>
+    let routeLayer: LineLayer
+    
+    init(route: Route<Location>) {
+        self.route = route
+        self.identifier = "route-\(route.from.id.code)-\(route.to.id.code)"
+        self.routeLayer = LineLayer(identifier: self.identifier, coordinates: self.route.coordinates, strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 1.0), visibility: ZoomableInfo.init(defaultValue: true)))
     }
 }
 

@@ -16,6 +16,7 @@ final class AppData {
     let surroundingsHelper: SurroundingsHelper
     let buildingHelpers: [String: BuildingMapHelper]
     let locationHelpers: [String: LocationMapHelper]
+    private var routeHelper: RouteMapHelper? = nil
     
     init() {
         guard let path = Bundle.main.path(forResource: "Fatec", ofType: "json") else {
@@ -42,5 +43,16 @@ final class AppData {
             locationHelpers[location.id.code] = LocationMapHelper(location: location)
         }
         self.locationHelpers = locationHelpers
+    }
+    
+    func routeHelper(for route: Route<Location>) -> RouteMapHelper {
+        if let routeHelper = routeHelper {
+            if routeHelper.route.code != route.code {
+                self.routeHelper = RouteMapHelper(route: route)
+            }
+        } else {
+            routeHelper = RouteMapHelper(route: route)
+        }
+        return routeHelper!
     }
 }

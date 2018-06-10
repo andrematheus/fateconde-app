@@ -185,6 +185,9 @@ class ViewController: UIViewController, BottomSheetDelegate {
             self.bottomSheetHeight.constant = newHeight
             self.view.layoutIfNeeded()
         })
+        if newHeight < bottomSheetLarge {
+            self.bottomSheetController?.searchBar.resignFirstResponder()
+        }
     }
 }
 

@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import PointOfInterest
 
 class PoiInfoViewController: UIViewController {
     weak var embedParent: EmbeddedViewController? = nil
+    
+    var poi: PointOfInterest? = nil {
+        didSet {
+            updateLabels()
+        }
+    }
     
     @IBOutlet weak var poiName: UILabel!
     @IBOutlet weak var poiLocalization: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateLabels()
     }
 
+    func updateLabels() {
+        if let poi = self.poi, let poiName = self.poiName, let poiLocalization = self.poiLocalization {
+            poiName.text = poi.title
+            poiLocalization.text = poi.description
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,5 +51,4 @@ class PoiInfoViewController: UIViewController {
     
     @IBAction func showRouteSetup(_ sender: Any) {
     }
-    
 }

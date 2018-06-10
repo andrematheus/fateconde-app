@@ -103,10 +103,14 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func selectedPoiChanged(_ poi: PointOfInterest?) {
+        if let vc = self.embeddingParent {
+            vc.hidePoiInfo()
+        }
         if let poi = poi {
             if poi.displaysInfo {
                 if let vc = self.embeddingParent {
                     let poiInfo = PoiInfoViewController(nibName: "PoiInfoViewController", bundle: nil)
+                    poiInfo.poi = poi
                     vc.displayPoiInfo(poiInfo: poiInfo)
                 }
             }
@@ -181,6 +185,7 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         delegate?.growBottomSheet()
+        searchBar.showsCancelButton = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -190,6 +195,7 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         if let poi = delegate?.selectedPoi {
             self.selectedPoiChanged(poi)
         }
+        searchBar.showsCancelButton = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
