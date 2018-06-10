@@ -26,6 +26,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     @IBOutlet weak var locationLabel: PillLabel!
     @IBOutlet weak var levels : UISegmentedControl!
     var theLevels: [Int] = []
+    var routeLeg = 0
     
     var selectedPoi: PointOfInterest? = nil {
         didSet {

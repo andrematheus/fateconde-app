@@ -45,13 +45,24 @@ final class AppData {
         self.locationHelpers = locationHelpers
     }
     
-    func routeHelper(for route: Route<Location>) -> RouteMapHelper {
-        if let routeHelper = routeHelper {
-            if routeHelper.route.code != route.code {
+    func routeHelper(withRoute route: Route<Location>) -> RouteMapHelper {
+        if let routeHelper = routeHelper, let routeHelperRoute = routeHelper.route {
+            if routeHelperRoute.code != route.code {
                 self.routeHelper = RouteMapHelper(route: route)
             }
         } else {
             routeHelper = RouteMapHelper(route: route)
+        }
+        return routeHelper!
+    }
+    
+    func routeHelper(withLeg leg: LocationRouteLeg) -> RouteMapHelper {
+        if let routeHelper = routeHelper, let routeHelperLeg = routeHelper.leg {
+            if routeHelperLeg.code != leg.code {
+                self.routeHelper = RouteMapHelper(leg: leg)
+            }
+        } else {
+            self.routeHelper = RouteMapHelper(leg: leg)
         }
         return routeHelper!
     }

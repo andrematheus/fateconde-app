@@ -13,7 +13,7 @@ import PointOfInterest
 enum MapZoomLevel: Double {
     case Surroundings = 15.0
     case Fatec = 16.75
-    case Building = 17.0
+    case Building = 17.5
     
     static let allValues: [MapZoomLevel] = [.Surroundings, .Fatec, .Building]
 }
@@ -46,7 +46,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         
         mapView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView?.allowsTilting = false
-        mapView?.allowsZooming = false
+        mapView?.allowsZooming = true
         mapView?.allowsRotating = false
         //mapView?.allowsScrolling = false
         mapView?.showsUserLocation = true
@@ -70,6 +70,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                 routeHelper.routeLayer.uninstall(style: style)
                 self.routeHelper = nil
             }
+            showLevel(0)
             selectedBuilding = nil
             if let poi = poi {
                 switch poi {
@@ -96,13 +97,21 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                         currentAnnotation = ann
                     }
                 case let route as Route<Location>:
-                    let routeHelper = data.routeHelper(for: route)
+                    let routeHelper = data.routeHelper(withRoute: route)
                     let layer = routeHelper.routeLayer
                     if let mapView = self.mapView, let style = mapView.style {
                         layer.install(style: style)
                         mapView.showAnnotations([layer.feature], animated: true)
                     }
                     self.routeHelper = routeHelper
+                case let leg as LocationRouteLeg:
+                    let routeLegHelper = data.routeHelper(withLeg: leg)
+                    let layer = routeLegHelper.routeLayer
+                    if let mapView = self.mapView, let style = mapView.style {
+                        layer.install(style: style)
+                        mapView.showAnnotations([layer.feature], animated: true)
+                    }
+                    self.routeHelper = routeLegHelper
                 default:
                     print("Unknown poi: \(poi)")
                 }
@@ -130,9 +139,11 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         data.fatecHelper.nameLayer.install(style: style)
         
         for bh in data.buildingHelpers.values {
-            for pl in bh.planLayers.values {
+            for (k,pl) in bh.planLayers {
                 pl.install(style: style)
-                pl.hide()
+                if k > 0 {
+                    pl.hide()
+                }
             }
         }
         for bh in data.buildingHelpers.values {
@@ -144,7 +155,9 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         
         for l in data.locationHelpers.values {
             l.nameLayer.install(style: style)
-            l.nameLayer.hide()
+            if l.location.id.buildingLevel > 0 {
+                l.nameLayer.hide()
+            }
         }
     }
     

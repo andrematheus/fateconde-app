@@ -368,13 +368,26 @@ class LocationMapHelper {
 
 class RouteMapHelper {
     let identifier: String
-    let route: Route<Location>
+    let route: Route<Location>?
+    let leg: LocationRouteLeg?
     let routeLayer: LineLayer
     
     init(route: Route<Location>) {
         self.route = route
+        self.leg = nil
         self.identifier = "route-\(route.from.id.code)-\(route.to.id.code)"
-        self.routeLayer = LineLayer(identifier: self.identifier, coordinates: self.route.coordinates, strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 1.0), visibility: ZoomableInfo.init(defaultValue: true)))
+        self.routeLayer = LineLayer(identifier: self.identifier,
+                                    coordinates: route.coordinates,
+                                    strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 1.0), visibility: ZoomableInfo.init(defaultValue: true)))
+    }
+    
+    init(leg: LocationRouteLeg) {
+        self.route = nil
+        self.leg = leg
+        self.identifier = "routeleg-\(leg.from.id.code)-\(leg.to.id.code)"
+        self.routeLayer = LineLayer(identifier: self.identifier,
+                                    coordinates: leg.coordinates,
+                                    strokeAttributes: LineLayerAttributes(lineColor: FatecColors.destaque, lineWidth: ZoomableInfo.init(defaultValue: 1.0), visibility: ZoomableInfo.init(defaultValue: true)))
     }
 }
 
