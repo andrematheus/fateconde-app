@@ -41,7 +41,7 @@
                             </constraints>
                             <color key="tintColor" name="Cinza Médio"/>
                             <state key="normal" image="close-button">
-                                <color key="titleColor" name="Cinza Escuro"/>
+                                <color key="titleColor" name="Vermelho"/>
                             </state>
                         </button>
                     </subviews>
@@ -54,8 +54,11 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVb-bF-8uv">
-                    <rect key="frame" x="8" y="120" width="359" height="30"/>
+                    <rect key="frame" x="8" y="120" width="359" height="44"/>
                     <color key="backgroundColor" name="Vermelho"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="IzX-RR-5uz"/>
+                    </constraints>
                     <color key="tintColor" name="Branco"/>
                     <state key="normal" title="Começar"/>
                     <userDefinedRuntimeAttributes>
@@ -136,11 +139,11 @@
         <namedColor name="Cinza Claro">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Cinza Escuro">
-            <color red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Cinza Médio">
             <color red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Vermelho">
+            <color red="0.6470588235294118" green="0.019607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Vermelho">
             <color red="0.64705882349999999" green="0.019607843140000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

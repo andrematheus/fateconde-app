@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FatecHeader" customModule="Fateconde" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="8xS-k6-eTD"/>
+                <outlet property="titleLabel" destination="KdK-0a-cbx" id="K2L-OP-bdJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3G-tK-7C7">
+                    <rect key="frame" x="323" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="UPC-9A-Zum"/>
+                        <constraint firstAttribute="width" constant="44" id="aRE-KQ-QSD"/>
+                    </constraints>
+                    <color key="tintColor" name="Cinza Médio"/>
+                    <state key="normal" image="close-button">
+                        <color key="titleColor" name="Cinza Escuro"/>
+                    </state>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="LLo-3N-bkY"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdK-0a-cbx">
+                    <rect key="frame" x="166" y="11.5" width="44" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" name="Cinza Claro"/>
+            <constraints>
+                <constraint firstItem="KdK-0a-cbx" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2Ka-Mq-YRQ"/>
+                <constraint firstItem="KdK-0a-cbx" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="8es-Ov-Kg8"/>
+                <constraint firstItem="F3G-tK-7C7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZF2-zx-DyT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3G-tK-7C7" secondAttribute="trailing" constant="8" id="xhy-oT-aEo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="-250.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close-button" width="44" height="44"/>
+        <namedColor name="Cinza Claro">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Cinza Escuro">
+            <color red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Cinza Médio">
+            <color red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

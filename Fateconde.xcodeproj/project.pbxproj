@@ -27,11 +27,11 @@
 		E57CA90320CC248C00DCE1C9 /* PoiInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E57CA90120CC248C00DCE1C9 /* PoiInfoViewController.xib */; };
 		E58306D120CE069B003F8FFB /* RouteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58306CF20CE069B003F8FFB /* RouteInfoViewController.swift */; };
 		E58306D220CE069B003F8FFB /* RouteInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58306D020CE069B003F8FFB /* RouteInfoViewController.xib */; };
+		E58306D820CE114D003F8FFB /* FatecHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58306D720CE114D003F8FFB /* FatecHeader.xib */; };
+		E58306DA20CE123D003F8FFB /* FatecHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58306D920CE123D003F8FFB /* FatecHeader.swift */; };
 		E598ABEC20CDC3A600B2C1A9 /* CreateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598ABEA20CDC3A600B2C1A9 /* CreateRouteViewController.swift */; };
 		E598ABED20CDC3A600B2C1A9 /* CreateRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E598ABEB20CDC3A600B2C1A9 /* CreateRouteViewController.xib */; };
 		E5C6B55420BCF30B0037BB47 /* PointOfInterestFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */; };
-		E5DEA3D120CDBB260097ED1A /* RouteLegsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DEA3CF20CDBB260097ED1A /* RouteLegsViewController.swift */; };
-		E5DEA3D220CDBB260097ED1A /* RouteLegsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5DEA3D020CDBB260097ED1A /* RouteLegsViewController.xib */; };
 		E5FE2B4620BB56E600F3945A /* Fatec.json in Resources */ = {isa = PBXBuildFile; fileRef = E5FE2B4520BB56E500F3945A /* Fatec.json */; };
 /* End PBXBuildFile section */
 
@@ -94,11 +94,11 @@
 		E57CA90120CC248C00DCE1C9 /* PoiInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoiInfoViewController.xib; sourceTree = "<group>"; };
 		E58306CF20CE069B003F8FFB /* RouteInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoViewController.swift; sourceTree = "<group>"; };
 		E58306D020CE069B003F8FFB /* RouteInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteInfoViewController.xib; sourceTree = "<group>"; };
+		E58306D720CE114D003F8FFB /* FatecHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FatecHeader.xib; sourceTree = "<group>"; };
+		E58306D920CE123D003F8FFB /* FatecHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatecHeader.swift; sourceTree = "<group>"; };
 		E598ABEA20CDC3A600B2C1A9 /* CreateRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRouteViewController.swift; sourceTree = "<group>"; };
 		E598ABEB20CDC3A600B2C1A9 /* CreateRouteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRouteViewController.xib; sourceTree = "<group>"; };
 		E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestFeatures.swift; sourceTree = "<group>"; };
-		E5DEA3CF20CDBB260097ED1A /* RouteLegsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteLegsViewController.swift; sourceTree = "<group>"; };
-		E5DEA3D020CDBB260097ED1A /* RouteLegsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteLegsViewController.xib; sourceTree = "<group>"; };
 		E5FE2B4520BB56E500F3945A /* Fatec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fatec.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				903FF23220C1C4E5006607D7 /* PillLabel.swift */,
+				E58306D720CE114D003F8FFB /* FatecHeader.xib */,
+				E58306D920CE123D003F8FFB /* FatecHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -238,8 +240,6 @@
 				E56433DF20A2940000CC461C /* BottomSheetViewController.swift */,
 				E57CA90020CC248C00DCE1C9 /* PoiInfoViewController.swift */,
 				E57CA90120CC248C00DCE1C9 /* PoiInfoViewController.xib */,
-				E5DEA3CF20CDBB260097ED1A /* RouteLegsViewController.swift */,
-				E5DEA3D020CDBB260097ED1A /* RouteLegsViewController.xib */,
 				E598ABEA20CDC3A600B2C1A9 /* CreateRouteViewController.swift */,
 				E598ABEB20CDC3A600B2C1A9 /* CreateRouteViewController.xib */,
 				E58306CF20CE069B003F8FFB /* RouteInfoViewController.swift */,
@@ -365,7 +365,7 @@
 			files = (
 				E598ABED20CDC3A600B2C1A9 /* CreateRouteViewController.xib in Resources */,
 				E564338B20A28D0900CC461C /* LaunchScreen.storyboard in Resources */,
-				E5DEA3D220CDBB260097ED1A /* RouteLegsViewController.xib in Resources */,
+				E58306D820CE114D003F8FFB /* FatecHeader.xib in Resources */,
 				E5FE2B4620BB56E600F3945A /* Fatec.json in Resources */,
 				E57CA90320CC248C00DCE1C9 /* PoiInfoViewController.xib in Resources */,
 				E564338820A28D0900CC461C /* Assets.xcassets in Resources */,
@@ -441,9 +441,9 @@
 				E564338320A28D0500CC461C /* ViewController.swift in Sources */,
 				E57CA90220CC248C00DCE1C9 /* PoiInfoViewController.swift in Sources */,
 				E56433E020A2940000CC461C /* BottomSheetViewController.swift in Sources */,
-				E5DEA3D120CDBB260097ED1A /* RouteLegsViewController.swift in Sources */,
 				E58306D120CE069B003F8FFB /* RouteInfoViewController.swift in Sources */,
 				E564338120A28D0500CC461C /* AppDelegate.swift in Sources */,
+				E58306DA20CE123D003F8FFB /* FatecHeader.swift in Sources */,
 				E5C6B55420BCF30B0037BB47 /* PointOfInterestFeatures.swift in Sources */,
 				E598ABEC20CDC3A600B2C1A9 /* CreateRouteViewController.swift in Sources */,
 				903FF23320C1C4E5006607D7 /* PillLabel.swift in Sources */,

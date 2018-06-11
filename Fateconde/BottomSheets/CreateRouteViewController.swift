@@ -9,7 +9,7 @@
 import UIKit
 import PointOfInterest
 
-class CreateRouteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class CreateRouteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FatecHeaderDelegate {
     let appData: AppData = AppData.sharedInstance
     var filteredPois: [Location]? = nil
     var update = false
@@ -37,11 +37,11 @@ class CreateRouteViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var toStack: UIStackView!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var header: FatecHeader!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.header.title = "Itinerário"        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,9 +75,7 @@ class CreateRouteViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func close(_ sender: Any) {
-        embedParent?.hideCreateRoute()
-    }
+    
     
     func remove() {
         self.view.removeFromSuperview()
@@ -165,4 +163,7 @@ class CreateRouteViewController: UIViewController, UITableViewDelegate, UITableV
         searchBar.resignFirstResponder()
     }
 
+    func closed() {
+        embedParent?.hideCreateRoute()
+    }
 }
