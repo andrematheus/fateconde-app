@@ -78,6 +78,12 @@ class EmbeddedViewController: UIViewController {
         self.bottomSheetViewController.delegate = delegate
     }
     
+    func startNavigation(_ route: Route<Location>) {
+        hideRouteInfo()
+        let leg = route.locationLegs[0]
+        self.delegate?.selectedPoi = leg
+    }
+    
     func removeSubControllers() {
         self.poiInfo?.remove()
         self.createRoute?.remove()
