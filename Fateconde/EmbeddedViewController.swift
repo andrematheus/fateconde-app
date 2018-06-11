@@ -25,6 +25,7 @@ class EmbeddedViewController: UIViewController {
     public weak var delegate: ViewController?
     weak var poiInfo: PoiInfoViewController?
     weak var createRoute: CreateRouteViewController?
+    weak var routeInfo: RouteInfoViewController?
     
     @IBOutlet weak var bottomBorderView: UIView!
     
@@ -80,16 +81,10 @@ class EmbeddedViewController: UIViewController {
     func removeSubControllers() {
         self.poiInfo?.remove()
         self.createRoute?.remove()
+        self.routeInfo?.remove()
     }
     func displayCreateRoute(createRoute: CreateRouteViewController) {
-        removeSubControllers()
-        self.addChildViewController(createRoute)
-        createRoute.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
-        createRoute.didMove(toParentViewController: self)
-        self.outerView.addSubview(createRoute.view)
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
-            createRoute.view.frame = self.outerView.frame
-        })
+        displayInfo(info: createRoute)
         createRoute.embedParent = self
         self.createRoute = createRoute
         self.allowedHeights = [.maximum]
@@ -108,14 +103,7 @@ class EmbeddedViewController: UIViewController {
     }
     
     func displayPoiInfo(poiInfo: PoiInfoViewController) {
-        removeSubControllers()
-        self.addChildViewController(poiInfo)
-        poiInfo.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
-        poiInfo.didMove(toParentViewController: self)
-        self.outerView.addSubview(poiInfo.view)
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
-            poiInfo.view.frame = self.outerView.frame
-        })
+        displayInfo(info: poiInfo)
         poiInfo.embedParent = self
         self.poiInfo = poiInfo
         self.allowedHeights = [.medium, .minimal]
@@ -128,19 +116,38 @@ class EmbeddedViewController: UIViewController {
             }, completion: { done in
                 self.poiInfo?.remove()
                 self.poiInfo = nil
-                if self.delegate?.selectedPoi is Route<Location> || self.delegate?.selectedPoi is LocationRouteLeg {
-                    let poi: PointOfInterest?
-                    if let route = self.delegate?.selectedPoi as? Route<Location> {
-                        poi = route.from
-                    } else if let leg = self.delegate?.selectedPoi as? LocationRouteLeg {
-                        poi = leg.from
-                    } else {
-                        poi = nil
-                    }
-                    self.delegate?.selectedPoi = poi ?? AppData.sharedInstance.pointsOfInterest.fatec
-                }
             })
         }
         self.allowedHeights = AllowedHeights.all
+    }
+    
+    func displayRouteInfo(routeInfo: RouteInfoViewController) {
+        displayInfo(info: routeInfo)
+        routeInfo.embedParent = self
+        self.routeInfo = routeInfo
+        self.allowedHeights = [.medium]
+    }
+    
+    func hideRouteInfo() {
+        if self.routeInfo != nil {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
+                self.routeInfo?.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
+            }, completion: { done in
+                self.routeInfo?.remove()
+                self.routeInfo = nil
+            })
+        }
+        self.allowedHeights = AllowedHeights.all
+    }
+    
+    func displayInfo(info: UIViewController) {
+        removeSubControllers()
+        self.addChildViewController(info)
+        info.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
+        info.didMove(toParentViewController: self)
+        self.outerView.addSubview(info.view)
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
+            info.view.frame = self.outerView.frame
+        })
     }
 }

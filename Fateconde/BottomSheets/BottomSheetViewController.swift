@@ -106,11 +106,18 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         if let poi = poi {
             if let vc = self.embeddingParent {
                 if poi.displaysInfo {
-                    let poiInfo = PoiInfoViewController(nibName: "PoiInfoViewController", bundle: nil)
-                    poiInfo.poi = poi
-                    vc.displayPoiInfo(poiInfo: poiInfo)
+                    if let poi = poi as? Location {
+                        let poiInfo = PoiInfoViewController(nibName: "PoiInfoViewController", bundle: nil)
+                        poiInfo.poi = poi
+                        vc.displayPoiInfo(poiInfo: poiInfo)
+                    } else if let poi = poi as? Route<Location> {
+                        let routeInfo = RouteInfoViewController(nibName: "RouteInfoViewController", bundle: nil)
+                        routeInfo.route = poi
+                        vc.displayRouteInfo(routeInfo: routeInfo)
+                    }
                 } else {
                     vc.hidePoiInfo()
+                    vc.hideRouteInfo()
                 }
             }
             if filteredPois.isEmpty {
