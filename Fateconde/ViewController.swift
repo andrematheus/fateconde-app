@@ -28,29 +28,25 @@ class ViewController: UIViewController, BottomSheetDelegate {
     var theLevels: [Int] = []
     var routeLeg = 0
     
-    var selectedPoi: PointOfInterest? = nil {
+    var selectedPoi: PointOfInterest = AppData.sharedInstance.pointsOfInterest.fatec {
         didSet {
-            if let title = selectedPoi?.title {
-                locationLabel?.text = title
-            }
+            locationLabel.text = selectedPoi.title
             updateViewButtons()
             mapController?.lookAt(poi: selectedPoi)
             bottomSheetController?.selectedPoiChanged(selectedPoi)
             
-            if let poi = selectedPoi {                
-                if poi.hasMoreThanOneLevel {
-                    updateLevels(poi: poi)
-                    mapController?.showLevel(selectedLevel)
-                } else {
-                    if let location = poi as? Location {
-                        if let building = location.building {
-                            updateLevels(poi: building)
-                        }
-                        selectedLevel = location.id.buildingLevel
-                    } else {
-                        selectedLevel = 0
-                        self.levels.isHidden = true
+            if selectedPoi.hasMoreThanOneLevel {
+                updateLevels(poi: selectedPoi)
+                mapController?.showLevel(selectedLevel)
+            } else {
+                if let location = selectedPoi as? Location {
+                    if let building = location.building {
+                        updateLevels(poi: building)
                     }
+                    selectedLevel = location.id.buildingLevel
+                } else {
+                    selectedLevel = 0
+                    self.levels.isHidden = true
                 }
             }
         }
@@ -87,18 +83,17 @@ class ViewController: UIViewController, BottomSheetDelegate {
                         self.levels.selectedSegmentIndex = index
                     }
                 }
-                if let poi = selectedPoi {
-                    if let location = poi as? Location {
-                        if location.id.buildingLevel != selectedLevel {
-                            let level = selectedLevel
-                            self.selectedPoi = location.building
-                            selectedLevel = level
-                        }
+                let poi = selectedPoi
+                if let location = poi as? Location {
+                    if location.id.buildingLevel != selectedLevel {
+                        let level = selectedLevel
+                        self.selectedPoi = location.building ?? data.pointsOfInterest.fatec
+                        selectedLevel = level
                     }
-                    if let building = poi as? Building {
-                        if selectedLevel >= building.levels.count {
-                            selectedLevel = building.levels.last ?? building.levels.first ?? 0
-                        }
+                }
+                if let building = poi as? Building {
+                    if selectedLevel >= building.levels.count {
+                        selectedLevel = building.levels.last ?? building.levels.first ?? 0
                     }
                 }
             }
@@ -127,17 +122,13 @@ class ViewController: UIViewController, BottomSheetDelegate {
     }
     
     func updateViewButtons() {
-        if let poi = selectedPoi {
-            if poi is Fatec {
-                self.showFatecButton.isSelected = true
-                self.showSurroundingsButton.isSelected = false
-            } else if poi is Surroundings {
-                self.showFatecButton.isSelected = false
-                self.showSurroundingsButton.isSelected = true
-            } else {
-                self.showFatecButton.isSelected = false
-                self.showSurroundingsButton.isSelected = false
-            }
+        let poi = selectedPoi
+        if poi is Fatec {
+            self.showFatecButton.isSelected = true
+            self.showSurroundingsButton.isSelected = false
+        } else if poi is Surroundings {
+            self.showFatecButton.isSelected = false
+            self.showSurroundingsButton.isSelected = true
         } else {
             self.showFatecButton.isSelected = false
             self.showSurroundingsButton.isSelected = false
@@ -161,23 +152,67 @@ class ViewController: UIViewController, BottomSheetDelegate {
     }
     
     func growBottomSheet() {
-        if self.bottomSheetHeight.constant == bottomSheetMedium {
+        if self.bottomSheetHeight.constant == bottomSheetMedium && canSetHeight(newHeight: bottomSheetLarge) {
             self.animateBottomSheetHeight(newHeight: bottomSheetLarge)
-        } else if self.bottomSheetHeight.constant == bottomSheetSmall {
+        } else if self.bottomSheetHeight.constant == bottomSheetSmall && canSetHeight(newHeight: bottomSheetMedium){
             self.animateBottomSheetHeight(newHeight: bottomSheetMedium)
+        } else if self.bottomSheetHeight.constant == bottomSheetSmall && canSetHeight(newHeight: bottomSheetLarge){
+            self.animateBottomSheetHeight(newHeight: bottomSheetLarge)
         }
     }
     
     func shrinkBottomSheet() {
-        if self.bottomSheetHeight.constant == bottomSheetLarge {
+        if self.bottomSheetHeight.constant == bottomSheetLarge && canSetHeight(newHeight: bottomSheetMedium) {
             self.animateBottomSheetHeight(newHeight: bottomSheetMedium)
-        } else if self.bottomSheetHeight.constant == bottomSheetMedium {
+        } else if self.bottomSheetHeight.constant == bottomSheetMedium && canSetHeight(newHeight: bottomSheetSmall) {
+            self.animateBottomSheetHeight(newHeight: bottomSheetSmall)
+        } else if self.bottomSheetHeight.constant == bottomSheetLarge && canSetHeight(newHeight: bottomSheetSmall) {
             self.animateBottomSheetHeight(newHeight: bottomSheetSmall)
         }
     }
     
     var bottomSheetIsHuge: Bool {
         return self.bottomSheetHeight.constant > bottomSheetMedium
+    }
+    
+    func updateHeight(allowed: [AllowedHeights]) {
+        self.allowedHeights = allowed
+    }
+    
+    var allowedHeights: [AllowedHeights] = AllowedHeights.all {
+        didSet {
+            if self.allowedHeights.count == 1 {
+                self.animateBottomSheetHeight(newHeight: heightForAllowedHeight(allowed: self.allowedHeights[0]))
+            } else if self.allowedHeights.count == 2 {
+                var found = false
+                for ah in self.allowedHeights {
+                    if heightForAllowedHeight(allowed: ah) == self.bottomSheetHeight.constant {
+                        found = true
+                    }
+                }
+                if !found {
+                    self.animateBottomSheetHeight(newHeight: heightForAllowedHeight(allowed: self.allowedHeights[0]))
+                }
+            }
+        }
+    }
+    
+    func canSetHeight(newHeight: CGFloat) -> Bool {
+        var found = false
+        for ah in self.allowedHeights {
+            if heightForAllowedHeight(allowed: ah) == newHeight {
+                found = true
+            }
+        }
+        return found
+    }
+    
+    func heightForAllowedHeight(allowed: AllowedHeights) -> CGFloat {
+        switch allowed {
+        case .maximum: return bottomSheetLarge
+        case .medium: return bottomSheetMedium
+        case .minimal: return bottomSheetSmall
+        }
     }
     
     private func animateBottomSheetHeight(newHeight: CGFloat) {

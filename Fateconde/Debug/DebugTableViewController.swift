@@ -38,7 +38,7 @@ class DebugTableViewController: UITableViewController {
         let l2 = app.pointsOfInterest.locationsByCode["sa0s2"]!
         let route = app.pointsOfInterest.routes.route(from: l1, to: l2)
         if let mv = mainViewController {
-            mv.selectedPoi = route?.locationLegs[mv.routeLeg]
+            mv.selectedPoi = route?.locationLegs[mv.routeLeg] ?? app.pointsOfInterest.fatec
             mv.routeLeg += 1
             if let endIndex = route?.locationLegs.count {
                 if mv.routeLeg > endIndex - 1{

@@ -50,5 +50,10 @@ class PoiInfoViewController: UIViewController {
     }
     
     @IBAction func showRouteSetup(_ sender: Any) {
+        if let poi = self.poi as? Location {
+            let createRoute = CreateRouteViewController(nibName: "CreateRouteViewController", bundle: nil)
+            createRoute.from = poi
+            embedParent?.displayCreateRoute(createRoute: createRoute)
+        }
     }
 }

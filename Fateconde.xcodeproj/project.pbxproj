@@ -25,7 +25,11 @@
 		E56433E220A2A70500CC461C /* EmbeddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56433E120A2A70500CC461C /* EmbeddedViewController.swift */; };
 		E57CA90220CC248C00DCE1C9 /* PoiInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57CA90020CC248C00DCE1C9 /* PoiInfoViewController.swift */; };
 		E57CA90320CC248C00DCE1C9 /* PoiInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E57CA90120CC248C00DCE1C9 /* PoiInfoViewController.xib */; };
+		E598ABEC20CDC3A600B2C1A9 /* CreateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598ABEA20CDC3A600B2C1A9 /* CreateRouteViewController.swift */; };
+		E598ABED20CDC3A600B2C1A9 /* CreateRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E598ABEB20CDC3A600B2C1A9 /* CreateRouteViewController.xib */; };
 		E5C6B55420BCF30B0037BB47 /* PointOfInterestFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */; };
+		E5DEA3D120CDBB260097ED1A /* RouteLegsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DEA3CF20CDBB260097ED1A /* RouteLegsViewController.swift */; };
+		E5DEA3D220CDBB260097ED1A /* RouteLegsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5DEA3D020CDBB260097ED1A /* RouteLegsViewController.xib */; };
 		E5FE2B4620BB56E600F3945A /* Fatec.json in Resources */ = {isa = PBXBuildFile; fileRef = E5FE2B4520BB56E500F3945A /* Fatec.json */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +90,11 @@
 		E56433E120A2A70500CC461C /* EmbeddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedViewController.swift; sourceTree = "<group>"; };
 		E57CA90020CC248C00DCE1C9 /* PoiInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiInfoViewController.swift; sourceTree = "<group>"; };
 		E57CA90120CC248C00DCE1C9 /* PoiInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoiInfoViewController.xib; sourceTree = "<group>"; };
+		E598ABEA20CDC3A600B2C1A9 /* CreateRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRouteViewController.swift; sourceTree = "<group>"; };
+		E598ABEB20CDC3A600B2C1A9 /* CreateRouteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRouteViewController.xib; sourceTree = "<group>"; };
 		E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestFeatures.swift; sourceTree = "<group>"; };
+		E5DEA3CF20CDBB260097ED1A /* RouteLegsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteLegsViewController.swift; sourceTree = "<group>"; };
+		E5DEA3D020CDBB260097ED1A /* RouteLegsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteLegsViewController.xib; sourceTree = "<group>"; };
 		E5FE2B4520BB56E500F3945A /* Fatec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fatec.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +184,8 @@
 		E564337F20A28D0500CC461C /* Fateconde */ = {
 			isa = PBXGroup;
 			children = (
+				E5DEA3CE20CDBAF10097ED1A /* Debug */,
+				E5DEA3CD20CDBAD70097ED1A /* BottomSheets */,
 				903FF23120C1C4B2006607D7 /* Components */,
 				E5C6B55120BCF2B40037BB47 /* Mapping */,
 				E564338020A28D0500CC461C /* AppDelegate.swift */,
@@ -184,11 +194,7 @@
 				E564338720A28D0900CC461C /* Assets.xcassets */,
 				E564338920A28D0900CC461C /* LaunchScreen.storyboard */,
 				E564338C20A28D0900CC461C /* Info.plist */,
-				E56433DF20A2940000CC461C /* BottomSheetViewController.swift */,
 				E56433E120A2A70500CC461C /* EmbeddedViewController.swift */,
-				9065964620C19217009CB4FA /* DebugTableViewController.swift */,
-				E57CA90020CC248C00DCE1C9 /* PoiInfoViewController.swift */,
-				E57CA90120CC248C00DCE1C9 /* PoiInfoViewController.xib */,
 			);
 			path = Fateconde;
 			sourceTree = "<group>";
@@ -220,6 +226,28 @@
 				E5C6B55320BCF30B0037BB47 /* PointOfInterestFeatures.swift */,
 			);
 			path = Mapping;
+			sourceTree = "<group>";
+		};
+		E5DEA3CD20CDBAD70097ED1A /* BottomSheets */ = {
+			isa = PBXGroup;
+			children = (
+				E56433DF20A2940000CC461C /* BottomSheetViewController.swift */,
+				E57CA90020CC248C00DCE1C9 /* PoiInfoViewController.swift */,
+				E57CA90120CC248C00DCE1C9 /* PoiInfoViewController.xib */,
+				E5DEA3CF20CDBB260097ED1A /* RouteLegsViewController.swift */,
+				E5DEA3D020CDBB260097ED1A /* RouteLegsViewController.xib */,
+				E598ABEA20CDC3A600B2C1A9 /* CreateRouteViewController.swift */,
+				E598ABEB20CDC3A600B2C1A9 /* CreateRouteViewController.xib */,
+			);
+			path = BottomSheets;
+			sourceTree = "<group>";
+		};
+		E5DEA3CE20CDBAF10097ED1A /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				9065964620C19217009CB4FA /* DebugTableViewController.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,7 +357,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E598ABED20CDC3A600B2C1A9 /* CreateRouteViewController.xib in Resources */,
 				E564338B20A28D0900CC461C /* LaunchScreen.storyboard in Resources */,
+				E5DEA3D220CDBB260097ED1A /* RouteLegsViewController.xib in Resources */,
 				E5FE2B4620BB56E600F3945A /* Fatec.json in Resources */,
 				E57CA90320CC248C00DCE1C9 /* PoiInfoViewController.xib in Resources */,
 				E564338820A28D0900CC461C /* Assets.xcassets in Resources */,
@@ -404,8 +434,10 @@
 				E564338320A28D0500CC461C /* ViewController.swift in Sources */,
 				E57CA90220CC248C00DCE1C9 /* PoiInfoViewController.swift in Sources */,
 				E56433E020A2940000CC461C /* BottomSheetViewController.swift in Sources */,
+				E5DEA3D120CDBB260097ED1A /* RouteLegsViewController.swift in Sources */,
 				E564338120A28D0500CC461C /* AppDelegate.swift in Sources */,
 				E5C6B55420BCF30B0037BB47 /* PointOfInterestFeatures.swift in Sources */,
+				E598ABEC20CDC3A600B2C1A9 /* CreateRouteViewController.swift in Sources */,
 				903FF23320C1C4E5006607D7 /* PillLabel.swift in Sources */,
 				90D4600F20A397EB00E682F7 /* MapboxViewController.swift in Sources */,
 				9065964720C19217009CB4FA /* DebugTableViewController.swift in Sources */,

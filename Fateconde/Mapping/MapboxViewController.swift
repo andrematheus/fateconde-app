@@ -54,6 +54,10 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         mapView?.compassView.isHidden = true
         
         mapView?.delegate = self
+        
+        mapView?.logoView.isHidden = true
+        mapView?.attributionButton.isHidden = true
+        
         view.addSubview(mapView!)
     }
     
@@ -100,9 +104,11 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                 case let route as Route<Location>:
                     let routeHelper = data.routeHelper(withRoute: route)
                     let layer = routeHelper.routeLayer
+                    let circlesLayer = routeHelper.circlesLayer
                     if let mapView = self.mapView, let style = mapView.style {
                         layer.install(style: style)
-                        mapView.showAnnotations([layer.feature], animated: true)
+                        circlesLayer.install(style: style)
+                        mapView.showAnnotations([layer.feature], edgePadding: .zero, animated: true)
                     }
                     self.routeHelper = routeHelper
                 case let leg as LocationRouteLeg:
@@ -112,7 +118,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                     if let mapView = self.mapView, let style = mapView.style {
                         layer.install(style: style)
                         circlesLayer.install(style: style)
-                        mapView.showAnnotations([layer.feature], animated: true)
+                        mapView.showAnnotations([layer.feature], edgePadding: .zero, animated: true)
                     }
                     self.routeHelper = routeLegHelper
                 default:

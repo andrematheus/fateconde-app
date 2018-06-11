@@ -13,7 +13,7 @@ protocol BottomSheetDelegate: class {
     func growBottomSheet()
     func shrinkBottomSheet()
     var bottomSheetIsHuge: Bool { get }
-    var selectedPoi: PointOfInterest? { get set }
+    var selectedPoi: PointOfInterest { get set }
     var bottomSheetController: BottomSheetViewController? { get set }
 }
 
