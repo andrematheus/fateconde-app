@@ -58,7 +58,11 @@ class RouteStepViewController: UIViewController, FatecHeaderDelegate {
     func closed() {
         if let leg = leg {
             self.embedParent?.hideNavigation()
-            self.embedParent?.delegate?.selectedPoi = leg.to
+            if leg.to.type.visibleInMap {
+                self.embedParent?.delegate?.selectedPoi = leg.to
+            } else {
+                self.embedParent?.delegate?.selectedPoi = leg.to.building!
+            }
         }
     }
 }

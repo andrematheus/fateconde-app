@@ -43,17 +43,27 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sP9-MD-QYz">
+                    <rect key="frame" x="8" y="43" width="359" height="1"/>
+                    <color key="backgroundColor" white="0.70999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="IqO-qn-tI7"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="KdK-0a-cbx" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2Ka-Mq-YRQ"/>
                 <constraint firstItem="KdK-0a-cbx" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="8es-Ov-Kg8"/>
+                <constraint firstItem="sP9-MD-QYz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Eb3-Rs-BWG"/>
+                <constraint firstAttribute="trailing" secondItem="sP9-MD-QYz" secondAttribute="trailing" constant="8" id="SIZ-ES-V5O"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sP9-MD-QYz" secondAttribute="bottom" id="TKk-mG-nqq"/>
                 <constraint firstItem="F3G-tK-7C7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZF2-zx-DyT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3G-tK-7C7" secondAttribute="trailing" id="xhy-oT-aEo"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="33.5" y="-250.5"/>
+            <point key="canvasLocation" x="33.5" y="-251"/>
         </view>
     </objects>
     <resources>

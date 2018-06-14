@@ -9,8 +9,10 @@
 import UIKit
 import PointOfInterest
 
-class PoiInfoViewController: UIViewController {
+class PoiInfoViewController: UIViewController, FatecHeaderDelegate {
     weak var embedParent: EmbeddedViewController? = nil
+    
+    @IBOutlet weak var header: FatecHeader!
     
     var poi: PointOfInterest? = nil {
         didSet {
@@ -24,10 +26,12 @@ class PoiInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
+        self.header.delegate = self
     }
 
     func updateLabels() {
         if let poi = self.poi, let poiName = self.poiName, let poiLocalization = self.poiLocalization {
+            self.header.title = poi.title
             poiName.text = poi.title
             poiLocalization.text = poi.description
         }
@@ -36,12 +40,6 @@ class PoiInfoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func closeInfo(_ sender: Any) {
-        if let vc = embedParent {
-            vc.hidePoiInfo()
-        }
     }
     
     func remove() {
@@ -54,6 +52,12 @@ class PoiInfoViewController: UIViewController {
             let createRoute = CreateRouteViewController(nibName: "CreateRouteViewController", bundle: nil)
             createRoute.from = poi
             embedParent?.displayCreateRoute(createRoute: createRoute)
+        }
+    }
+    
+    func closed() {
+        if let vc = embedParent {
+            vc.hidePoiInfo()
         }
     }
 }

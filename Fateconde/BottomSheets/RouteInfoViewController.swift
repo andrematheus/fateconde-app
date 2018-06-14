@@ -9,19 +9,21 @@
 import UIKit
 import PointOfInterest
 
-class RouteInfoViewController: UIViewController {
+class RouteInfoViewController: UIViewController, FatecHeaderDelegate {
     var route: Route<Location>? = nil
     var embedParent: EmbeddedViewController? = nil
     
     @IBOutlet weak var labelDe: UILabel!
     @IBOutlet weak var labelTo: UILabel!
+    @IBOutlet weak var header: FatecHeader!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.header.delegate = self
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.header.title = "Itinerário"
         self.labelDe.text = route!.from.title
         self.labelTo.text = route!.to.title
     }
@@ -36,6 +38,12 @@ class RouteInfoViewController: UIViewController {
         embedParent?.startNavigation(routeVC)
     }
     
+    func closed() {
+        embedParent?.hideRouteInfo()
+        if let from = route?.from {
+            embedParent?.delegate?.selectedPoi = from
+        }
+    }
     func remove() {
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
