@@ -118,7 +118,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                     if let mapView = self.mapView, let style = mapView.style {
                         layer.install(style: style)
                         circlesLayer.install(style: style)
-                        mapView.showAnnotations([layer.feature], edgePadding: .zero, animated: true)
+                        mapView.showAnnotations([layer.feature], animated: true)
                     }
                     self.routeHelper = routeLegHelper
                 default:

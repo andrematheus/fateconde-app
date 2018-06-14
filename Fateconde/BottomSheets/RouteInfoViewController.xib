@@ -145,8 +145,5 @@
         <namedColor name="Vermelho">
             <color red="0.6470588235294118" green="0.019607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Vermelho">
-            <color red="0.64705882349999999" green="0.019607843140000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

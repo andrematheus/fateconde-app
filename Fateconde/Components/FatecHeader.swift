@@ -40,10 +40,10 @@ class FatecHeader: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let border = CALayer()
-        border.backgroundColor = FatecColors.cinzaEscuro.cgColor
-        border.frame = CGRect(x:0,
+        border.backgroundColor = FatecColors.cinzaMedio.cgColor
+        border.frame = CGRect(x:16,
                               y: self.frame.size.height - 1.0,
-                              width: self.frame.size.width,
+                              width: self.frame.size.width - 32,
                               height: 1.0)
         self.layer.addSublayer(border)
     }

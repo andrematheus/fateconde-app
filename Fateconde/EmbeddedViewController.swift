@@ -26,6 +26,8 @@ class EmbeddedViewController: UIViewController {
     weak var poiInfo: PoiInfoViewController?
     weak var createRoute: CreateRouteViewController?
     weak var routeInfo: RouteInfoViewController?
+    weak var routeVC: RouteStepsViewController?
+    var panGesture: UIPanGestureRecognizer?
     
     @IBOutlet weak var bottomBorderView: UIView!
     
@@ -46,9 +48,9 @@ class EmbeddedViewController: UIViewController {
         view.layer.cornerRadius = 10
         view.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan))
+        self.panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan))
         self.view.isUserInteractionEnabled = true
-        self.view.addGestureRecognizer(panGesture)
+        self.view.addGestureRecognizer(panGesture!)
         
         bottomSheetViewController.tableView = self.tableView
         bottomSheetViewController.searchBar = self.searchBar
@@ -78,10 +80,12 @@ class EmbeddedViewController: UIViewController {
         self.bottomSheetViewController.delegate = delegate
     }
     
-    func startNavigation(_ route: Route<Location>) {
+    func startNavigation(_ routeVC: RouteStepsViewController) {
         hideRouteInfo()
-        let leg = route.locationLegs[0]
-        self.delegate?.selectedPoi = leg
+        routeVC.embedParent = self
+        self.routeVC = routeVC
+        self.displayInfo(info: routeVC)        
+        self.allowedHeights = [.medium]
     }
     
     func removeSubControllers() {
@@ -89,6 +93,7 @@ class EmbeddedViewController: UIViewController {
         self.createRoute?.remove()
         self.routeInfo?.remove()
     }
+    
     func displayCreateRoute(createRoute: CreateRouteViewController) {
         displayInfo(info: createRoute)
         createRoute.embedParent = self
