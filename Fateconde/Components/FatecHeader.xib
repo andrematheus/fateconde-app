@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FatecHeader" customModule="Fateconde" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="F3G-tK-7C7" id="cD1-xj-ncY"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="8xS-k6-eTD"/>
                 <outlet property="titleLabel" destination="KdK-0a-cbx" id="K2L-OP-bdJ"/>
             </connections>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3G-tK-7C7">
-                    <rect key="frame" x="323" y="0.0" width="44" height="44"/>
+                    <rect key="frame" x="331" y="0.0" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="UPC-9A-Zum"/>
                         <constraint firstAttribute="width" constant="44" id="aRE-KQ-QSD"/>
@@ -43,12 +44,12 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" name="Cinza Claro"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="KdK-0a-cbx" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2Ka-Mq-YRQ"/>
                 <constraint firstItem="KdK-0a-cbx" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="8es-Ov-Kg8"/>
                 <constraint firstItem="F3G-tK-7C7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZF2-zx-DyT"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3G-tK-7C7" secondAttribute="trailing" constant="8" id="xhy-oT-aEo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3G-tK-7C7" secondAttribute="trailing" id="xhy-oT-aEo"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -57,9 +58,6 @@
     </objects>
     <resources>
         <image name="close-button" width="44" height="44"/>
-        <namedColor name="Cinza Claro">
-            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Cinza Escuro">
             <color red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

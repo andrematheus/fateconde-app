@@ -37,6 +37,11 @@ class RouteStepsViewController: UIPageViewController, UIPageViewControllerDataSo
         }
     }
     
+    func remove() {
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
+    }
+    
     func buildViewControllers(route: Route<Location>) {
         let legs = route.locationLegs
         var i = 0
@@ -44,6 +49,9 @@ class RouteStepsViewController: UIPageViewController, UIPageViewControllerDataSo
             let vc = RouteStepViewController(nibName: "RouteStepViewController", bundle: nil)
             vc.leg = leg
             vc.idx = i
+            if i == legs.count - 1 {
+                vc.isLast = true
+            }
             vc.embedParent = self.embedParent
             i += 1
             return vc

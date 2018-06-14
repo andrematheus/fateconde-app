@@ -17,6 +17,7 @@ class FatecHeader: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var delegate: FatecHeaderDelegate?
+    @IBOutlet weak var closeButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,14 +39,7 @@ class FatecHeader: UIView {
         Bundle.main.loadNibNamed("FatecHeader", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        let border = CALayer()
-        border.backgroundColor = FatecColors.cinzaMedio.cgColor
-        border.frame = CGRect(x:16,
-                              y: self.frame.size.height - 1.0,
-                              width: self.frame.size.width - 32,
-                              height: 1.0)
-        self.layer.addSublayer(border)
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]        
     }
     
     @IBAction func close(_ sender: Any) {

@@ -9,44 +9,56 @@
 import UIKit
 import PointOfInterest
 
-class RouteStepViewController: UIViewController {
+class RouteStepViewController: UIViewController, FatecHeaderDelegate {
     var embedParent: EmbeddedViewController? = nil
     var leg: LocationRouteLeg? = nil
-    var colors = [
-        FatecColors.vermelho,
-        FatecColors.destaque,
-        FatecColors.cinzaMedio
-    ]
+    var isLast: Bool = false
+
+    @IBOutlet weak var legLabel: UILabel!
+    @IBOutlet weak var header: FatecHeader!
+    @IBOutlet weak var finalizarHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var finalizar: UIButton!
     var idx: Int? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.header.contentView.backgroundColor = FatecColors.cinzaEscuro
+        self.header.titleLabel.textColor = UIColor.white
+        self.header.closeButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        self.header.delegate = self
         
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let idx = idx {
-            self.view.backgroundColor = colors[idx]
+        if !isLast {
+            self.finalizar.isHidden = true
+            self.finalizarHeight.constant = 0
         }
-        print("Foda-se!")
+        if let leg = leg {
+            self.header.title = leg.title
+            switch leg.to.type {
+            case .Access:
+                self.legLabel.text = "Dirija-se a \(leg.to.title) do \(leg.to.building!.title)."
+            default:
+                self.legLabel.text = "Dirija-se a \(leg.to.title) no \(leg.to.building!.title)."
+            }
+        }
         self.embedParent?.delegate?.selectedPoi = leg!
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func finalizar(_ sender: Any) {
+        self.closed()
     }
-    */
-
+    
+    func closed() {
+        if let leg = leg {
+            self.embedParent?.hideNavigation()
+            self.embedParent?.delegate?.selectedPoi = leg.to
+        }
+    }
 }

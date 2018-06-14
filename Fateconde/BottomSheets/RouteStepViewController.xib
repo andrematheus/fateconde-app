@@ -6,12 +6,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RouteStepViewController" customModule="Fateconde" customModuleProvider="target">
             <connections>
+                <outlet property="finalizar" destination="rLl-73-g0L" id="Sxy-oJ-8qM"/>
+                <outlet property="finalizarHeight" destination="sHY-aG-adE" id="BFo-fT-FnR"/>
+                <outlet property="header" destination="qmX-Hp-uB3" id="ddx-N2-x2o"/>
+                <outlet property="legLabel" destination="XoE-zk-Yhd" id="9ha-4M-ca9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,9 +24,66 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.4687194028100351" green="0.12878588964713097" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-Hp-uB3" customClass="FatecHeader" customModule="Fateconde" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="backgroundColor" name="Cinza Escuro"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="DOs-rr-FTS"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoE-zk-Yhd">
+                    <rect key="frame" x="16" y="60" width="343" height="100"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" name="Cinza Claro"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLl-73-g0L">
+                    <rect key="frame" x="16" y="176" width="343" height="44"/>
+                    <color key="backgroundColor" name="Vermelho"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="sHY-aG-adE"/>
+                    </constraints>
+                    <state key="normal" title="Finalizar">
+                        <color key="titleColor" name="Cinza Claro"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="finalizar:" destination="-1" eventType="touchUpInside" id="bCq-DX-QsX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" name="Cinza Escuro"/>
+            <constraints>
+                <constraint firstItem="XoE-zk-Yhd" firstAttribute="top" secondItem="qmX-Hp-uB3" secondAttribute="bottom" constant="16" id="2zo-ma-UlK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qmX-Hp-uB3" secondAttribute="trailing" id="DnS-VL-PVt"/>
+                <constraint firstItem="XoE-zk-Yhd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LBu-N3-wGj"/>
+                <constraint firstItem="qmX-Hp-uB3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PLL-EI-HxU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rLl-73-g0L" secondAttribute="trailing" constant="16" id="PTt-Yp-xb3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XoE-zk-Yhd" secondAttribute="trailing" constant="16" id="PqG-4s-TdN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XoE-zk-Yhd" secondAttribute="bottom" constant="80" id="Xvo-Fg-Ue9"/>
+                <constraint firstItem="qmX-Hp-uB3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="a6k-m5-sZE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rLl-73-g0L" secondAttribute="bottom" constant="20" id="bTB-c5-Qa9"/>
+                <constraint firstItem="rLl-73-g0L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="e6B-fS-kbf"/>
+                <constraint firstItem="XoE-zk-Yhd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ffD-uw-Ns1"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="Cinza Claro">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Cinza Escuro">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Vermelho">
+            <color red="0.6470588235294118" green="0.019607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

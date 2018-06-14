@@ -88,10 +88,23 @@ class EmbeddedViewController: UIViewController {
         self.allowedHeights = [.medium]
     }
     
+    func hideNavigation() {
+        if self.routeVC != nil {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut ,animations: {
+                self.routeVC?.view.frame = self.outerView.frame.offsetBy(dx: 0, dy: self.outerView.frame.height)
+            }, completion: { done in
+                self.routeVC?.remove()
+                self.routeVC = nil
+            })
+        }
+        self.allowedHeights = AllowedHeights.all
+    }
+    
     func removeSubControllers() {
         self.poiInfo?.remove()
         self.createRoute?.remove()
         self.routeInfo?.remove()
+        self.routeVC?.remove()
     }
     
     func displayCreateRoute(createRoute: CreateRouteViewController) {
