@@ -31,7 +31,7 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if filteredPois.isEmpty {
-            return appData.pointsOfInterest.buildingsForList.count + 1
+            return appData.pointsOfInterest.buildingsForList.count + 2
         } else {
             return 1
         }
@@ -41,6 +41,8 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         if filteredPois.isEmpty {
             if section == 0 {
                 return appData.pointsOfInterest.buildingsForList.count
+            } else if section > appData.pointsOfInterest.buildingsForList.count {
+                return appData.pointsOfInterest.locationsWithoutBuilding.count
             } else {
                 let building = appData.pointsOfInterest.buildingsForList[section - 1]
                 return building.locationsForList.count
@@ -56,6 +58,8 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         if filteredPois.isEmpty {
             if indexPath.section == 0 {
                 listable = appData.pointsOfInterest.buildingsForList[indexPath.row]
+            } else if indexPath.section > appData.pointsOfInterest.buildingsForList.count {
+                listable = appData.pointsOfInterest.locationsWithoutBuilding[indexPath.row]
             } else {
                 let building = appData.pointsOfInterest.buildingsForList[indexPath.section - 1]
                 listable = building.locationsForList[indexPath.row]
@@ -74,6 +78,8 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
         if filteredPois.isEmpty {
             if section == 0 {
                 return "Prédios"
+            } else if section > appData.pointsOfInterest.buildingsForList.count {
+                return nil
             } else {
                 return appData.pointsOfInterest.buildingsForList[section - 1].name
             }
@@ -90,6 +96,9 @@ class BottomSheetViewController: UITableViewController, UISearchBarDelegate {
             if indexPath.section == 0 {
                 let building = appData.pointsOfInterest.buildingsForList[indexPath.row]
                 delegate?.selectedPoi = building
+            } else if indexPath.section > appData.pointsOfInterest.buildingsForList.count {
+                let location = appData.pointsOfInterest.locationsWithoutBuilding[indexPath.row]
+                delegate?.selectedPoi = location
             } else {
                 let building = appData.pointsOfInterest.buildingsForList[indexPath.section - 1]
                 let location = building.locationsForList[indexPath.row]
