@@ -34,7 +34,9 @@ final class AppData {
         self.surroundingsHelper = SurroundingsHelper()
         var buildingHelpers: [String: BuildingMapHelper] = [:]
         for building in pointsOfInterest.buildings {
-            buildingHelpers[building.code] = BuildingMapHelper(building: building)
+            if building.code != "ex" {
+                buildingHelpers[building.code] = BuildingMapHelper(building: building)
+            }
         }
         self.buildingHelpers = buildingHelpers
         

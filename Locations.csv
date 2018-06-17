@@ -1,5 +1,28 @@
 ﻿id.code;id.buildingLevel;id.buildingCode;name;type
 # ur: upper right, ul: upper left, ll: lower left, lr: lower right
+# Prédios
+bj;0;bj;Bloco J;Service
+cn;0;cn;Cantina;Service
+cci;0;cci;CCI;Service
+ps;0;ps;Paula Souza;Service
+hp;0;hp;Hipólito Pujol;Service
+om;0;om;Oscar Machado;Service
+at;0;at;Ary Torres;Service
+fm;0;fm;Franscisco Maffei;Service
+
+# Externo
+exa1;0;ex;Entrada Principal;Service
+exi1;0;ex;;Invisible
+exi2;0;ex;;Invisible
+exi3;0;ex;;Invisible
+exi4;0;ex;;Invisible
+exi5;0;ex;;Invisible
+exi6;0;ex;;Invisible
+exi7;0;ex;;Invisible
+exi8;0;ex;;Invisible
+exi9;0;ex;;Invisible
+exi10;0;ex;;Invisible
+
 # Santiago;;;;
 sa0s10;0;sa;Biblioteca;Service
 sa0s8;0;sa;Secretaria;Service

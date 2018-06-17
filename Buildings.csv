@@ -1,6 +1,8 @@
 ﻿code;name;numberOfLevels
-sa;Santiago;5
-bab;Bloco A/B;6
+ex;Área externa;1
+sa;Santiago;3
+babt;Térreo Bloco A/B;1
+bab;Bloco A/B;5
 bc;Bloco C;3
 bj;Bloco J;1
 cn;Cantina;1

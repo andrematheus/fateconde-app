@@ -86,6 +86,43 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "babt",
+        "kind": "building_outline",
+        "name": "Térreo A/B",
+        "longName": "Bloco A/B Térreo"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.632821,
+              -23.529358
+            ],
+            [
+              -46.632275,
+              -23.529504
+            ],
+            [
+              -46.632151,
+              -23.529099
+            ],
+            [
+              -46.632698,
+              -23.528954
+            ],
+            [
+              -46.632821,
+              -23.529358
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "21bf8daee6fd3a8da8a8e6f94930aed0"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "location_code": "g1",
         "kind": "location"
       },
@@ -97,6 +134,61 @@
         "type": "Point"
       },
       "id": "27786f2d3b113ec96304c50b85485a34"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exa1",
+        "longName": "Entrada da FATEC",
+        "name": "Entrada"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632187,
+          -23.529885
+        ],
+        "type": "Point"
+      },
+      "id": "30e28caf3846b5975b9ba313d149aeae"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "building_outline",
+        "name": "Área Externa",
+        "longName": "Área Externa"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -46.633593,
+              -23.530002
+            ],
+            [
+              -46.632326,
+              -23.530326
+            ],
+            [
+              -46.631831,
+              -23.528745
+            ],
+            [
+              -46.633111,
+              -23.528401
+            ],
+            [
+              -46.633593,
+              -23.530002
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "33476af21bf5fe1dccb922ee0dd0fb77"
     },
     {
       "type": "Feature",
@@ -116,6 +208,24 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "hp",
+        "kind": "route_point",
+        "location_code": "hp",
+        "longName": "Edifício Hipólito Pujol",
+        "name": "Ed. Hipólito Pujol"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633157,
+          -23.530005
+        ],
+        "type": "Point"
+      },
+      "id": "33ac01bc46979a6f8bdb84a5f9d7af1e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "location_code": "g2",
         "kind": "route_point"
       },
@@ -127,6 +237,57 @@
         "type": "Point"
       },
       "id": "3915615651bf48885e1a6ae12ee5ea85"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "babt",
+        "kind": "building",
+        "name": "Térreo A/B",
+        "longName": "Bloco A/B Térreo"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.63273,
+          -23.529162
+        ],
+        "type": "Point"
+      },
+      "id": "4fcbc22a2534335a225998dc52a3405f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "hp",
+        "kind": "location",
+        "location_code": "hp"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633155,
+          -23.529994
+        ],
+        "type": "Point"
+      },
+      "id": "5113074d4ae2fdd10d3eb0567c0d43da"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cci",
+        "kind": "route_point",
+        "location_code": "cci",
+        "longName": "CCI",
+        "name": "Centro de Convivência Infantil"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632902,
+          -23.529313
+        ],
+        "type": "Point"
+      },
+      "id": "515a0e2744bd3d5b1281b8f45bedfb86"
     },
     {
       "type": "Feature",
@@ -144,6 +305,40 @@
         "type": "Point"
       },
       "id": "56bc08a79d249c035de14bed5bd966b5"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "fm",
+        "kind": "route_point",
+        "location_code": "fm",
+        "longName": "Edifício Francisco Maffei",
+        "name": "Ed. Francisco Maffei"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633036,
+          -23.529043
+        ],
+        "type": "Point"
+      },
+      "id": "5cc98eef0f5b07ca76d228c5dd546e94"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi10"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632731,
+          -23.529007
+        ],
+        "type": "Point"
+      },
+      "id": "5ce18257299ae08af7bc779f6897ce3e"
     },
     {
       "type": "Feature",
@@ -183,6 +378,38 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi3"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632639,
+          -23.529775
+        ],
+        "type": "Point"
+      },
+      "id": "6435257188f644df845fb558b8430b4f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi8"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.63278,
+          -23.529137
+        ],
+        "type": "Point"
+      },
+      "id": "64d9f3a97b93766b7768f990d792797e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "bj",
         "kind": "building_outline"
       },
@@ -218,6 +445,22 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "bj",
+        "kind": "location",
+        "location_code": "bj"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633228,
+          -23.529418
+        ],
+        "type": "Point"
+      },
+      "id": "70e83c919c13b213b7f7103cfc3a8712"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "bc",
         "name": "Bl. C",
         "longName": "Bloco C",
@@ -248,6 +491,22 @@
         "type": "Point"
       },
       "id": "7574ef6bc670f83d43bb0138c6d36b9f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi9"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632257,
+          -23.529677
+        ],
+        "type": "Point"
+      },
+      "id": "77c61897d275c81cabbf1eab8f6ab0d0"
     },
     {
       "type": "Feature",
@@ -304,6 +563,24 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "at",
+        "kind": "route_point",
+        "location_code": "at",
+        "longName": "Edifício Ary Torres (ETESP)",
+        "name": "Ed. Ary Torres"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633102,
+          -23.529266
+        ],
+        "type": "Point"
+      },
+      "id": "87580d5b084be6509f597c5e0c2e9db4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "cci",
         "kind": "building_outline"
       },
@@ -335,6 +612,24 @@
         "type": "Polygon"
       },
       "id": "89a9388d5bfdb46cf5b21f0c6c6b4231"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cn",
+        "kind": "route_point",
+        "location_code": "cn",
+        "longName": "Cantina",
+        "name": "Cantina"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632749,
+          -23.529003
+        ],
+        "type": "Point"
+      },
+      "id": "8abf8cb7b9ce7d27fe1f3cfb40b97eda"
     },
     {
       "type": "Feature",
@@ -374,6 +669,22 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi4"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632681,
+          -23.529931
+        ],
+        "type": "Point"
+      },
+      "id": "8d992ae0d0993808dd73589fecef61ea"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "sa",
         "kind": "building_outline"
       },
@@ -409,6 +720,38 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "fm",
+        "kind": "location",
+        "location_code": "fm"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633021,
+          -23.529047
+        ],
+        "type": "Point"
+      },
+      "id": "92d1bb9ee06a9bc3a2505c0af5f35303"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ps",
+        "kind": "location",
+        "location_code": "ps"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632742,
+          -23.530087
+        ],
+        "type": "Point"
+      },
+      "id": "99c4b9f627704a261673a2b1ffd60fe2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "cn",
         "kind": "building",
         "name": "Cantina",
@@ -440,6 +783,54 @@
         "type": "Point"
       },
       "id": "9ac4807fad882d8e10a3308dda888a76"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cn",
+        "kind": "location",
+        "location_code": "cn"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.63275,
+          -23.529012
+        ],
+        "type": "Point"
+      },
+      "id": "9f72f750d9af62ae8c12884337ee0209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi2"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632321,
+          -23.529856
+        ],
+        "type": "Point"
+      },
+      "id": "a0daa380fe5137376950cb60052bb0d1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "at",
+        "kind": "location",
+        "location_code": "at"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633088,
+          -23.52927
+        ],
+        "type": "Point"
+      },
+      "id": "a53917d3894305409bf6cab1429b1093"
     },
     {
       "type": "Feature",
@@ -495,6 +886,24 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "om",
+        "kind": "route_point",
+        "location_code": "om",
+        "longName": "Edifício Oscar Machado",
+        "name": "Ed. Oscar Machado"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633058,
+          -23.529685
+        ],
+        "type": "Point"
+      },
+      "id": "ade231894c75bc79d7eec4a8312827cc"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "hp",
         "kind": "building",
         "name": "Ed. Hipólito Pujol",
@@ -508,6 +917,56 @@
         "type": "Point"
       },
       "id": "afc557cece621efa4f071c48aef424c7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "om",
+        "kind": "location",
+        "location_code": "om"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633063,
+          -23.529695
+        ],
+        "type": "Point"
+      },
+      "id": "b3ca4d4a0908cad09df63619f0226f32"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "bj",
+        "kind": "route_point",
+        "location_code": "bj",
+        "longName": "Bloco J",
+        "name": "Bl. J"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.633224,
+          -23.529406
+        ],
+        "type": "Point"
+      },
+      "id": "b40b970b17f95618e727118ad6bfcc19"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi7"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632898,
+          -23.529502
+        ],
+        "type": "Point"
+      },
+      "id": "b48c1d3522e385df2c94c83e35a0a07d"
     },
     {
       "type": "Feature",
@@ -684,6 +1143,22 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi1"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632221,
+          -23.52988
+        ],
+        "type": "Point"
+      },
+      "id": "cfe3a2a21fbe05165fbe44eee845b9a4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "building_code": "bab",
         "kind": "building_outline"
       },
@@ -715,6 +1190,22 @@
         "type": "Polygon"
       },
       "id": "d61428ebc6f8224d9bca282e49a5f0f4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "cci",
+        "kind": "location",
+        "location_code": "cci"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632895,
+          -23.529315
+        ],
+        "type": "Point"
+      },
+      "id": "d87322604641f9ec1261fb5a4e751074"
     },
     {
       "type": "Feature",
@@ -789,6 +1280,40 @@
     {
       "type": "Feature",
       "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi6"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632955,
+          -23.529697
+        ],
+        "type": "Point"
+      },
+      "id": "e7329fc8f27c869ccf12afc58316add9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ps",
+        "kind": "route_point",
+        "location_code": "ps",
+        "longName": "Edifício Paula Souza",
+        "name": "Ed. Paula Souza"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.63274,
+          -23.530078
+        ],
+        "type": "Point"
+      },
+      "id": "e76184c5276645afe5d7e19e683aa8aa"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "kind": "fatec_outline"
       },
       "geometry": {
@@ -819,6 +1344,57 @@
         "type": "Polygon"
       },
       "id": "e9e4560f7bdfe03fcfa0c0e566358c81"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "route_point",
+        "location_code": "exi5"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632727,
+          -23.530082
+        ],
+        "type": "Point"
+      },
+      "id": "eb7b80af69aebfb03299fae200781dec"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "building",
+        "name": "Área Externa",
+        "longName": "Área Externa"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632203,
+          -23.529595
+        ],
+        "type": "Point"
+      },
+      "id": "ee955c05c58fe714609f6b7376a24bc1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "building_code": "ex",
+        "kind": "location",
+        "location_code": "exa1",
+        "longName": "Entrada da FATEC",
+        "name": "Entrada"
+      },
+      "geometry": {
+        "coordinates": [
+          -46.632194,
+          -23.529906
+        ],
+        "type": "Point"
+      },
+      "id": "f5a1a13ad9ca12c99b69973ad4603823"
     },
     {
       "type": "Feature",

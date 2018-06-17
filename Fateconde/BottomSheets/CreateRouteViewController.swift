@@ -33,8 +33,7 @@ class CreateRouteViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var fixedLabel: UILabel!
     @IBOutlet weak var dynamicLabel: UILabel!
     
-    @IBOutlet weak var fromStack: UIStackView!
-    @IBOutlet weak var toStack: UIStackView!
+    @IBOutlet weak var stack: UIStackView!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: FatecHeader!
@@ -76,6 +75,21 @@ class CreateRouteViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
+    @IBAction func swap(_ sender: Any) {        
+        if fixedLabel.text == "Até:" {
+            fixedLabel.text = "De:"
+            dynamicLabel.text = "Até:"
+            let tmp = to
+            to = nil
+            from = tmp
+        } else {
+            fixedLabel.text = "Até:"
+            dynamicLabel.text = "De:"
+            let tmp = from
+            from = nil
+            to = tmp
+        }
+    }
     
     func remove() {
         self.view.removeFromSuperview()

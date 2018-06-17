@@ -18,6 +18,7 @@
                 <outlet property="fixedLocationLabel" destination="GLo-tG-dLG" id="4Ko-TZ-Zmf"/>
                 <outlet property="header" destination="cRe-pl-dgg" id="y9W-nX-cMO"/>
                 <outlet property="searchBar" destination="j69-wH-1gP" id="S4q-vw-UJ4"/>
+                <outlet property="stack" destination="Vpw-cq-HdZ" id="gGg-Hm-8Ay"/>
                 <outlet property="tableView" destination="Xly-E8-8wQ" id="EBU-3f-gFV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -49,10 +50,10 @@
                     </connections>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Vpw-cq-HdZ">
-                    <rect key="frame" x="0.0" y="72" width="375" height="88"/>
+                    <rect key="frame" x="0.0" y="72" width="331" height="88"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AT8-LF-k1E">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="331" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAH-pP-qBj">
                                     <rect key="frame" x="8" y="15" width="44" height="14.5"/>
@@ -64,7 +65,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="600" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLo-tG-dLG">
-                                    <rect key="frame" x="60" y="8" width="307" height="28"/>
+                                    <rect key="frame" x="60" y="8" width="263" height="28"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -82,10 +83,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVF-o5-18I">
-                            <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="44" width="331" height="44"/>
                             <subviews>
                                 <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="j69-wH-1gP">
-                                    <rect key="frame" x="60" y="8" width="307" height="28"/>
+                                    <rect key="frame" x="60" y="8" width="263" height="28"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="td6-Dx-ix5"/>
@@ -119,6 +120,18 @@
                         <constraint firstItem="AT8-LF-k1E" firstAttribute="width" secondItem="Vpw-cq-HdZ" secondAttribute="width" id="hUa-sz-c6B"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDA-xG-yXU">
+                    <rect key="frame" x="325" y="94" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="EZv-La-8bm"/>
+                        <constraint firstAttribute="height" constant="44" id="Ojc-F7-Rd9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                    <state key="normal" title="⇅"/>
+                    <connections>
+                        <action selector="swap:" destination="-1" eventType="touchUpInside" id="udp-io-hXX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" name="Cinza Claro"/>
             <constraints>
@@ -126,11 +139,13 @@
                 <constraint firstItem="Xly-E8-8wQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4m7-7i-koL"/>
                 <constraint firstItem="Vpw-cq-HdZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FUq-eN-TrR"/>
                 <constraint firstItem="cRe-pl-dgg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XJZ-PR-w1N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IDA-xG-yXU" secondAttribute="trailing" constant="6" id="Xnb-5u-F2H"/>
                 <constraint firstItem="Xly-E8-8wQ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="aHm-yg-fA9"/>
+                <constraint firstItem="IDA-xG-yXU" firstAttribute="centerY" secondItem="Vpw-cq-HdZ" secondAttribute="centerY" id="eKR-nr-Xwh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cRe-pl-dgg" secondAttribute="trailing" id="fJe-Ts-oZP"/>
                 <constraint firstItem="Vpw-cq-HdZ" firstAttribute="top" secondItem="cRe-pl-dgg" secondAttribute="bottom" constant="8" id="m1O-tH-edV"/>
                 <constraint firstItem="cRe-pl-dgg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sdV-Go-xfB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vpw-cq-HdZ" secondAttribute="trailing" id="vpk-gR-KQk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vpw-cq-HdZ" secondAttribute="trailing" constant="44" id="vpk-gR-KQk"/>
                 <constraint firstItem="Xly-E8-8wQ" firstAttribute="top" secondItem="Vpw-cq-HdZ" secondAttribute="bottom" id="zhB-sS-HZf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
