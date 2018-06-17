@@ -44,6 +44,10 @@ class ViewController: UIViewController, BottomSheetDelegate {
                         updateLevels(poi: building)
                     }
                     selectedLevel = location.id.buildingLevel
+                } else if let leg = selectedPoi as? LocationRouteLeg {
+                    selectedLevel = leg.from.id.buildingLevel
+                } else if let route = selectedPoi as? Route<Location> {
+                    selectedLevel = route.from.id.buildingLevel
                 } else {
                     selectedLevel = 0
                     self.levels.isHidden = true
@@ -68,6 +72,7 @@ class ViewController: UIViewController, BottomSheetDelegate {
     
     var selectedLevel: Int = 0 {
         didSet {
+            print("will show \(selectedLevel)")
             mapController?.showLevel(selectedLevel)
             if self.levels.numberOfSegments > 0 {
                 let levels: [Int]
@@ -75,6 +80,8 @@ class ViewController: UIViewController, BottomSheetDelegate {
                     levels = location.building?.levels ?? []
                 } else if let building = selectedPoi as? Building {
                     levels = building.levels
+                } else if let leg = selectedPoi as? LocationRouteLeg {
+                    levels = leg.from.building?.levels ?? []
                 } else {
                     levels = []
                 }

@@ -55,6 +55,14 @@ class DebugTableViewController: UITableViewController {
         
     }
     
+    @IBAction func debugAllRoutes(_ sender: Any) {
+        let app = AppData.sharedInstance
+        let theRoutes = app.pointsOfInterest.routes.debugRoute()
+        if let mv = mainViewController {
+            mv.selectedPoi = theRoutes
+        }
+    }
+    @IBOutlet weak var showAllRoutes: UIButton!
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

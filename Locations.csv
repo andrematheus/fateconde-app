@@ -1,25 +1,75 @@
 ﻿id.code;id.buildingLevel;id.buildingCode;name;type
 # ur: upper right, ul: upper left, ll: lower left, lr: lower right
 # Santiago;;;;
-sa0s1;0;sa;Biblioteca;Service
-sa0s2;0;sa;Secretaria 0;Service
-sa1s2;1;sa;Secretaria 1;Service
-sa2s2;2;sa;Secretaria 2;Service
-sa3s2;3;sa;Secretaria 3;Service
-sa4s2;4;sa;Secretaria 4;Service
-sa0s3;0;sa;Sala de Estudos;Service
+sa0s10;0;sa;Biblioteca;Service
+sa0s8;0;sa;Secretaria;Service
+sa0s4-5;0;sa;Sala de Estudos;Service
+sa0s9;0;sa;Achados e Perdidos;Service
 
 sa0a1;0;sa;Entrada;Access;Entrada aberta hoje
-sa0a3;0;sa;Elevador;Access;Elevador próximo ao Hall
-sa0a5;0;sa;Elevador;Access;Elevador próximo Hall
+sa[0:3]a7;0;sa;Elevador;Access;Elevador próximo ao Hall
+sa[0:3]a8;0;sa;Elevador;Access;Elevador próximo ao Hall
+sa[0:3]a9;0;sa;Elevador;Access;Elevador próximo outra entrada
 
-sa[0:4]a2;0;sa;Escada;Access;Escada próxima Hall
-sa[0:4]a4;0;sa;Escada;Access;Escada próxima Hall
+sa[0:3]a2;0;sa;Escada;Access;Escada próxima outra entrada
+sa[1:3]a3;0;sa;Escada;Access;Escada próxima outra entrada
 
-sa[0:4]i1;0;sa;;Invisible;ur
-sa[0:4]i2;0;sa;;Invisible;ul
-sa[0:4]i3;0;sa;;Invisible;ll
-sa[0:4]i4;0;sa;;Invisible;lr
+sa[0:3]a5;0;sa;Escada;Access;Escada próxima Hall
+sa[1:3]a4;0;sa;Escada;Access;Escada próxima Hall
+sa[1:3]a6;0;sa;Escada;Access;Escada próxima Hall
+
+sa[0:3]i1;0;sa;;Invisible;ul
+sa[0:3]i2;0;sa;;Invisible;ll
+sa[0:3]i3;0;sa;;Invisible;lr
+sa[0:3]i4;0;sa;;Invisible;ur
+
+sa[0:3]i5;0;sa;;Invisible;escada1
+sa[0:3]i6;0;sa;;Invisible;escada2
+sa[0:3]i21;0;sa;;Invisible
+sa[0:3]i31;0;sa;;Invisible
+
+sa[0:3]i7;0;sa;;Invisible;escadahall1
+sa[0:3]i8;0;sa;;Invisible;escadahall1
+sa[0:3]i9;0;sa;;Invisible;escadahall1
+
+
+sa1s10;1;sa;14-S;Classroom
+sa1s1;1;sa;13-S;Classroom
+sa1s2;1;sa;W.C. Fem.;Service
+sa1s3;1;sa;W.C. Masc.;Service
+sa1s4;1;sa;12-S;Classroom
+sa1s5;1;sa;11-S;Classroom
+sa1s7;1;sa;Área de Matemática;Service
+sa1s8;1;sa;Dep. de Tecnologia da Informação;Service
+sa1s9;1;sa;Dep. Sistemas Eletrônicos;Service
+sa1s11;1;sa;Dep. Ensino Geral;Service
+
+
+sa2s10;2;sa;Laboratório de Informática;Classroom
+sa2s2;2;sa;W.C. Fem.;Service
+sa2s3;2;sa;W.C. Masc.;Service
+sa2s4;2;sa;22-S;Classroom
+sa2s5;2;sa;21-S;Classroom
+sa2s6;2;sa;Rel. Empresariais;Service
+sa2s7;2;sa;Seção Estágios;Service
+sa2s8;2;sa;Sala Cinza (Sala 8);Classroom
+sa2s9;2;sa;Sala Roxa (Lab.);Classroom
+sa2s11;2;sa;Sala Azul;Classroom
+
+
+sa3s1;3;sa;Lab. Área Matemática;Classroom
+sa3s10;3;sa;35-S;Classroom
+sa3s2;3;sa;W.C. Fem.;Service
+sa3s3;3;sa;W.C. Masc.;Service
+sa3s4;3;sa;32-S;Classroom
+sa3s5;3;sa;31-S;Classroom
+sa3s6;3;sa;30-S;Classroom
+sa3s7;3;sa;Eletricidade Aplicada;Classroom
+sa3s8;3;sa;Laboratório de Eletrônica;Classroom
+sa3s11;3;sa;36-S;Classroom
+
+
+
 
 # Bloco B;;;;
 # bb1;0;bb;iCenter;Service

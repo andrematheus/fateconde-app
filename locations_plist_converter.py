@@ -8,6 +8,30 @@ import re
 import itertools
 import copy
 
+## geostuff
+#!/usr/bin/env python3
+
+from geographiclib.constants import Constants
+from geographiclib.geodesic import Geodesic
+
+
+def coordat(f, c1, c2):
+    geod = Geodesic(Constants.WGS84_a, Constants.WGS84_f)
+    l = geod.InverseLine(c1[1], c1[0], c2[1], c2[0])
+    x = (l.s13 * f)
+    p = l.Position(x, Geodesic.STANDARD)
+    return [p['lon2'], p['lat2']]
+
+
+def uv(u, v, coords):
+    l1 = [coords[0], coords[3]]
+    l2 = [coords[1], coords[2]]
+
+    p1 = coordat(u, *l1)
+    p2 = coordat(u, *l2)
+
+    x = coordat(v, p1, p2)
+    return x
 
 multifloor_regex = r'location_code.(\[[-?0-9]+:[-?0-9]+\]|[0-9]+)'
 location_multifloor_regex = r'.+(\[[-?0-9]+:[-?0-9]+\]).+'
@@ -32,7 +56,6 @@ def explode_location_floors(location_map):
             m = copy.deepcopy(location_map)
             m['id.code'] = location_map['id.code'].replace(key.group(1), str(floor))
             m['id.buildingLevel'] = str(floor)
-            print(m)
             lms.append(m)
         return lms
     else:        
@@ -83,6 +106,8 @@ locations_file = sys.argv[1]
 buildings_file = sys.argv[2]
 routes_file = sys.argv[3]
 geojson_file = sys.argv[4]
+uvlocations_file = sys.argv[5]
+uvroutepoints_file = sys.argv[6]
 
 with open(locations_file, 'r', encoding='utf-8-sig') as f:
     locations = list(csv.DictReader(f, delimiter=';'))
@@ -92,7 +117,6 @@ exploded_locations = [explode_location_floors(location) for location in location
 locations = list(itertools.chain.from_iterable(exploded_locations))
 locations = [ explode_id(location) for location in locations ]
 locations = [ location for location in locations if location is not None and location['id.code'] != '' ]
-
 
 locations_map = {}
 for location in locations:
@@ -150,8 +174,71 @@ for feature in features:
     else:
         print("feature {} has no kind".format(feature))
 
+with open(uvlocations_file, 'r', encoding='utf-8') as f:
+    uvlocations = list(csv.DictReader(f, delimiter=';'))
+
+uvlocations = [ location for location in uvlocations if not location['id.code'].startswith('#')]
+uvlocations = [ location for location in uvlocations if location is not None and location['id.code'] != '' ]
+
+
+for location in uvlocations:
+    l = locations_map[location['id.code']]
+    b = buildings_map[l['id.buildingCode']]
+    coords = b['outline']['geometry']['coordinates'][0]
+    u = float(location['u']) / 100
+    v = float(location['v']) / 100
+    
+    # print(l['point']['geometry']['coordinates'])
+    # print(uv(u, v, coords))
+    print(l)
+    uvcs = uv(u, v, coords)
+    l['point'] = {
+        'geometry': {
+            'coordinates': uvcs,
+            'type': 'Point'
+        },
+        'type': 'Feature',
+        'properties': {},
+        'id': location['id.code'] + '_point'        
+    }
+    # l['point']['geometry']['coordinates'] = uv(u, v, coords)
+    # location_map[location['id.code']]        
+
+
+with open(uvroutepoints_file, 'r', encoding='utf-8') as f:
+    uvroutes = list(csv.DictReader(f, delimiter=';'))
+
+uvroutes = [ location for location in uvroutes if not location['id.code'].startswith('#')]
+uvroutes = [ location for location in uvroutes if location is not None and location['id.code'] != '' ]
+
+
+for location in uvroutes:
+    l = locations_map[location['id.code']]
+    b = buildings_map[l['id.buildingCode']]
+    coords = b['outline']['geometry']['coordinates'][0]
+    u = float(location['u']) / 100
+    v = float(location['v']) / 100
+    
+    # print(l['point']['geometry']['coordinates'])
+    # print(uv(u, v, coords))
+    print(l)
+    uvcs = uv(u, v, coords)
+    l['route_point'] = {
+        'geometry': {
+            'coordinates': uvcs,
+            'type': 'Point'
+        },
+        'type': 'Feature',
+        'properties': {},
+        'id': location['id.code'] + '_routepoint'
+    }
+    # l['point']['geometry']['coordinates'] = uv(u, v, coords)
+    # location_map[location['id.code']]        
+
+
 for location in locations:
     if location["type"] == "Access" or location["type"] == "Invisible":
+        print(location)
         location["point"] = location["route_point"]
 
 errors = []

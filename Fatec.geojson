@@ -101,21 +101,6 @@
     {
       "type": "Feature",
       "properties": {
-        "kind": "route_point",
-        "location_code.[0:4]": "sa%Fi1"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632587,
-          -23.529976
-        ],
-        "type": "Point"
-      },
-      "id": "302ffbe9910c7281ed1f5ff3da10d4ab"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "building_code": "g1",
         "kind": "building"
       },
@@ -127,36 +112,6 @@
         "type": "Point"
       },
       "id": "33801402d6df31164ce3ff95314259db"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "route_point",
-        "location_code.[0:4]": "sa%Fi4"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632444,
-          -23.530005
-        ],
-        "type": "Point"
-      },
-      "id": "348a3089dcc88c4487209ef0ecefd2ce"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "location",
-        "location_code.[0:4]": "sa%Fs2"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632425,
-          -23.530179
-        ],
-        "type": "Point"
-      },
-      "id": "3669939cc4c8b78ba3ba74fa00a58609"
     },
     {
       "type": "Feature",
@@ -176,64 +131,19 @@
     {
       "type": "Feature",
       "properties": {
-        "kind": "route_point",
-        "location_code": "sa0s1"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632577,
-          -23.529949
-        ],
-        "type": "Point"
-      },
-      "id": "3be66863bd4f8a5c04bb26f339085004"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "location",
-        "location_code": "sa0s1"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632591,
-          -23.529894
-        ],
-        "type": "Point"
-      },
-      "id": "473f6f70826b7b89700ca6d1aa59a866"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "building_code": "bb",
-        "name": "Bl. B",
-        "longName": "Bloco B",
+        "building_code": "bab",
+        "name": "Bl. A/B",
+        "longName": "Bloco A/B",
         "kind": "building"
       },
       "geometry": {
         "coordinates": [
-          -46.632504,
-          -23.529323
+          -46.632477,
+          -23.529222
         ],
         "type": "Point"
       },
       "id": "56bc08a79d249c035de14bed5bd966b5"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "route_point",
-        "location_code.[0:4]": "sa%Fa2"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632393,
-          -23.529964
-        ],
-        "type": "Point"
-      },
-      "id": "5fd468f8b9089c0f1f3450d0facaf1ef"
     },
     {
       "type": "Feature",
@@ -429,23 +339,6 @@
     {
       "type": "Feature",
       "properties": {
-        "building_code": "sa",
-        "name": "Ed. Santiago",
-        "longName": "Edifiício Santiago",
-        "kind": "building"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632515,
-          -23.53005
-        ],
-        "type": "Point"
-      },
-      "id": "8adabedd011cf85c2538155e522219b7"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "building_code": "ps",
         "kind": "building_outline"
       },
@@ -551,32 +444,19 @@
     {
       "type": "Feature",
       "properties": {
-        "kind": "route_point",
-        "location_code.[0:4]": "sa%Fa4"
+        "building_code": "sa",
+        "kind": "building",
+        "name": "Santiago",
+        "longName": "Edifício Santiago"
       },
       "geometry": {
         "coordinates": [
-          -46.632574,
-          -23.5301
+          -46.632516,
+          -23.53005
         ],
         "type": "Point"
       },
-      "id": "a36c9f37ba2bff44e8e38f7311f26882"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "route_point",
-        "location_code": "sa0a1"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632677,
-          -23.529957
-        ],
-        "type": "Point"
-      },
-      "id": "a9cedab23917e08c151409c7f3e615b5"
+      "id": "a8c42fc186a0cb8556f7faa30a3e67f7"
     },
     {
       "type": "Feature",
@@ -587,24 +467,24 @@
         "coordinates": [
           [
             [
-              -46.634492,
-              -23.530761
+              -46.634402,
+              -23.530156
             ],
             [
-              -46.631588,
-              -23.531499
+              -46.631498,
+              -23.530894
             ],
             [
-              -46.630763,
-              -23.528868
+              -46.630673,
+              -23.528263
             ],
             [
-              -46.633706,
-              -23.528104
+              -46.633616,
+              -23.527499
             ],
             [
-              -46.634492,
-              -23.530761
+              -46.634402,
+              -23.530156
             ]
           ]
         ],
@@ -628,21 +508,6 @@
         "type": "Point"
       },
       "id": "afc557cece621efa4f071c48aef424c7"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "route_point",
-        "location_code.[0:4]": "sa%Fi3"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632485,
-          -23.530144
-        ],
-        "type": "Point"
-      },
-      "id": "b3f3e5fe4b8486592e814aa8de460b47"
     },
     {
       "type": "Feature",
@@ -717,21 +582,6 @@
     {
       "type": "Feature",
       "properties": {
-        "kind": "route_point",
-        "location_code": "sa0s3"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632626,
-          -23.53005
-        ],
-        "type": "Point"
-      },
-      "id": "b9f0b5203ebfa0790b76f36d74e6f636"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "building_code": "bc",
         "kind": "building_outline"
       },
@@ -747,8 +597,8 @@
               -23.529805
             ],
             [
-              -46.632272,
-              -23.529506
+              -46.632275,
+              -23.529505
             ],
             [
               -46.63282,
@@ -763,21 +613,6 @@
         "type": "Polygon"
       },
       "id": "be1e1937502e921c71c1dc75a2b4b7b9"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "route_point",
-        "location_code": "sa0a3"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632416,
-          -23.530023
-        ],
-        "type": "Point"
-      },
-      "id": "c497522528e35b45f84a2d48004f2a70"
     },
     {
       "type": "Feature",
@@ -834,41 +669,6 @@
     {
       "type": "Feature",
       "properties": {
-        "building_code": "ba",
-        "kind": "building_outline"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              -46.632704,
-              -23.529129
-            ],
-            [
-              -46.632245,
-              -23.529251
-            ],
-            [
-              -46.632205,
-              -23.529127
-            ],
-            [
-              -46.632667,
-              -23.529008
-            ],
-            [
-              -46.632704,
-              -23.529129
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": "cefdf4471fbb33469eecbb317e3d6a8b"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "location_code": "g1",
         "kind": "route_point"
       },
@@ -884,44 +684,14 @@
     {
       "type": "Feature",
       "properties": {
-        "kind": "route_point",
-        "location_code": "sa0a5"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632534,
-          -23.53011
-        ],
-        "type": "Point"
-      },
-      "id": "d241c9dc868950fe80b244bcdc932a5a"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "route_point",
-        "location_code.[0:4]": "sa%Fs2"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632458,
-          -23.530157
-        ],
-        "type": "Point"
-      },
-      "id": "d25542b64e83fefb89c3509dfaeefa52"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "building_code": "bb",
+        "building_code": "bab",
         "kind": "building_outline"
       },
       "geometry": {
         "coordinates": [
           [
             [
-              -46.632764,
+              -46.632763,
               -23.529321
             ],
             [
@@ -929,15 +699,15 @@
               -23.529441
             ],
             [
-              -46.632263,
-              -23.529317
+              -46.632206,
+              -23.529129
             ],
             [
-              -46.632727,
-              -23.529197
+              -46.632667,
+              -23.529009
             ],
             [
-              -46.632764,
+              -46.632763,
               -23.529321
             ]
           ]
@@ -945,23 +715,6 @@
         "type": "Polygon"
       },
       "id": "d61428ebc6f8224d9bca282e49a5f0f4"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "building_code": "ba",
-        "name": "Bl. A",
-        "longName": "Bloco A",
-        "kind": "building"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632447,
-          -23.529131
-        ],
-        "type": "Point"
-      },
-      "id": "d8339095429a04cc0b932f0b5a24fe76"
     },
     {
       "type": "Feature",
@@ -1036,21 +789,6 @@
     {
       "type": "Feature",
       "properties": {
-        "kind": "route_point",
-        "location_code.[0:4]": "sa%Fi2"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632623,
-          -23.530112
-        ],
-        "type": "Point"
-      },
-      "id": "e9dc1c9964dc87888e6c98fe73f0edb2"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "kind": "fatec_outline"
       },
       "geometry": {
@@ -1081,21 +819,6 @@
         "type": "Polygon"
       },
       "id": "e9e4560f7bdfe03fcfa0c0e566358c81"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "kind": "location",
-        "location_code": "sa0s3"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.632667,
-          -23.53005
-        ],
-        "type": "Point"
-      },
-      "id": "f4fd95116eed4c9f003938400e082f09"
     },
     {
       "type": "Feature",

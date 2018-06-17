@@ -207,6 +207,26 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gRk-85-yEC">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gRk-85-yEC" id="NLI-te-hF3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1N-sa-ah9">
+                                                    <rect key="frame" x="16" y="6" width="111" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Show All Routes"/>
+                                                    <connections>
+                                                        <action selector="debugAllRoutes:" destination="F7o-kX-Ya3" eventType="touchUpInside" id="nrm-9I-LHW"/>
+                                                        <action selector="toggleDebug:" destination="F7o-kX-Ya3" eventType="touchUpInside" id="20a-iY-Lkj"/>
+                                                        <action selector="zoomToSantiago:" destination="F7o-kX-Ya3" eventType="touchUpInside" id="0tJ-9w-nzf"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -215,6 +235,9 @@
                             <outlet property="delegate" destination="F7o-kX-Ya3" id="Pnu-LN-0vR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="showAllRoutes" destination="e1N-sa-ah9" id="DzW-Ra-9h7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jo2-Ko-Aj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

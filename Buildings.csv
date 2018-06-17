@@ -1,7 +1,6 @@
 ﻿code;name;numberOfLevels
 sa;Santiago;5
-bb;Bloco B;6
-ba;Bloco A;6
+bab;Bloco A/B;6
 bc;Bloco C;3
 bj;Bloco J;1
 cn;Cantina;1

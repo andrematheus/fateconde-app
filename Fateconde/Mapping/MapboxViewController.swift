@@ -25,6 +25,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     let data = AppData.sharedInstance
     
     let direction = 285.326971003092
+    let maximumZoomLevel = 17.51
     
     var bottomInset: CGFloat = 240
     
@@ -98,7 +99,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                     }
                     if let nameLayer = data.locationHelpers[location.id.code]?.nameLayer as? NameLayer {
                         let ann = nameLayer.pointFeature
-                        mapView?.addAnnotation(ann)
+                        mapView?.addAnnotation(ann)                        
                         currentAnnotation = ann
                     }
                 case let route as Route<Location>:
@@ -111,6 +112,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                         mapView.showAnnotations([layer.feature], edgePadding: .zero, animated: true)
                     }
                     self.routeHelper = routeHelper
+                    selectedBuilding = route.from.building
                 case let leg as LocationRouteLeg:
                     let routeLegHelper = data.routeHelper(withLeg: leg)
                     let layer = routeLegHelper.routeLayer
@@ -121,6 +123,17 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                         mapView.showAnnotations([layer.feature], animated: true)
                     }
                     self.routeHelper = routeLegHelper
+                    selectedBuilding = leg.from.building
+                case let debugRoutes as Routes:
+                    for route in debugRoutes.routes {
+                        let routeHelper = data.routeHelper(withRoute: route)
+                        let layer = routeHelper.routeLayer
+                        let circlesLayer = routeHelper.circlesLayer
+                        if let mapView = self.mapView, let style = mapView.style {
+                            layer.install(style: style)
+                            circlesLayer.install(style: style)                            
+                        }
+                    }
                 default:
                     print("Unknown poi: \(poi)")
                 }

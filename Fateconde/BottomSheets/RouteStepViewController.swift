@@ -36,12 +36,29 @@ class RouteStepViewController: UIViewController, FatecHeaderDelegate {
             self.finalizarHeight.constant = 0
         }
         if let leg = leg {
-            self.header.title = leg.title
-            switch leg.to.type {
-            case .Access:
-                self.legLabel.text = "Dirija-se a \(leg.to.title) do \(leg.to.building!.title)."
-            default:
-                self.legLabel.text = "Dirija-se a \(leg.to.title) no \(leg.to.building!.title)."
+            let f1 = leg.from.id.buildingLevel
+            let f2 = leg.to.id.buildingLevel
+            if f1 != f2 {
+                let action: String
+                if f1 > f2 {
+                    action = "Desça"
+                } else {
+                    action = "Suba"
+                }
+                self.header.title = "\(action) até o \(f2)º andar"
+                self.legLabel.text = "\(action) até o \(f2)º andar"
+            } else {
+                self.header.title = leg.title
+                switch leg.to.type {
+                case .Access:
+                    self.legLabel.text = "Dirija-se a \(leg.to.title) do \(leg.to.building!.title)."
+                default:
+                    if leg.to.building?.locationsForList.count ?? 0 > 1 {
+                        self.legLabel.text = "Dirija-se a \(leg.to.title) no \(leg.to.building!.title)."
+                    } else {
+                        self.legLabel.text = "Dirija-se a \(leg.to.title)."
+                    }
+                }
             }
         }
         self.embedParent?.delegate?.selectedPoi = leg!
