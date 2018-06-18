@@ -3,6 +3,7 @@
 exa1;exi1
 exi1;exi2
 exi2;exi3
+exi2;exi9
 exi3;exi4
 exi4;sa0a1
 exi4;exi5
@@ -554,3 +555,21 @@ bab6e4;bab6i3
 bab6e4;bab6ib2
 ### 21-B
 bab6i3;bab6b1
+
+
+
+
+
+
+# bloco c
+exi9;bc0a1
+exi7;bc0a2
+bc0a1;bc0s1
+bc0a1;bc0i1
+bc0i1;bc0i6
+bc0i6;bc0i2
+bc0i2;bc0a2
+bc0i2;bc0i3
+bc0i3;bc0i4
+bc0i4;bc0i5
+bc0i5;bc1s1

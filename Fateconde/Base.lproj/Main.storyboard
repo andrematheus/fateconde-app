@@ -36,22 +36,24 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaA-Xo-Veg">
                                 <rect key="frame" x="319" y="32" width="44" height="88"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jq-30-44g">
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jq-30-44g">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="ADz-RQ-6E3"/>
                                             <constraint firstAttribute="width" constant="44" id="PGg-40-IIT"/>
                                         </constraints>
+                                        <state key="normal" image="fatecbtn"/>
                                         <connections>
                                             <action selector="showFatec:" destination="BYZ-38-t0r" eventType="touchUpInside" id="06y-Ox-csn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apv-iz-fie">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apv-iz-fie">
                                         <rect key="frame" x="0.0" y="44" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="gqz-ok-9lc"/>
                                             <constraint firstAttribute="height" constant="44" id="zVR-KY-jd4"/>
                                         </constraints>
+                                        <state key="normal" image="surrbtn"/>
                                         <connections>
                                             <action selector="showSurroundings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VDq-FU-MW7"/>
                                         </connections>
@@ -407,6 +409,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fatecbtn" width="25" height="25"/>
+        <image name="surrbtn" width="25" height="25"/>
         <namedColor name="Cinza Claro">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

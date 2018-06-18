@@ -342,11 +342,12 @@ class FatecMapHelper {
     
     init(fatec: Fatec) {
         self.fatec = fatec
-        self.outlineLayer = OutlineLayer(identifier: identifier, coordinates: fatec.quadPolygon.coordinates, strokeAttributes: stroke, fillAttributes: fill)
+        self.outlineLayer = OutlineLayer(identifier: identifier, coordinates: fatec.quadPolygon.coordinates,
+                                         strokeAttributes: stroke, fillAttributes: fill)
         
         if let fatecPlanImage = UIImage(named: fatec.planImageKey) {
             self.imageLayer = ImageLayer(identifier: identifier, polygon: fatec.quadPolygon, image: fatecPlanImage,
-                                           attributes: ImageLayerAttributes(visibility: ZoomableInfo<Bool>([MapZoomLevel.Fatec: true], defaultValue: false)))
+                                           attributes: ImageLayerAttributes(visibility: ZoomableInfo<Bool>(defaultValue: true)))
         } else {
             self.imageLayer = self.outlineLayer
         }
