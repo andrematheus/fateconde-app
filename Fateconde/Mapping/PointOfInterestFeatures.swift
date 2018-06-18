@@ -402,7 +402,6 @@ class BuildingMapHelper {
         
         self.outlineLayer = OutlineLayer(identifier: identifier, coordinates: building.quadPolygon.coordinates,
                                          strokeAttributes: stroke, fillAttributes: fill)
-
     }
 }
 

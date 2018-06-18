@@ -57,8 +57,8 @@ class DebugTableViewController: UITableViewController {
     
     @IBAction func debugAllRoutes(_ sender: Any) {
         let app = AppData.sharedInstance
-        let theRoutes = app.pointsOfInterest.routes.debugRoute()
         if let mv = mainViewController {
+            let theRoutes = app.pointsOfInterest.routes.debugRoute(selection: mv.selectedPoi, selectedLevel: mv.selectedLevel)
             mv.selectedPoi = theRoutes
         }
     }

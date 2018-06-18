@@ -86,10 +86,10 @@
     {
       "type": "Feature",
       "properties": {
-        "building_code": "babt",
+        "building_code": "bab",
         "kind": "building_outline",
-        "name": "Térreo A/B",
-        "longName": "Bloco A/B Térreo"
+        "name": "Bloco A/B",
+        "longName": "Bloco A/B"
       },
       "geometry": {
         "coordinates": [
@@ -237,23 +237,6 @@
         "type": "Point"
       },
       "id": "3915615651bf48885e1a6ae12ee5ea85"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "building_code": "babt",
-        "kind": "building",
-        "name": "Térreo A/B",
-        "longName": "Bloco A/B Térreo"
-      },
-      "geometry": {
-        "coordinates": [
-          -46.63273,
-          -23.529162
-        ],
-        "type": "Point"
-      },
-      "id": "4fcbc22a2534335a225998dc52a3405f"
     },
     {
       "type": "Feature",
@@ -1155,41 +1138,6 @@
         "type": "Point"
       },
       "id": "cfe3a2a21fbe05165fbe44eee845b9a4"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "building_code": "bab",
-        "kind": "building_outline"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              -46.632763,
-              -23.529321
-            ],
-            [
-              -46.632303,
-              -23.529441
-            ],
-            [
-              -46.632206,
-              -23.529129
-            ],
-            [
-              -46.632667,
-              -23.529009
-            ],
-            [
-              -46.632763,
-              -23.529321
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": "d61428ebc6f8224d9bca282e49a5f0f4"
     },
     {
       "type": "Feature",

@@ -118,16 +118,22 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
                     let layer = routeLegHelper.routeLayer
                     let circlesLayer = routeLegHelper.circlesLayer
                     if let mapView = self.mapView, let style = mapView.style {
-                        layer.install(style: style)
-                        circlesLayer.install(style: style)
-                        mapView.showAnnotations([layer.feature], animated: true)
+                        if leg.to.id.buildingLevel == leg.from.id.buildingLevel {
+                            layer.install(style: style)
+                            circlesLayer.install(style: style)
+                        }
+                        if leg.to.id.buildingCode == leg.from.id.buildingCode {
+                            lookAt(poi: leg.to.building)
+                        } else {
+                            mapView.showAnnotations([layer.feature], animated: true)
+                        }
                     }
                     self.routeHelper = routeLegHelper
                     selectedBuilding = leg.from.building
                 case let debugRoutes as Routes:
                     for route in debugRoutes.routes {
                         let routeHelper = data.routeHelper(withRoute: route)
-                        let layer = routeHelper.routeLayer
+                        let layer = routeHelper.routeLayer                        
                         let circlesLayer = routeHelper.circlesLayer
                         if let mapView = self.mapView, let style = mapView.style {
                             layer.install(style: style)

@@ -94,8 +94,163 @@ sa3s11;3;sa;36-S;Classroom
 
 
 
-# Bloco B;;;;
-# bb1;0;bb;iCenter;Service
+# Bloco AB;;;;
+bab0s1;0;bab;Lab. Automação e Controle;Classroom
+bab0s2;0;bab;Recepção;Service
+bab0s3;0;bab;Dep. Edifícios;Service
+bab0s4;0;bab;iCenter;Service
+bab0a1;0;bab;Entrada;Access
+
+# 1 andar
+bab1a1;1;bab;11-A;Classroom
+bab1a2;1;bab;12-A;Classroom
+bab1a3;1;bab;14-A;Classroom
+bab1a4;1;bab;16-A;Classroom
+bab1a5;1;bab;18-A;Classroom
+bab1a6;1;bab;18-A A1;Classroom
+bab1a7;1;bab;19-A;Classroom
+bab1a8;1;bab;17-A;Classroom
+bab1a9;1;bab;15-A;Classroom
+bab1a10;1;bab;13-A;Classroom
+bab1b1;1;bab;11-B;Classroom
+bab1b2;1;bab;12-B;Classroom
+bab1b3;1;bab;14-B;Classroom
+bab1b4;1;bab;16-B;Classroom
+bab1b5;1;bab;18-B;Classroom
+bab1b6;1;bab;19-B;Classroom
+bab1b8;1;bab;17-B;Classroom
+bab1b9;1;bab;15-B;Classroom
+bab1b10;1;bab;13-B;Classroom
+
+
+
+# 2 andar
+bab2a1;2;bab;21-A;Classroom
+bab2a2;2;bab;22-A;Classroom
+bab2a3;2;bab;24-A;Classroom
+bab2a4;2;bab;26-A;Classroom
+bab2a5;2;bab;28-A/Dep. Mecânica;Service
+bab2a6;2;bab;28-A/A1;Classroom
+bab2a7;2;bab;29-A;Classroom
+bab2a8;2;bab;27-A;Classroom
+bab2a9;2;bab;25-A;Classroom
+bab2a10;2;bab;23-A;Classroom
+bab2b1;2;bab;21-B;Classroom
+bab2b2;2;bab;22-B;Classroom
+bab2b3;2;bab;24-B;Classroom
+bab2b4;2;bab;26-B;Classroom
+bab2b5;2;bab;28-B;Classroom
+bab2b6;2;bab;Des. Técnico;Classroom
+bab2b61;2;bab;Coord. Lab. CAD;Service
+bab2b7;2;bab;29-B Lab. CAD;Classroom
+bab2b8;2;bab;27-B Lab. CAD;Classroom
+bab2b9;2;bab;25-B;Classroom
+bab2b10;2;bab;23-B;Classroom
+
+# 3 andar
+bab3a1;3;bab;31-A;Classroom
+bab3a2;3;bab;32-A;Classroom
+bab3a3;3;bab;34-A;Classroom
+bab3a4;3;bab;36-A;Classroom
+bab3a5;3;bab;38-A;Classroom
+bab3a6;3;bab;Dep. Soldagem;Service
+bab3a7;3;bab;Dep. Hidráulica e Saneamento;Service
+bab3a8;3;bab;37-A;Classroom
+bab3a9;3;bab;35-A;Classroom
+bab3a10;3;bab;33-A;Classroom
+bab3b1;3;bab;31-B;Classroom
+bab3b2;3;bab;32-B;Classroom
+bab3b3;3;bab;34-B;Classroom
+bab3b4;3;bab;36-B;Classroom
+bab3b5;3;bab;38-B;Classroom
+bab3b6;3;bab;Lab. Constr. Mec. Prec.;Classroom
+bab3b7;3;bab;39-B;Classroom
+bab3b8;3;bab;37-B;Classroom
+bab3b9;3;bab;35-B;Classroom
+bab3b10;3;bab;33-B;Classroom
+
+
+# 4 andar
+bab4a1;4;bab;41-A;Classroom
+bab4a2;4;bab;42-A;Classroom
+bab4a3;4;bab;44-A1;Classroom
+bab4a4;4;bab;44-A Lab. Elet.;Classroom
+bab4a6;4;bab;Coord. Mec. Prec.;Service
+bab4a7;4;bab;49-A;Classroom
+bab4a8;4;bab;47-A;Classroom
+bab4a9;4;bab;45-A;Classroom
+bab4a10;4;bab;43-A;Classroom
+bab4b1;4;bab;41-B;Classroom
+bab4b2;4;bab;Lab. Óptica 1;Classroom
+bab4b3;4;bab;Lab. Óptica 2  ;Classroom
+bab4b4;4;bab;Lab. Física;Classroom
+bab4b5;4;bab;48-B;Classroom
+bab4b6;4;bab;Lab. Física 3;Classroom
+bab4b7;4;bab;49-B;Classroom
+bab4b8;4;bab;Lab. Física 1;Classroom
+bab4b9;4;bab;45-B;Classroom
+bab4b10;4;bab;Lab. Física 2;Classroom
+
+# 5 andar
+bab5a1;5;bab;51-A;Classroom
+bab5a2;5;bab;52-A;Classroom
+bab5a3;5;bab;54-A;Classroom
+bab5a4;5;bab;56-A;Classroom
+bab5a5;5;bab;58-A;Classroom
+bab5a6;5;bab;Cursos/Educ. Continuada;Service
+bab5a7;5;bab;Secr. Pós;Service
+bab5a8;5;bab;57-A;Classroom
+bab5a9;5;bab;55-A;Classroom
+bab5a10;5;bab;53-A;Classroom
+bab5b1;5;bab;51-B;Classroom
+bab5b2;5;bab;52-B;Classroom
+bab5b3;5;bab;54-B;Classroom
+bab5b4;5;bab;56-B;Classroom
+bab5b5;5;bab;58-B;Classroom
+bab5b6;5;bab;59-B;Classroom
+bab5b7;5;bab;Lab. Línguas;Classroom
+bab5b8;5;bab;57-B;Classroom
+bab5b9;5;bab;55-B;Classroom
+bab5b10;5;bab;53-B;Classroom
+
+
+# 6 andar
+bab6a1;6;bab;D.A.E.S.;Service
+bab6b1;6;bab;Adm.;Service
+
+bab[0:6]i1;0;bab;;Invisible
+bab[0:6]i2;0;bab;;Invisible
+bab[0:6]i3;0;bab;;Invisible
+
+
+# caminhos
+bab[1:6]ia1;0;bab;;Invisible
+bab[1:6]ia2;0;bab;;Invisible
+bab[1:6]ia3;0;bab;;Invisible
+bab[1:6]ia4;0;bab;;Invisible
+bab[1:6]ia5;0;bab;;Invisible
+bab[1:6]ia6;0;bab;;Invisible
+
+bab[1:6]ib1;0;bab;;Invisible
+bab[1:6]ib2;0;bab;;Invisible
+bab[1:6]ib3;0;bab;;Invisible
+bab[1:6]ib4;0;bab;;Invisible
+bab[1:6]ib5;0;bab;;Invisible
+bab[1:6]ib6;0;bab;;Invisible
+
+# escadas
+bab[0:6]e2;0;bab;Escada;Access
+bab[0:6]e3;0;bab;Escada;Access
+bab[0:6]e4;0;bab;Escada;Access
+bab[0:6]e5;0;bab;Escada;Access
+bab[0:6]ie1;0;bab;;Invisible
+bab[0:6]ie2;0;bab;;Invisible
+bab[0:6]ie3;0;bab;;Invisible
+bab[0:6]ie4;0;bab;;Invisible
+bab[0:6]ie5;0;bab;;Invisible
+bab[0:6]ie6;0;bab;;Invisible
+bab[0:6]ie7;0;bab;;Invisible
+bab[0:6]ie8;0;bab;;Invisible
 
 
 # Guarita 1

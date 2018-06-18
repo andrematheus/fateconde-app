@@ -10,7 +10,7 @@ exi5;ps
 exi3;exi6
 exi6;exi7
 exi7;exi8
-exi8;babta1
+exi8;bab0a1
 exi8;exi10
 exi10;cn
 exi1;g1
@@ -65,7 +65,7 @@ sa2a3;sa2i3
 sa2i3;sa2s10
 sa2i3;sa2a9
 sa2i3;sa2i4
-sa2i4;sa2s1
+# sa2i4;sa2s1
 sa2i4;sa2s2
 sa2i4;sa2s3
 sa2i4;sa2s4
@@ -99,7 +99,7 @@ sa3i1;sa3a5
 sa3i1;sa3i2
 sa3i2;sa3s7
 sa3i2;sa3s8
-sa3i2;sa3s9
+# sa3i2;sa3s9
 sa3i1;sa3s6
 
 
@@ -142,3 +142,415 @@ sa2i9;sa3a6
 sa3a5;sa3i8
 sa3i8;sa3i7
 sa3i8;sa3i9
+
+
+
+# BAB
+exi8;bab0a1
+
+# Térreo
+# meio
+bab0a1;bab0i1
+
+# bloco A
+bab0i1;bab0i2
+bab0i2;bab0s3
+bab0i2;bab0s4
+
+## escada
+bab0i2;bab0e3
+bab0e3;bab0ie4
+bab0ie4;bab0ie3
+bab0ie3;bab0ie2
+bab0ie2;bab1ie1
+
+# bloco B
+bab0i1;bab0i3
+bab0i3;bab0s1
+
+## escada
+bab0i3;bab0e4
+bab0e4;bab0ie8
+bab0ie8;bab0ie7
+bab0ie7;bab0ie6
+bab0ie6;bab1ie5
+
+# 1o andar
+## bloco A
+### escada
+#### faz curto-circuito
+bab1ie1;bab1ie4
+bab1i2;bab1e3
+bab1e3;bab1ie4
+bab1ie4;bab1ie3
+bab1ie3;bab1ie2
+bab1ie2;bab2ie1
+
+### saida da escada
+bab1ie1;bab1e2
+bab1e2;bab1i2
+bab1e2;bab1ia2
+### 11-A
+bab1i2;bab1a1
+
+### Corredor
+bab1ia2;bab1ia3
+bab1ia3;bab1ia4
+bab1ia4;bab1ia5
+bab1ia4;bab1ia6
+bab1ia2;bab1a2
+bab1ia3;bab1a3
+bab1ia3;bab1a10
+bab1ia4;bab1a4
+bab1ia4;bab1a9
+bab1ia5;bab1a5
+bab1ia5;bab1a8
+bab1ia6;bab1a6
+bab1ia6;bab1a7
+
+
+## bloco B
+### escada
+#### faz curto-circuito
+bab1ie5;bab1ie8
+bab1i3;bab1e4
+bab1e4;bab1ie8
+bab1ie8;bab1ie7
+bab1ie7;bab1ie6
+bab1ie6;bab2ie5
+
+### saida da escada
+bab1ie5;bab1e4
+bab1e4;bab1i3
+bab1e4;bab1ib2
+### 11-A
+bab1i3;bab1b1
+
+### Corredor
+bab1ib2;bab1ib3
+bab1ib3;bab1ib4
+bab1ib4;bab1ib5
+bab1ib4;bab1ib6
+bab1ib2;bab1b2
+bab1ib3;bab1b3
+bab1ib3;bab1b10
+bab1ib4;bab1b4
+bab1ib4;bab1b9
+bab1ib5;bab1b5
+bab1ib5;bab1b8
+bab1ib6;bab1b6
+# bab1ib6;bab1b7
+
+
+
+# 2o andar
+## bloco A
+### escada
+#### faz curto-circuito
+bab2ie1;bab2ie4
+bab2i2;bab2e3
+bab2e3;bab2ie4
+bab2ie4;bab2ie3
+bab2ie3;bab2ie2
+bab2ie2;bab3ie1
+
+### saida da escada
+bab2ie1;bab2e2
+bab2e2;bab2i2
+bab2e2;bab2ia2
+### 21-A
+bab2i2;bab2a1
+
+### Corredor
+bab2ia2;bab2ia3
+bab2ia3;bab2ia4
+bab2ia4;bab2ia5
+bab2ia4;bab2ia6
+bab2ia2;bab2a2
+bab2ia3;bab2a3
+bab2ia3;bab2a10
+bab2ia4;bab2a4
+bab2ia4;bab2a9
+bab2ia5;bab2a5
+bab2ia5;bab2a8
+bab2ia6;bab2a6
+bab2ia6;bab2a7
+
+
+## bloco B
+### escada
+#### faz curto-circuito
+bab2ie5;bab2ie8
+bab2i3;bab2e4
+bab2e4;bab2ie8
+bab2ie8;bab2ie7
+bab2ie7;bab2ie6
+bab2ie6;bab3ie5
+
+### saida da escada
+bab2ie5;bab2e4
+bab2e4;bab2i3
+bab2e4;bab2ib2
+### 21-B
+bab2i3;bab2b1
+
+### Corredor
+bab2ib2;bab2ib3
+bab2ib3;bab2ib4
+bab2ib4;bab2ib5
+bab2ib4;bab2ib6
+bab2ib2;bab2b2
+bab2ib3;bab2b3
+bab2ib3;bab2b10
+bab2ib4;bab2b4
+bab2ib4;bab2b9
+bab2ib5;bab2b5
+bab2ib5;bab2b8
+bab2ib6;bab2b6
+bab2ib6;bab2b7
+
+
+
+
+
+
+
+
+# 3o andar
+## bloco A
+### escada
+#### faz curto-circuito
+bab3ie1;bab3ie4
+bab3i2;bab3e3
+bab3e3;bab3ie4
+bab3ie4;bab3ie3
+bab3ie3;bab3ie2
+bab3ie2;bab4ie1
+
+### saida da escada
+bab3ie1;bab3e2
+bab3e2;bab3i2
+bab3e2;bab3ia2
+### 31-A
+bab3i2;bab3a1
+
+### Corredor
+bab3ia2;bab3ia3
+bab3ia3;bab3ia4
+bab3ia4;bab3ia5
+bab3ia4;bab3ia6
+bab3ia2;bab3a2
+bab3ia3;bab3a3
+bab3ia3;bab3a10
+bab3ia4;bab3a4
+bab3ia4;bab3a9
+bab3ia5;bab3a5
+bab3ia5;bab3a8
+bab3ia6;bab3a6
+bab3ia6;bab3a7
+
+
+## bloco B
+### escada
+#### faz curto-circuito
+bab3ie5;bab3ie8
+bab3i3;bab3e4
+bab3e4;bab3ie8
+bab3ie8;bab3ie7
+bab3ie7;bab3ie6
+bab3ie6;bab4ie5
+
+### saida da escada
+bab3ie5;bab3e4
+bab3e4;bab3i3
+bab3e4;bab3ib2
+### 21-B
+bab3i3;bab3b1
+
+### Corredor
+bab3ib2;bab3ib3
+bab3ib3;bab3ib4
+bab3ib4;bab3ib5
+bab3ib4;bab3ib6
+bab3ib2;bab3b2
+bab3ib3;bab3b3
+bab3ib3;bab3b10
+bab3ib4;bab3b4
+bab3ib4;bab3b9
+bab3ib5;bab3b5
+bab3ib5;bab3b8
+bab3ib6;bab3b6
+bab3ib6;bab3b7
+
+
+
+
+
+
+
+
+
+
+
+# 4o andar
+## bloco A
+### escada
+#### faz curto-circuito
+bab4ie1;bab4ie4
+bab4i2;bab4e3
+bab4e3;bab4ie4
+bab4ie4;bab4ie3
+bab4ie3;bab4ie2
+bab4ie2;bab5ie1
+
+### saida da escada
+bab4ie1;bab4e2
+bab4e2;bab4i2
+bab4e2;bab4ia2
+### 31-A
+bab4i2;bab4a1
+
+### Corredor
+bab4ia2;bab4ia3
+bab4ia3;bab4ia4
+bab4ia4;bab4ia5
+bab4ia4;bab4ia6
+bab4ia2;bab4a2
+bab4ia3;bab4a3
+bab4ia3;bab4a10
+bab4ia4;bab4a4
+bab4ia4;bab4a9
+# bab4ia5;bab4a5
+bab4ia5;bab4a8
+bab4ia6;bab4a6
+bab4ia6;bab4a7
+
+
+## bloco B
+### escada
+#### faz curto-circuito
+bab4ie5;bab4ie8
+bab4i3;bab4e4
+bab4e4;bab4ie8
+bab4ie8;bab4ie7
+bab4ie7;bab4ie6
+bab4ie6;bab5ie5
+
+### saida da escada
+bab4ie5;bab4e4
+bab4e4;bab4i3
+bab4e4;bab4ib2
+### 21-B
+bab4i3;bab4b1
+
+### Corredor
+bab4ib2;bab4ib3
+bab4ib3;bab4ib4
+bab4ib4;bab4ib5
+bab4ib4;bab4ib6
+bab4ib2;bab4b2
+bab4ib3;bab4b3
+bab4ib3;bab4b10
+bab4ib4;bab4b4
+bab4ib4;bab4b9
+bab4ib5;bab4b5
+bab4ib5;bab4b8
+bab4ib6;bab4b6
+bab4ib6;bab4b7
+
+
+
+
+
+
+
+# 5o andar
+## bloco A
+### escada
+#### faz curto-circuito
+bab5ie1;bab5ie4
+bab5i2;bab5e3
+bab5e3;bab5ie4
+bab5ie4;bab5ie3
+bab5ie3;bab5ie2
+bab5ie2;bab6ie1
+
+### saida da escada
+bab5ie1;bab5e2
+bab5e2;bab5i2
+bab5e2;bab5ia2
+### 31-A
+bab5i2;bab5a1
+
+### Corredor
+bab5ia2;bab5ia3
+bab5ia3;bab5ia4
+bab5ia4;bab5ia5
+bab5ia4;bab5ia6
+bab5ia2;bab5a2
+bab5ia3;bab5a3
+bab5ia3;bab5a10
+bab5ia4;bab5a4
+bab5ia4;bab5a9
+bab5ia5;bab5a5
+bab5ia5;bab5a8
+bab5ia6;bab5a6
+bab5ia6;bab5a7
+
+
+## bloco B
+### escada
+#### faz curto-circuito
+bab5ie5;bab5ie8
+bab5i3;bab5e4
+bab5e4;bab5ie8
+bab5ie8;bab5ie7
+bab5ie7;bab5ie6
+bab5ie6;bab6ie5
+
+### saida da escada
+bab5ie5;bab5e4
+bab5e4;bab5i3
+bab5e4;bab5ib2
+### 21-B
+bab5i3;bab5b1
+
+### Corredor
+bab5ib2;bab5ib3
+bab5ib3;bab5ib4
+bab5ib4;bab5ib5
+bab5ib4;bab5ib6
+bab5ib2;bab5b2
+bab5ib3;bab5b3
+bab5ib3;bab5b10
+bab5ib4;bab5b4
+bab5ib4;bab5b9
+bab5ib5;bab5b5
+bab5ib5;bab5b8
+bab5ib6;bab5b6
+bab5ib6;bab5b7
+
+
+
+
+
+# 6o andar
+## bloco A
+### escada
+
+### saida da escada
+bab6ie1;bab6e2
+bab6e2;bab6i2
+bab6e2;bab6ia2
+### 31-A
+bab6i2;bab6a1
+
+## bloco B
+### escada
+
+### saida da escada
+bab6ie5;bab6e4
+bab6e4;bab6i3
+bab6e4;bab6ib2
+### 21-B
+bab6i3;bab6b1
