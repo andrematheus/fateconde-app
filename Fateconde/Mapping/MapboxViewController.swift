@@ -20,7 +20,7 @@ enum MapZoomLevel: Double {
 
 class MapboxViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView?
-    var debug = true
+    var debug = false
     
     let data = AppData.sharedInstance
     
@@ -49,15 +49,15 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         mapView?.allowsTilting = false
         mapView?.allowsZooming = true
         mapView?.allowsRotating = false
-        //mapView?.allowsScrolling = false
+        mapView?.allowsScrolling = false
         mapView?.showsUserLocation = true
         mapView?.setUserTrackingMode(.followWithCourse, animated: false)
         mapView?.compassView.isHidden = true
         
         mapView?.delegate = self
         
-        mapView?.logoView.isHidden = true
-        mapView?.attributionButton.isHidden = true
+        //mapView?.logoView.isHidden = true
+        //mapView?.attributionButton.isHidden = true
         
         view.addSubview(mapView!)
     }
